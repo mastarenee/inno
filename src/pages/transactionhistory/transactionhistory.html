@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title><div id = "headerLogo"></div> </ion-title>
+      <button ion-button menuToggle right>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content class = "contentBG">
+        
+      <h1 class = "text-center backgroundBanner"> 
+
+          <div class = "transaction_amount_wrap"> 
+            <div class = "transaction_amount_wrap_label"> Amount </div>
+            <div class = "transaction_amount_wrap_amount"> $25,000.00 </div>
+          </div>
+          Transaction History 
+        
+        </h1>
+
+        <div class = "contentBG" padding>
+
+          <div class = "col12 filter_action"> Filter </div>
+
+          <ion-list>
+            <ion-item class = "transaction_wrap" (click)="openTransaction($event,'232')"> 
+
+              <ion-row>
+
+                <ion-col col col-4>
+                  <div class = "transaction_number"> 1290723678623 </div>
+                  <div class = "transaction_date"> June 10th 2018 </div>
+                </ion-col>
+
+                <ion-col col col-3> <span class = "tag tag_pending">Pending</span> </ion-col>
+                <ion-col col col-2 class = "transaction_amount"> $90.00 </ion-col>
+
+                <ion-col col col-2 class = "transaction_currency"> USD </ion-col>
+
+              </ion-row>
+
+            </ion-item>
+
+          </ion-list>
+      </div>
+
+      </ion-content>

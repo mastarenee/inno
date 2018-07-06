@@ -1,0 +1,80 @@
+page-transactionhistory {
+
+
+.tag{
+    padding:6px 10px;
+    font-size:10px;
+    width:100%;
+    text-align: center;
+    float:left;
+}
+
+.tag.tag_completed{
+    background: rgb(0, 158, 21);
+    color:#fff;
+}
+
+.tag.tag_pending{
+    background: rgb(0, 140, 255);
+    color:#fff;
+}
+
+.tag.tag_error{
+    background: red;
+    color:#fff;
+}
+
+.transaction_number{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.transaction_date{
+    font-size: 14px;
+    color:rgb(94, 94, 94);
+}
+
+.transaction_currency{
+    font-size:14px;
+    padding: 3px;
+    font-weight: bold;
+    color:grey;
+}
+
+.transaction_amount{
+    font-size: 14px;
+    padding:6px;
+    text-align: right;
+    padding: 3px;
+}
+
+.transaction_wrap{
+    border-bottom:1px solid #eee;
+    margin-bottom:5px;
+}
+
+.transaction_wrap .container{
+    padding:10px 0px;
+}
+
+.filter_action{
+    text-align: right;
+    padding:10px;
+}
+
+.backgroundBanner{
+    background-color:#ffd400;
+    padding: 40px 0px;
+    margin: 0px !important;
+    /* color: #fff; */
+}
+
+.transaction_amount_wrap_label{
+    font-size:11px;
+}
+
+.transaction_amount_wrap_amount{
+    font-weight: bold;
+}
+
+}

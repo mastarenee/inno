@@ -15,7 +15,7 @@
     
     <p>
     <!-- Float the icon right -->
-    <button class = "full_button" ion-button outline icon-start (click) = "selectAccount(chequing)">
+    <button class = "full_button" ion-button outline icon-start (click) = "selectAccount($event,'chequing')">
       <span class = "option_title"> Chequing </span><span class="option_amount"> $50,000.00 </span>
       <ion-icon name="arrow-forward"></ion-icon>
     </button>
@@ -23,7 +23,7 @@
 
     <p>
     <!-- Float the icon right -->
-    <button class = "full_button" ion-button outline icon-end (click) = "selectAccount(savings)">
+    <button class = "full_button" ion-button outline icon-end (click) = "selectAccount($event,'savings')">
       <span class = "option_title"> Savings </span> <span class="option_amount"> $20,500.00 </span>
       <ion-icon name="arrow-forward"></ion-icon>
     </button>

@@ -5,6 +5,12 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { AccountsPage } from '../pages/accounts/accounts';
+import { InfoPage } from '../pages/info/info';
+import { ReviewPage } from '../pages/review/review';
+import { ProfilePage } from '../pages/profile/profile';
+import { TransactionHistoryPage } from '../pages/transactionhistory/transactionhistory';
+import { TransactionHistoryDetailPage } from '../pages/transactionhistorydetail/transactionhistorydetail';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -13,6 +19,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     HomePage,
+    AccountsPage,
+    InfoPage,
+    ReviewPage,
+    ProfilePage,
+    TransactionHistoryPage,
+    TransactionHistoryDetailPage,
     ListPage
   ],
   imports: [
@@ -23,6 +35,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
+    AccountsPage,
+    InfoPage,
+    ReviewPage,
+    ProfilePage,
+    TransactionHistoryPage,
+    TransactionHistoryDetailPage,
     ListPage
   ],
   providers: [

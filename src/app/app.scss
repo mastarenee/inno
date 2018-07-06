@@ -14,3 +14,169 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+$fcib_red:#af0b1c;
+
+.button_red{
+    background:$fcib_red !important;
+}
+
+.toolbar-background-md {
+    border-color: #af0b1c;
+    background: #af0b1c;
+}
+
+.bar-button-default, .bar-button-clear-default, .bar-button-default{
+    color:#fff;
+}
+
+.header_title{
+    width:75%;
+    margin:0px auto;
+    text-align: center;
+}
+
+.contentBG{
+    background-color:#f1f0f0; 
+}
+
+.contentBG .scroll{
+    background-color:#f1f0f0; 
+}
+
+.float_bottom_buttons_group{
+    width:100%;
+}
+
+.float_bottom_buttons_group .button{
+    width:100%;
+}
+
+.field_name{
+    font-weight: bold !important;
+}
+
+.boldme{
+    font-weight:bold !important;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.labelTitle{
+    width:100%;
+    float:left;
+}
+
+#headerLogo{
+    background-image:url("../assets/imgs/cibc1.png");
+    background-size:cover;
+    width: 191px; 
+    height: 50px;
+    float:left;
+}
+
+.headingSub{
+    padding:0px 15px;
+}
+
+.headerSlogan{
+    color:#fff;
+    text-align: right;
+    width: 109px;
+    float: right;
+    font-size: 10px;
+    padding: 18px 0px;
+}
+
+.bottom_float{
+    position: absolute;
+    bottom:0px;
+    width:100%;
+    left:0px;
+}
+
+.button_option{
+    width:100%;
+}
+
+.button_option  a{
+    padding:17px !important;
+}
+
+.option_amount{
+    float:right;
+    text-align: right;
+    justify-content: right;
+    margin-left: 22%;
+    margin-right: 5%;
+    color:#af0b1c;
+}
+
+.option_title{
+    text-align: left;
+    justify-content: left;
+    font-weight:bold;
+    color:#000;
+}
+
+.button_option_wrap{
+    margin:0px;
+}
+
+.userProfile{
+    margin:0px auto;
+    width:90%;
+}
+
+.userProfile img{
+    width:24px;
+    height:24px;
+    position:absolute;
+    right:10%;
+}
+
+.bottom_button{
+    width:100%;
+    position: fixed;
+    bottom:0px;
+    left:0px;
+}
+
+.full_button{
+    width:100%;
+    border-color: #949494;
+}
+
+.full_button .icon{
+    color:#949494;
+}
+
+.input-wrapper .text-input{
+    border-bottom: 1px solid #949494;
+}
+
+.outsideSign{
+    position: absolute;
+    left:10px;
+    top:33px;
+    font-weight: bold;
+}
+
+.menu-inner .item {
+    background-color: #af0b1c !important;
+    color: #fff;
+}
+
+.menu-inner .scroll-content{
+    background-color: #af0b1c;
+}
+
+.menu-inner .toolbar-background{
+    background-color: #fff;
+}
+
+.menu-inner .toolbar-title{
+    color:#af0b1c;
+}
