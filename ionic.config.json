@@ -1,0 +1,8 @@
+{
+  "name": "FCIBSend",
+  "app_id": "272fc6eb",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
