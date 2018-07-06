@@ -1,37 +1,28 @@
 <ion-header>
+
+    
   <ion-navbar>
     <ion-title><div id = "headerLogo"></div> </ion-title>
     <button ion-button menuToggle right>
       <ion-icon name="menu"></ion-icon>
     </button>
   </ion-navbar>
+
+
 </ion-header>
 
 <ion-content padding>
+
+  <ion-item>
+    <ion-label color="primary" floating>User ID:</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" floating>Password:</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
   
-  <h1 class = "header_title"> Please select an account type. </h1>
-
-  <form radio-group> 
-    
-    <p>
-    <!-- Float the icon right -->
-    <button class = "full_button" ion-button outline icon-start (click) = "selectAccount(chequing)">
-      <span class = "option_title"> Chequing </span><span class="option_amount"> $50,000.00 </span>
-      <ion-icon name="arrow-forward"></ion-icon>
-    </button>
-    </p>
-
-    <p>
-    <!-- Float the icon right -->
-    <button class = "full_button" ion-button outline icon-end (click) = "selectAccount(savings)">
-      <span class = "option_title"> Savings </span> <span class="option_amount"> $20,500.00 </span>
-      <ion-icon name="arrow-forward"></ion-icon>
-    </button>
-    </p>
-
-  </form>
-
-  <button class = "bottom_button" ion-button fixed color = "light" medium (click) = "handlePage(home)" >Cancel</button>
-
-
+  <ion-row>
+    <ion-col><button col-12 ion-button class = "button_red" (click)="goToAccount()"> Log On </button></ion-col>
+  </ion-row>
 </ion-content>

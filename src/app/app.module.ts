@@ -14,6 +14,7 @@ import { TransactionHistoryDetailPage } from '../pages/transactionhistorydetail/
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ThankyouPage } from '../pages/thankyou/thankyou';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfilePage,
     TransactionHistoryPage,
     TransactionHistoryDetailPage,
-    ListPage
+    ListPage,
+    ThankyouPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfilePage,
     TransactionHistoryPage,
     TransactionHistoryDetailPage,
-    ListPage
+    ListPage,
+    ThankyouPage
   ],
   providers: [
     StatusBar,

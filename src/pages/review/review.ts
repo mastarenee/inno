@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { InfoPage } from '../info/info';
+import { ThankyouPage } from '../thankyou/thankyou';
 
 @Component({
   selector: 'page-review',
@@ -19,5 +20,7 @@ export class ReviewPage {
       item: accountsType 
     });
   }
-
+  goToThankYou(){
+    this.navCtrl.push(ThankyouPage);
+  }
 }
