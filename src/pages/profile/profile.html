@@ -8,23 +8,48 @@
   </ion-header>
   
   <ion-content class = "contentBG" padding>
-        
-      <div class = "container userProfile"> <img src = "/assets/imgs/user.png"> Welcome Mr. James Bond </div>
+    <img src = "/assets/imgs/propic.png" width="200" height="200">
 
-      <h5>Push Notification Options</h5>
+      <h5>Account Details</h5>
       <ion-card>
 
         <ion-card-content>
 
-          Push Notifications will allow anyone with access to your device to see card alerts.
-
-          <ion-item>
-            <ion-label> Send Me </ion-label>
-            <ion-checkbox color="dark"></ion-checkbox>
-          </ion-item>
-          
+User ID: 6013456723458910
+<br>
+Name: John Doe
+<br>
+Address: #32 Long Island, Christ Church
+<br>
+Telephone Number:1-246-2867891
+<br>
+Account Number: ******3617
+<br>
+Nationality: Barbadian
+<br>
+Country: Barbados
+<br>
+City: Bridgetown
+<br>
+Date-of-Birth: MM-DD-YYYY 
+<br>
+Email Address: john.doe@gmail.com
         </ion-card-content>
 
       </ion-card>
+      <ion-card>
 
+        <ion-card-content>
+            <ion-list>
+
+                <ion-item>
+                  <ion-label>Enable Push Notifications</ion-label>
+                  <ion-checkbox [(ngModel)]="pepperoni"></ion-checkbox>
+                </ion-item>
+
+              </ion-list>
+
+          </ion-card-content>
+
+        </ion-card>
   </ion-content>
