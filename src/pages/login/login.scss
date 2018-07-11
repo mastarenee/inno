@@ -1,0 +1,19 @@
+page-login {
+
+    .input-wrapper .text-input{
+        border-bottom:0px solid #fff;
+    }
+
+    .userProfileWrap{
+        width:80px;
+        height:80px;
+        border-radius: 50%;
+        border:1px solid #000;
+        background-image:url('/assets/imgs/user.png');
+        background-position: 52% 86%;
+        background-repeat: no-repeat;
+        background-size: 45px;
+        margin: 0px auto;
+    }
+ 
+}

@@ -1,0 +1,33 @@
+<ion-header>
+    
+  <ion-navbar hideBackButton="true">
+    <ion-title><div id = "headerLogo"></div> </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item class = "userProfileWrap"></ion-item>
+
+  <form (ngSubmit)="loginForm()" [formGroup]="userLoginForm">
+    <ion-item>
+      <ion-label color="primary" stacked>User ID:</ion-label>
+      <ion-input type = "number" formControlName="account"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Password:</ion-label>
+      <ion-input type = "password" formControlName="password"></ion-input>
+    </ion-item>
+    
+    <ion-row>
+      <ion-col><button col-12 ion-button class = "button_red" (click)="goToAccount()"> Log On </button></ion-col>
+    </ion-row>
+
+    <ion-row> 
+      <ion-col (click) = "openForgotPassword()" text-center> Forgot Password ? </ion-col>
+    </ion-row>
+  </form>
+
+</ion-content>

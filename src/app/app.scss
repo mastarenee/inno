@@ -16,6 +16,8 @@
 // automatically applied to the <body> element in the app.
 
 $fcib_red:#af0b1c;
+$fcib_purple: #8C095E;
+$fcib_blue: #62B6F0;
 
 .button_red{
     background:$fcib_red !important;
@@ -72,9 +74,12 @@ $fcib_red:#af0b1c;
 #headerLogo{
     background-image:url("../assets/imgs/cibc1.png");
     background-size:cover;
-    width: 191px; 
+    width: 191px;
     height: 50px;
-    float:left;
+    float: left;
+    background-size: 170px 42px;
+    background-repeat: no-repeat;
+    background-position: 2px;
 }
 
 .headingSub{
@@ -105,20 +110,40 @@ $fcib_red:#af0b1c;
     padding:17px !important;
 }
 
+.account_selection_wrap{
+    justify-content: center;
+}
+
+.account_selection_wrap .card{
+    background:#f8f8f8;
+}
+
+.account_selection{
+    padding:10px 10px;
+    text-align:left;
+}
+
+.option_account_number{
+    color:#000;
+}
+
 .option_amount{
     float:right;
     text-align: right;
     justify-content: right;
     margin-left: 22%;
     margin-right: 5%;
-    color:#00cc00;
+    color:$fcib_blue;
+    text-align:left;
+    font-size: 22px;
 }
 
 .option_title{
     text-align: left;
     justify-content: left;
     font-weight:bold;
-    color:#000;
+    font-size:14px;
+    color:$fcib_purple;
 }
 
 .button_option_wrap{
@@ -153,10 +178,6 @@ $fcib_red:#af0b1c;
     color:#949494;
 }
 
-.input-wrapper .text-input{
-    border-bottom: 1px solid #949494;
-}
-
 .outsideSign{
     position: absolute;
     left:10px;
@@ -179,4 +200,50 @@ $fcib_red:#af0b1c;
 
 .menu-inner .toolbar-title{
     color:#af0b1c;
+}
+
+// Profile
+.profile_wrap{
+    background:rgb(231, 231, 231);
+}
+
+.profile_data_wrap{
+    padding:18px;
+}
+
+.profile_title_username{
+    color: $fcib_purple;
+    margin:0px;
+}
+
+.profile_title_day{
+    font-weight: bold;
+    font-size:12px;
+}
+
+.heading_title_small{
+    font-size:12px;
+    font-weight: bold;
+}
+
+// Footer
+#footerImage{
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    text-align: center;
+    z-index: -9;
+}
+
+#footerImage img{
+    width: 70%;
+    margin: 0px auto;
+}
+
+.progress_step_title{
+    font-weight:bold;
+}
+
+.progress_step{
+
 }

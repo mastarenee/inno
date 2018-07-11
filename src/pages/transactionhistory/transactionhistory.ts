@@ -14,7 +14,8 @@ export class TransactionHistoryPage {
   }
 
   openTransaction(event, accountNumber) {
-    // That's right, we're pushing to ourselves!
+    
+    // Open the Transaction Detail Page
     this.navCtrl.push(TransactionHistoryDetailPage, {
       item: accountNumber 
     });

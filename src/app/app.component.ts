@@ -3,7 +3,7 @@ import { Nav, Platform, PopoverController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
 import { AccountsPage } from '../pages/accounts/accounts';
 import { InfoPage } from '../pages/info/info';
 import { ListPage } from '../pages/list/list';
@@ -18,7 +18,7 @@ import { PopoverComponent } from '../components/popover/popover';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -29,7 +29,8 @@ export class MyApp {
     this.pages = [
       { title: 'New Transaction', component: AccountsPage },
       { title: 'Transaction History', component: TransactionHistoryPage },
-      { title: 'Profile Page', component: ProfilePage}
+      { title: 'Profile Page', component: ProfilePage},
+      { title: 'Logout', component: false}
     ];
 
   }
@@ -46,16 +47,11 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    if( page.component == false ){
+      this.nav.setRoot(page.component);
+    }else{
+      this.rootPage = LoginPage;
+    }
   }
 
-  /**
-  presentPopover(myEvent) {
-    let popover = this.popoverCtrl.create(PopoverComponent);
-    popover.present({
-      ev: myEvent
-    });
-  }
-
-  */
 }

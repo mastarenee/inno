@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
 import { ListPage } from '../pages/list/list';
 import { AccountsPage } from '../pages/accounts/accounts';
 import { InfoPage } from '../pages/info/info';
@@ -17,11 +17,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { PopoverComponent } from '../components/popover/popover';
+import { InternationalPhoneModule } from 'ng4-intl-phone';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    LoginPage,
     AccountsPage,
     InfoPage,
     ReviewPage,
@@ -34,12 +35,13 @@ import { PopoverComponent } from '../components/popover/popover';
   ],
   imports: [
     BrowserModule,
+    InternationalPhoneModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    LoginPage,
     AccountsPage,
     InfoPage,
     ReviewPage,

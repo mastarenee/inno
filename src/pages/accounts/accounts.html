@@ -1,47 +1,47 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar hideBackButton = "true">
     <ion-title><div id = "headerLogo"></div> </ion-title>
     
     <button ion-button menuToggle right>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <!--
-    <button ion-button icon-only (click)="presentPopover($event)">
-    <ion-icon name="notifications"></ion-icon> 
-  </button>
-    -->
-
+    
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+
+  <!--<button ion-button icon-only (click)="presentPopover($event)">
+    <ion-icon name="notifications"></ion-icon> 
+  </button>-->
   
-  <h1 class = "header_title"> Good Afternoon John</h1>
-  
-  <br>
+  <ion-row class = "profile_wrap">
 
-<h2> Your Accounts</h2>
-  <form radio-group> 
-    
-    <p>
-    <!-- Float the icon right -->
-    <button class = "full_button" ion-button outline icon-start (click) = "selectAccount($event,'chequing')">
-      <span class = "option_title"> Chequing </span><span class="option_amount"> $50,000.00 </span>
-      <ion-icon name="arrow-forward"></ion-icon>
-    </button>
-    </p>
+    <ion-col col col-9 class = "profile_data_wrap">
+      <span class = "profile_title_day">GOOD MORNING</span>
+      <h3 class = "profile_title_username"> Jack Huncho </h3>
+    </ion-col>
 
-    <p>
-    <!-- Float the icon right -->
-    <button class = "full_button" ion-button outline icon-end (click) = "selectAccount($event,'savings')">
-      <span class = "option_title"> Savings </span> <span class="option_amount"> $20,500.00 </span>
-      <ion-icon name="arrow-forward"></ion-icon>
-    </button>
-    </p>
+    <ion-col col col-3 class = "profile_image"></ion-col>
 
-  </form>
+  </ion-row>
 
-  <button class = "bottom_button" ion-button fixed color = "light" medium (click) = "handlePage(home)" >Cancel</button>
+  <h2 class = "heading_title_small" text-center> Your Accounts </h2>
 
+  <ion-row class = "account_selection_wrap">
+
+    <ion-card padding *ngFor = "let accounts of accountslists" (click)="selectAccount($event,'House Savings')">
+      <ion-row>
+        <ion-col class = "col col-8"> 
+            <div class = "option_title"> {{accounts.alias}} </div>
+            <div class = "option_account_number"> {{accounts.account}} </div>
+        </ion-col>
+        <ion-col class = "col col-4"> <div class="option_amount"> ${{accounts.amount}} </div> </ion-col>
+      </ion-row>
+    </ion-card>
+
+  </ion-row>
+
+  <div id = "footerImage"> <img src = "/assets/imgs/guyathome.jpg"> </div>
 
 </ion-content>
