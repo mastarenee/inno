@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { PopoverController } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -14,6 +15,8 @@ import { TransactionHistoryDetailPage } from '../pages/transactionhistorydetail/
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ThankyouPage } from '../pages/thankyou/thankyou';
+import { PopoverComponent } from '../components/popover/popover';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfilePage,
     TransactionHistoryPage,
     TransactionHistoryDetailPage,
-    ListPage
+    ListPage,
+    ThankyouPage,
+    PopoverComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfilePage,
     TransactionHistoryPage,
     TransactionHistoryDetailPage,
-    ListPage
+    ListPage,
+    ThankyouPage,
+    PopoverComponent
   ],
   providers: [
     StatusBar,

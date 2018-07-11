@@ -9,7 +9,7 @@
   
   <ion-content padding class = "contentBG" padding>
         
-        <h1 class = "header_title"> Confirm Transaction Details </h1>
+        <h1 class = "header_title"> Check and confirm transaction </h1>
 
         <form radio-group> 
 
@@ -24,18 +24,11 @@
               
             <ion-item class = "form_wrap">
               <ion-row>
-                <div class = "field_name labelTitle"> First Name </div><br/>
-                <p>James</p>
+                <div class = "field_name labelTitle"> Full Name </div><br/>
+                <p>James Bond</p>
               </ion-row>
             </ion-item>
-
-            <ion-item class = "form_wrap">
-              <ion-row>
-                <div class = "field_name labelTitle"> Last Name </div><br/>
-                <p> Bond</p>
-              </ion-row>
-            </ion-item>
-
+ 
             <ion-item class = "form_wrap">
               <ion-row>
                 <div class = "field_name labelTitle"> Telephone </div><br/>
@@ -57,12 +50,12 @@
               </ion-row>
             </ion-item>
 
-            <ion-item class = "form_wrap">
+           <!-- <ion-item class = "form_wrap">
               <ion-row>
                 <div class = "field_name labelTitle"> Postal Code </div><br/>
                 <p> 76308 </p>
               </ion-row>
-            </ion-item>
+            </ion-item> -->
 
             <ion-item class = "form_wrap">
               <ion-row>
@@ -133,7 +126,7 @@
         <br/>
 
       <ion-row>
-        <ion-col col col-6><button col-12 ion-button class = "button_red"> Confirm </button></ion-col>
+        <ion-col col col-6><button col-12 ion-button class = "button_red" (click)="goToThankYou()"> Confirm </button></ion-col>
         <ion-col col col-6><button col-12 ion-button color = "light" class = "button_grey" (click)="cancelPage()">Cancel</button></ion-col>
       </ion-row>
 

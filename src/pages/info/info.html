@@ -11,48 +11,43 @@
 
   <div class = "text-center">Sending from {{account}}</div>
 
-  <h1 class = "header_title"> Enter Recipients Information. </h1>
+  <h1 class = "header_title"> Enter Recipients Information </h1>
 
   <form (ngSubmit)="logForm()"> 
 
   <ion-card padding>
 
     <ion-item>
-      <ion-label stacked>First Name</ion-label>
-      <ion-input type="text" name="first_name" placeholder = "John"></ion-input>
+      <ion-label stacked>Full Name</ion-label>
+      <ion-input type="text" name="first_name" placeholder = "John Doe"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Last Name</ion-label>
-      <ion-input type="text" name="last_name" placeholder = "Doe"></ion-input>
-    </ion-item>
+        <ion-label stacked>Street Address</ion-label>
+        <ion-textarea type="text" name="address"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+          <ion-label stacked>City</ion-label>
+          <ion-input type="text" name="city" placeholder = "Texas"></ion-input>
+        </ion-item>
 
     <ion-item>
-      <ion-label stacked>Nationality</ion-label>
-      <ion-input type="text" name="nationality" placeholder = "USA"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked>Telephone</ion-label>
+      <ion-label stacked>Telephone Number</ion-label>
       <ion-input type="text" name="tel" placeholder = "1246-234-1234"></ion-input>
     </ion-item>
 
-    <h4 class = "boldme headingSub"> Address Information </h4>
-
     <ion-item>
-      <ion-label stacked>Street Address</ion-label>
-      <ion-textarea type="text" name="address"></ion-textarea>
-    </ion-item>
+        <ion-label stacked>Nationality</ion-label>
+        <ion-input type="text" name="nationality" placeholder = "USA"></ion-input>
+      </ion-item>  
 
-    <ion-item>
-      <ion-label stacked>City</ion-label>
-      <ion-input type="text" name="city" placeholder = "Texas"></ion-input>
-    </ion-item>
+   <!-- <h4 class = "boldme headingSub"> Address Information </h4> -->
 
-    <ion-item>
+    <!-- <ion-item>
       <ion-label stacked>Postal Code</ion-label>
       <ion-input type="text" name="zip" placeholder = "413990"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
     <ion-item>
       <ion-label stacked> Country </ion-label>
@@ -310,7 +305,7 @@
     </ion-item>
   </ion-card>
 
-  <h5 class = "boldme" padding> Transfer </h5>
+  <h5 class = "boldme" padding>Transfer Amount </h5>
   <p> * Daily Limit of US 5000 </p>
 
   <ion-card padding>
