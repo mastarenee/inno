@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar hideBackButton="true">
     <ion-title>Thank You</ion-title>
   </ion-navbar>
 
@@ -52,6 +52,11 @@ let options: PrintOptions = {
 
 this.printer.print(content, options).then(onSuccess, onError);
  -->
+
+ <ion-row>
+  <ion-col><button col-12 ion-button class = "button_red" (click)="goToHome()"> View Transactions</button></ion-col>
+</ion-row>
+<ion-col><button col-12 ion-button class = "button_blue" (click)="goToHome()"> Make Another Transaction </button></ion-col>
 
 
 </ion-content>
