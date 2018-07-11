@@ -1,14 +1,7 @@
-<ion-header>
-    
-  <ion-navbar hideBackButton="true">
-    <ion-title><div id = "headerLogo"></div> </ion-title>
-  </ion-navbar>
-
-</ion-header>
 
 <ion-content padding>
 
-  <ion-item class = "userProfileWrap"></ion-item>
+  <div id = "headerLogoLogin"></div> 
 
   <form (ngSubmit)="loginForm()" [formGroup]="userLoginForm">
     <ion-item>
@@ -26,7 +19,7 @@
     </ion-row>
 
     <ion-row> 
-      <ion-col (click) = "openForgotPassword()" text-center> Forgot Password ? </ion-col>
+      <ion-col (click) = "openForgotPassword()" text-center> Having trouble signing in? </ion-col>
     </ion-row>
   </form>
 
