@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Printer, PrintOptions } from '@ionic-native/printer';
+import { AccountsPage } from '../accounts/accounts';
 
-/**
- * Generated class for the ThankyouPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -23,4 +18,7 @@ export class ThankyouPage {
     console.log('ionViewDidLoad ThankyouPage');
   }
 
+  goToHome(){
+    this.navCtrl.push(AccountsPage);
+  }
 }

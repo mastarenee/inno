@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { InfoPage } from '../info/info';
 import { ThankyouPage } from '../thankyou/thankyou';
+import { AccountsPage } from '../accounts/accounts';
 
 @Component({
   selector: 'page-review',
@@ -22,5 +23,9 @@ export class ReviewPage {
   }
   goToThankYou(){
     this.navCtrl.push(ThankyouPage);
+  }
+
+  cancelPage(){
+    this.navCtrl.push(AccountsPage);
   }
 }
