@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
+import { IonicPageModule, NavController } from 'ionic-angular';
 import { ThankyouPage } from './thankyou';
+import { AccountsPage } from '../accounts/accounts';
 
 @NgModule({
   declarations: [
@@ -10,4 +11,10 @@ import { ThankyouPage } from './thankyou';
     IonicPageModule.forChild(ThankyouPage),
   ],
 })
-export class ThankyouPageModule {}
+export class ThankyouPageModule {
+
+  constructor(public navCtrl: NavController) {
+
+  }
+  
+}

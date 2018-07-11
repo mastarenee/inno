@@ -16,6 +16,11 @@
 // automatically applied to the <body> element in the app.
 
 $fcib_red:#af0b1c;
+$fcib_blue:#62b6f0;
+ 
+.button_blue{
+    background:$fcib_blue !important;
+}
 
 .button_red{
     background:$fcib_red !important;
