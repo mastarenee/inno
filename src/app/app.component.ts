@@ -10,15 +10,15 @@ import { ListPage } from '../pages/list/list';
 import { ProfilePage } from '../pages/profile/profile';
 import { TransactionHistoryPage } from '../pages/transactionhistory/transactionhistory';
 import { PopoverComponent } from '../components/popover/popover';
-
+import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html' 
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = EditProfilePage; 
 
   pages: Array<{title: string, component: any}>;
 
@@ -47,11 +47,9 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    if( page.component == false ){
+    
       this.nav.setRoot(page.component);
-    }else{
-      this.rootPage = LoginPage;
-    }
+    
   }
 
 }

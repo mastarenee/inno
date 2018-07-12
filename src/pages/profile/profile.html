@@ -8,45 +8,60 @@
   </ion-header>
   
   <ion-content class = "contentBG" padding>
-    <img src = "/assets/imgs/propic.png" width="200" height="200">
+   <!-- <img src = "/assets/imgs/propic.png" class="centerimg" width="200" height="200"> -->
 
-      <h5>Account Details</h5>
-      <ion-card>
+      <h5>Account Details <button ion-button (click)="selectEditprofile()"><ion-icon name="create">
+      </ion-icon></button></h5>
+      <ion-card> 
 
         <ion-card-content>
 
-User ID: 6013456723458910
+User ID: 6013456723458910   
 <br>
-Name: John Doe
+
+Account Number: ******3617    
 <br>
-Address: #32 Long Island, Christ Church
+Name: John Doe 
+
 <br>
-Telephone Number:1-246-2867891
+Address: #32 Long Island, Christ Church  
 <br>
-Account Number: ******3617
+City: Bridgetown    
 <br>
-Nationality: Barbadian
+Country: Barbados   
 <br>
-Country: Barbados
+Nationality: Barbadian    
 <br>
-City: Bridgetown
+Telephone Number: 1-246-286-7891    
 <br>
-Date-of-Birth: MM-DD-YYYY 
+Date-of-Birth: MM-DD-YYYY  
 <br>
-Email Address: john.doe@gmail.com
+Email Address: john.doe@gmail.com  
+<br>
+
         </ion-card-content>
 
+ 
       </ion-card>
+      <h5>Enable Features</h5>
+
       <ion-card>
 
         <ion-card-content>
             <ion-list>
 
                 <ion-item>
-                  <ion-label>Enable Push Notifications</ion-label>
+                  <ion-label>Push Notifications</ion-label>
                   <ion-checkbox [(ngModel)]="pepperoni"></ion-checkbox>
                 </ion-item>
+              </ion-list>
+              
+              <ion-list>
 
+                <ion-item>
+                  <ion-label>Alerts</ion-label>
+                  <ion-checkbox [(ngModel)]="sausage"></ion-checkbox>
+                </ion-item>
               </ion-list>
 
           </ion-card-content>

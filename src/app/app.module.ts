@@ -18,6 +18,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { PopoverComponent } from '../components/popover/popover';
 import { InternationalPhoneModule } from 'ng4-intl-phone';
+import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { InternationalPhoneModule } from 'ng4-intl-phone';
     TransactionHistoryDetailPage,
     ListPage,
     ThankyouPage,
+    EditProfilePage,
     PopoverComponent
   ],
   imports: [
@@ -50,6 +52,7 @@ import { InternationalPhoneModule } from 'ng4-intl-phone';
     TransactionHistoryDetailPage,
     ListPage,
     ThankyouPage,
+    EditProfilePage,
     PopoverComponent
   ],
   providers: [
