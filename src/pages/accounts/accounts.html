@@ -1,10 +1,31 @@
 <ion-header>
   <ion-navbar hideBackButton = "true">
-    <ion-title><div id = "headerLogo"></div> </ion-title>
+    <ion-title>
+      
+      <ion-row>
+
+        <ion-col col col-6 class = "headerLogo">
+          <img src = "/assets/imgs/cibc1.png">
+        </ion-col>
+
+        <ion-row col col-4 class = "head2">
+          <div col col-9 class = "profile_data_wrap">
+            <h3 class = "profile_title_username"> Hello <br/>Jack Huncho </h3>
+          </div>
+          <div col col-3 class = "profile_data_wrap_image">
+            <ion-icon name="contact"></ion-icon>
+          </div>
+        </ion-row>
+        
+        <ion-col col col-2 class = "head3">
+          <button ion-button menuToggle right>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+        </ion-col>
+
+      </ion-row>
     
-    <button ion-button menuToggle right>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+    </ion-title>
     
   </ion-navbar>
 </ion-header>
@@ -15,18 +36,14 @@
     <ion-icon name="notifications"></ion-icon> 
   </button>-->
   
-  <ion-row class = "profile_wrap">
-
-    <ion-col col col-9 class = "profile_data_wrap">
-      <span class = "profile_title_day">GOOD MORNING</span>
-      <h3 class = "profile_title_username"> Jack Huncho </h3>
-    </ion-col>
-
-    <ion-col col col-3 class = "profile_image"></ion-col>
-
+  <ion-row class = "account_selection_wrap" text-center>
+    <ion-col class = "menu_option" padding col-6> <img src = "/assets/imgs/user.png"> <p>Send Money</p> </ion-col>
+    <ion-col class = "menu_option" padding col-6> <img src = "/assets/imgs/user.png"> <p>Transaction History</p> </ion-col>
   </ion-row>
+  
 
   <h2 class = "heading_title_small" text-center> Your Accounts </h2>
+
 
   <ion-row class = "account_selection_wrap">
 

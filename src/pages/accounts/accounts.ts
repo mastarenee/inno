@@ -12,17 +12,17 @@ export class AccountsPage {
     {
         alias: 'House Savings',
         amount: '98000',
-        account:'3986357402',
+        account:'******** 7402',
     },
     {
         alias: 'Investment Savings',
         amount: '8000',
-        account:'3298743833',
+        account:'******** 3833',
     },
     {
         alias: 'Business Savings',
         amount: '12000',
-        account:'0972348763',
+        account:'******** 8763',
     }
   ]
 

@@ -1,8 +1,18 @@
 page-accounts {
+
     .profile_image{
         background-color:#ddd;
         background-image:url("/assets/imgs/profile.jpg");
         background-size:cover;
         background-position: 0px 30%;
     }
+
+    .menu_option{
+        border:1px solid rgba(0,0,0,0.2);
+    }
+
+    .menu_option img{
+        width:16px;
+    }
+
 }

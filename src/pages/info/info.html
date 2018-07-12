@@ -1,54 +1,248 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title><div id = "headerLogo"></div> </ion-title>
-    <button ion-button menuToggle right>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-  </ion-navbar>
-</ion-header>
+    <ion-navbar hideBackButton = "true">
+      <ion-title>
+        
+        <ion-row>
+  
+          <ion-col col col-6 class = "headerLogo">
+            <img src = "/assets/imgs/cibc1.png">
+          </ion-col>
+  
+          <ion-row col col-4 class = "head2">
+            <div col col-9 class = "profile_data_wrap">
+              <h3 class = "profile_title_username"> Hello <br/>Jack Huncho </h3>
+            </div>
+            <div col col-3 class = "profile_data_wrap_image">
+              <ion-icon name="contact"></ion-icon>
+            </div>
+          </ion-row>
+          
+          <ion-col col col-2 class = "head3">
+            <button ion-button menuToggle right>
+              <ion-icon name="menu"></ion-icon>
+            </button>
+          </ion-col>
+  
+        </ion-row>
+      
+      </ion-title>
+      
+    </ion-navbar>
+  </ion-header>
 
-<ion-content class = "contentBG" padding>
+<ion-content padding>
 
   <div class = "progressBar">
-    <div class = "progress_step"> <span class = "progress_step_title">Sending from </span><br/> {{account}}</div>
+    <ion-row class = "progress_step"> 
+      <ion-col col col-11><span class = "progress_step_title">Sending from </span><br/> {{account}}</ion-col>
+      <ion-col col col-1><img src = "/assets/imgs/checked_small.png"> </ion-col>
+    </ion-row>
   </div>
 
-  <h1 class = "header_title"> Enter Recipients Information </h1>
-
-  <form (ngSubmit)="logForm()" [formGroup]="myForm" novalidate>
+  <form (ngSubmit)="logForm()" [formGroup]="userRecipientBasicInformation" novalidate>
 
   <ion-card padding>
+
+    <h1 class = "header_title"> Recipients Details </h1>
 
     <ion-row>
       <ion-col col col-6>
         <ion-item>
             <ion-label stacked>First Name</ion-label>
-            <ion-input type="text" name="first_name" placeholder = "John"></ion-input>
+            <ion-input type="text" id = "recipient_first_name" formControlName="recipient_first_name" placeholder = "John"></ion-input>
         </ion-item>
       </ion-col>
 
       <ion-col col col-6>
         <ion-item>
             <ion-label stacked>Last Name</ion-label>
-            <ion-input type="text" name="last_name" placeholder = "Doe"></ion-input>
+            <ion-input type="text" id = "recipient_last_name" formControlName="recipient_last_name" placeholder = "Doe"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
 
     <ion-row>
-      <ion-col col col-6>
+      <ion-col col col-12>
         <ion-item>
           <ion-label stacked>Telephone Number</ion-label>
-          <ion-input type="text" name="tel" formControlName = "phoneNumber"></ion-input>
+          <ion-input type="text" id = "recipient_tel" formControlName="recipient_tel" placeholder = ""></ion-input>
         </ion-item>
       </ion-col>
 
-      <ion-col col col-6>
-        <ion-item>
-          <ion-label stacked>Nationality</ion-label>
-          <ion-input type="text" name="nationality" placeholder = "USA"></ion-input>
-        </ion-item>  
+      <ion-row>
+      <ion-col col col-12>
+          <ion-item class = "form_wrap">
+              <ion-label stacked>Nationality</ion-label>
+    
+              <ion-select id = "recipient_nationality" formControlName="recipient_nationality">
+                  <ion-option value="AED">United Arab Emirates Dirham</ion-option>
+                  <ion-option value="AFN">Afghanistan Afghani</ion-option>
+                  <ion-option value="ALL">Albania Lek</ion-option>
+                  <ion-option value="AMD">Armenia Dram</ion-option>
+                  <ion-option value="ANG">Netherlands Antilles Guilder</ion-option>
+                  <ion-option value="AOA">Angola Kwanza</ion-option>
+                  <ion-option value="ARS">Argentina Peso</ion-option>
+                  <ion-option value="AUD">Australia Dollar</ion-option>
+                  <ion-option value="AWG">Aruba Guilder</ion-option>
+                  <ion-option value="AZN">Azerbaijan New Manat</ion-option>
+                  <ion-option value="BAM">Bosnia and Herzegovina Convertible Marka</ion-option>
+                  <ion-option value="BBD">Barbados Dollar</ion-option>
+                  <ion-option value="BDT">Bangladesh Taka</ion-option>
+                  <ion-option value="BGN">Bulgaria Lev</ion-option>
+                  <ion-option value="BHD">Bahrain Dinar</ion-option>
+                  <ion-option value="BIF">Burundi Franc</ion-option>
+                  <ion-option value="BMD">Bermuda Dollar</ion-option>
+                  <ion-option value="BND">Brunei Darussalam Dollar</ion-option>
+                  <ion-option value="BOB">Bolivia Boliviano</ion-option>
+                  <ion-option value="BRL">Brazil Real</ion-option>
+                  <ion-option value="BSD">Bahamas Dollar</ion-option>
+                  <ion-option value="BTN">Bhutan Ngultrum</ion-option>
+                  <ion-option value="BWP">Botswana Pula</ion-option>
+                  <ion-option value="BYR">Belarus Ruble</ion-option>
+                  <ion-option value="BZD">Belize Dollar</ion-option>
+                  <ion-option value="CAD">Canada Dollar</ion-option>
+                  <ion-option value="CDF">Congo/Kinshasa Franc</ion-option>
+                  <ion-option value="CHF">Switzerland Franc</ion-option>
+                  <ion-option value="CLP">Chile Peso</ion-option>
+                  <ion-option value="CNY">China Yuan Renminbi</ion-option>
+                  <ion-option value="COP">Colombia Peso</ion-option>
+                  <ion-option value="CRC">Costa Rica Colon</ion-option>
+                  <ion-option value="CUC">Cuba Convertible Peso</ion-option>
+                  <ion-option value="CUP">Cuba Peso</ion-option>
+                  <ion-option value="CVE">Cape Verde Escudo</ion-option>
+                  <ion-option value="CZK">Czech Republic Koruna</ion-option>
+                  <ion-option value="DJF">Djibouti Franc</ion-option>
+                  <ion-option value="DKK">Denmark Krone</ion-option>
+                  <ion-option value="DOP">Dominican Republic Peso</ion-option>
+                  <ion-option value="DZD">Algeria Dinar</ion-option>
+                  <ion-option value="EGP">Egypt Pound</ion-option>
+                  <ion-option value="ERN">Eritrea Nakfa</ion-option>
+                  <ion-option value="ETB">Ethiopia Birr</ion-option>
+                  <ion-option value="EUR">Euro Member Countries</ion-option>
+                  <ion-option value="FJD">Fiji Dollar</ion-option>
+                  <ion-option value="FKP">Falkland Islands (Malvinas) Pound</ion-option>
+                  <ion-option value="GBP">United Kingdom Pound</ion-option>
+                  <ion-option value="GEL">Georgia Lari</ion-option>
+                  <ion-option value="GGP">Guernsey Pound</ion-option>
+                  <ion-option value="GHS">Ghana Cedi</ion-option>
+                  <ion-option value="GIP">Gibraltar Pound</ion-option>
+                  <ion-option value="GMD">Gambia Dalasi</ion-option>
+                  <ion-option value="GNF">Guinea Franc</ion-option>
+                  <ion-option value="GTQ">Guatemala Quetzal</ion-option>
+                  <ion-option value="GYD">Guyana Dollar</ion-option>
+                  <ion-option value="HKD">Hong Kong Dollar</ion-option>
+                  <ion-option value="HNL">Honduras Lempira</ion-option>
+                  <ion-option value="HRK">Croatia Kuna</ion-option>
+                  <ion-option value="HTG">Haiti Gourde</ion-option>
+                  <ion-option value="HUF">Hungary Forint</ion-option>
+                  <ion-option value="IDR">Indonesia Rupiah</ion-option>
+                  <ion-option value="ILS">Israel Shekel</ion-option>
+                  <ion-option value="IMP">Isle of Man Pound</ion-option>
+                  <ion-option value="INR">India Rupee</ion-option>
+                  <ion-option value="IQD">Iraq Dinar</ion-option>
+                  <ion-option value="IRR">Iran Rial</ion-option>
+                  <ion-option value="ISK">Iceland Krona</ion-option>
+                  <ion-option value="JEP">Jersey Pound</ion-option>
+                  <ion-option value="JMD">Jamaica Dollar</ion-option>
+                  <ion-option value="JOD">Jordan Dinar</ion-option>
+                  <ion-option value="JPY">Japan Yen</ion-option>
+                  <ion-option value="KES">Kenya Shilling</ion-option>
+                  <ion-option value="KGS">Kyrgyzstan Som</ion-option>
+                  <ion-option value="KHR">Cambodia Riel</ion-option>
+                  <ion-option value="KMF">Comoros Franc</ion-option>
+                  <ion-option value="KPW">Korea (North) Won</ion-option>
+                  <ion-option value="KRW">Korea (South) Won</ion-option>
+                  <ion-option value="KWD">Kuwait Dinar</ion-option>
+                  <ion-option value="KYD">Cayman Islands Dollar</ion-option>
+                  <ion-option value="KZT">Kazakhstan Tenge</ion-option>
+                  <ion-option value="LAK">Laos Kip</ion-option>
+                  <ion-option value="LBP">Lebanon Pound</ion-option>
+                  <ion-option value="LKR">Sri Lanka Rupee</ion-option>
+                  <ion-option value="LRD">Liberia Dollar</ion-option>
+                  <ion-option value="LSL">Lesotho Loti</ion-option>
+                  <ion-option value="LYD">Libya Dinar</ion-option>
+                  <ion-option value="MAD">Morocco Dirham</ion-option>
+                  <ion-option value="MDL">Moldova Leu</ion-option>
+                  <ion-option value="MGA">Madagascar Ariary</ion-option>
+                  <ion-option value="MKD">Macedonia Denar</ion-option>
+                  <ion-option value="MMK">Myanmar (Burma) Kyat</ion-option>
+                  <ion-option value="MNT">Mongolia Tughrik</ion-option>
+                  <ion-option value="MOP">Macau Pataca</ion-option>
+                  <ion-option value="MRO">Mauritania Ouguiya</ion-option>
+                  <ion-option value="MUR">Mauritius Rupee</ion-option>
+                  <ion-option value="MVR">Maldives (Maldive Islands) Rufiyaa</ion-option>
+                  <ion-option value="MWK">Malawi Kwacha</ion-option>
+                  <ion-option value="MXN">Mexico Peso</ion-option>
+                  <ion-option value="MYR">Malaysia Ringgit</ion-option>
+                  <ion-option value="MZN">Mozambique Metical</ion-option>
+                  <ion-option value="NAD">Namibia Dollar</ion-option>
+                  <ion-option value="NGN">Nigeria Naira</ion-option>
+                  <ion-option value="NIO">Nicaragua Cordoba</ion-option>
+                  <ion-option value="NOK">Norway Krone</ion-option>
+                  <ion-option value="NPR">Nepal Rupee</ion-option>
+                  <ion-option value="NZD">New Zealand Dollar</ion-option>
+                  <ion-option value="OMR">Oman Rial</ion-option>
+                  <ion-option value="PAB">Panama Balboa</ion-option>
+                  <ion-option value="PEN">Peru Nuevo Sol</ion-option>
+                  <ion-option value="PGK">Papua New Guinea Kina</ion-option>
+                  <ion-option value="PHP">Philippines Peso</ion-option>
+                  <ion-option value="PKR">Pakistan Rupee</ion-option>
+                  <ion-option value="PLN">Poland Zloty</ion-option>
+                  <ion-option value="PYG">Paraguay Guarani</ion-option>
+                  <ion-option value="QAR">Qatar Riyal</ion-option>
+                  <ion-option value="RON">Romania New Leu</ion-option>
+                  <ion-option value="RSD">Serbia Dinar</ion-option>
+                  <ion-option value="RUB">Russia Ruble</ion-option>
+                  <ion-option value="RWF">Rwanda Franc</ion-option>
+                  <ion-option value="SAR">Saudi Arabia Riyal</ion-option>
+                  <ion-option value="SBD">Solomon Islands Dollar</ion-option>
+                  <ion-option value="SCR">Seychelles Rupee</ion-option>
+                  <ion-option value="SDG">Sudan Pound</ion-option>
+                  <ion-option value="SEK">Sweden Krona</ion-option>
+                  <ion-option value="SGD">Singapore Dollar</ion-option>
+                  <ion-option value="SHP">Saint Helena Pound</ion-option>
+                  <ion-option value="SLL">Sierra Leone Leone</ion-option>
+                  <ion-option value="SOS">Somalia Shilling</ion-option>
+                  <ion-option value="SPL">Seborga Luigino</ion-option>
+                  <ion-option value="SRD">Suriname Dollar</ion-option>
+                  <ion-option value="STD">São Tomé and Príncipe Dobra</ion-option>
+                  <ion-option value="SVC">El Salvador Colon</ion-option>
+                  <ion-option value="SYP">Syria Pound</ion-option>
+                  <ion-option value="SZL">Swaziland Lilangeni</ion-option>
+                  <ion-option value="THB">Thailand Baht</ion-option>
+                  <ion-option value="TJS">Tajikistan Somoni</ion-option>
+                  <ion-option value="TMT">Turkmenistan Manat</ion-option>
+                  <ion-option value="TND">Tunisia Dinar</ion-option>
+                  <ion-option value="TOP">Tonga Pa'anga</ion-option>
+                  <ion-option value="TRY">Turkey Lira</ion-option>
+                  <ion-option value="TTD">Trinidad and Tobago Dollar</ion-option>
+                  <ion-option value="TVD">Tuvalu Dollar</ion-option>
+                  <ion-option value="TWD">Taiwan New Dollar</ion-option>
+                  <ion-option value="TZS">Tanzania Shilling</ion-option>
+                  <ion-option value="UAH">Ukraine Hryvnia</ion-option>
+                  <ion-option value="UGX">Uganda Shilling</ion-option>
+                  <ion-option value="USD">United States Dollar</ion-option>
+                  <ion-option value="UYU">Uruguay Peso</ion-option>
+                  <ion-option value="UZS">Uzbekistan Som</ion-option>
+                  <ion-option value="VEF">Venezuela Bolivar</ion-option>
+                  <ion-option value="VND">Viet Nam Dong</ion-option>
+                  <ion-option value="VUV">Vanuatu Vatu</ion-option>
+                  <ion-option value="WST">Samoa Tala</ion-option>
+                  <ion-option value="XAF">Communauté Financière Africaine (BEAC) CFA Franc BEAC</ion-option>
+                  <ion-option value="XCD">East Caribbean Dollar</ion-option>
+                  <ion-option value="XDR">International Monetary Fund (IMF) Special Drawing Rights</ion-option>
+                  <ion-option value="XOF">Communauté Financière Africaine (BCEAO) Franc</ion-option>
+                  <ion-option value="XPF">Comptoirs Français du Pacifique (CFP) Franc</ion-option>
+                  <ion-option value="YER">Yemen Rial</ion-option>
+                  <ion-option value="ZAR">South Africa Rand</ion-option>
+                  <ion-option value="ZMW">Zambia Kwacha</ion-option>
+                  <ion-option value="ZWD">Zimbabwe Dollar</ion-option>
+                </ion-select>
+    
+            </ion-item>  
       </ion-col>
+      </ion-row>
+
     </ion-row>
 
   </ion-card>
@@ -57,8 +251,8 @@
   <br/>
 
 <ion-row>
+  <ion-col col col-6><button col-12 color = "dark" ion-button class = "button_grey" (click)="cancelPage()" clear>Cancel</button></ion-col>
   <ion-col col col-6><button col-12 ion-button class = "button_red" (click)="nextPage($event,'reviewtransaction')"> Review </button></ion-col>
-  <ion-col col col-6><button col-12 color = "light" ion-button class = "button_grey" (click)="cancelPage()">Cancel</button></ion-col>
 </ion-row>
 
 </ion-content>

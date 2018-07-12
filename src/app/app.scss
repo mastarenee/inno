@@ -27,7 +27,7 @@ $fcib_blue:#62b6f0;
     background:$fcib_red !important;
 }
 
-.toolbar-background-md {
+.toolbar-background {
     border-color: #af0b1c;
     background: #af0b1c;
 }
@@ -39,7 +39,9 @@ $fcib_blue:#62b6f0;
 .header_title{
     width:90%;
     margin:0px auto;
-    text-align: center;
+    text-align: left;
+    font-weight: bold;
+    font-size:12px;
 }
 
 .contentBG{
@@ -206,28 +208,114 @@ $fcib_blue:#62b6f0;
     color:#af0b1c;
 }
 
+.toolbar ion-title{
+    padding:0 0px 1px;
+}
+
 // Profile
 .profile_wrap{
-    background:rgb(231, 231, 231);
+    
 }
 
 .profile_data_wrap{
-    padding:18px;
+    
 }
 
+.profile_data_wrap_image{
+    color:#fff;
+
+    ion-icon{
+        font-size:29px;
+    }
+}
+
+
 .profile_title_username{
-    color: $fcib_purple;
+    color: #fff;
     margin:0px;
+    font-size:11px;
+    text-align: left;
 }
 
 .profile_title_day{
     font-weight: bold;
     font-size:12px;
+    color:#fff;
 }
 
 .heading_title_small{
     font-size:12px;
     font-weight: bold;
+}
+
+#closeMenuIcon{
+    border-bottom:0px solid transparent;
+    font-size: 16px;
+    background: none;
+    color: #fff;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.headerLogo{
+    text-align: left;
+}
+
+.headerLogo img{
+    margin: 2px 8px 0px;
+    width: 73%;
+}
+
+#logoff{
+    background-color:rgba(0,0,0,0.5) !important;
+    padding:10px;
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    text-align: center;
+    margin-top:10px;
+    z-index:1;
+
+    .item-inner{
+        border:none;
+        background-image:none;
+    }
+}
+
+.menu_icon{
+    float:right;
+}
+
+.menu_icon img{
+    width:16px;
+}
+
+#menuBar .item-inner{
+    background-image:none;
+    padding-right: 12px;
+
+}
+
+#notificationsWrap{
+    padding: 20px;
+    color: #fff;
+    border-top: 1px solid rgba(255,255,255,0.2);
+
+    #menu_notification_badge{
+        float:right;
+        border-radius: 10px;
+        color: #000;
+        background-color: #fff;
+        margin-top: 8px;
+    }
+}
+
+.list > .item-block:last-child, .list > .item-wrapper:last-child .item-block{
+    border:none !important;
+}
+
+.list > .item-block:first-child{
+    border-top:none;
 }
 
 // Footer
