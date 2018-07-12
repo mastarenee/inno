@@ -46,11 +46,7 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    if( page == false ){
-      this.nav.setRoot(page.component);
-    }else{
-      this.rootPage = LoginPage;
-    }
+    this.nav.setRoot(page.component);
   }
 
 }

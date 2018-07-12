@@ -32,14 +32,67 @@
   
   <ion-content padding class = "contentBG" padding>
         
-        <h1 class = "header_title"> Check and confirm transaction </h1>
-
         <form radio-group> 
 
           <h5 class = "boldme" padding> Account Selected </h5>
           <ion-card padding>
-            Checkings
+              House Investments
           </ion-card>
+
+          <h5 class = "boldme" padding> Transfer Information </h5>
+
+          <ion-card padding>
+
+            <ion-row class = "container">
+            
+              <ion-col class = "col6">
+                <p class = "field_name"> Transfer Amount </p>
+              </ion-col>
+              
+              <ion-col class = "col6">
+                <p> $80.00 </p>
+              </ion-col>
+
+            </ion-row>
+
+            <ion-row class = "container">
+            
+              <ion-col class = "col6">
+                <p class = "field_name"> Transfer Rate </p>
+              </ion-col>
+              
+              <ion-col class = "col6">
+                <p> $10.00 </p>
+              </ion-col>
+
+            </ion-row>
+
+            <ion-row class = "container">
+            
+            <ion-col class = "col6">
+              <p class = "field_name"> Currency </p>
+            </ion-col>
+            
+            <ion-col class = "col6">
+              <p> USD </p>
+            </ion-col>
+
+          </ion-row>
+
+
+          <ion-row class = "container">
+            
+            <ion-col class = "col6">
+              <p class = "field_name"> Total Amount </p>
+            </ion-col>
+            
+            <ion-col class = "col6">
+              <p> $90.00 </p>
+            </ion-col>
+
+          </ion-row>
+          
+        </ion-card>
 
           <h5 class = "boldme" padding> Recipients Information </h5>
 
@@ -88,69 +141,14 @@
             </ion-item>
           
           </ion-card>
-
-          <h5 class = "boldme" padding> Transfer Information </h5>
-
-          <ion-card padding>
-
-            <ion-row class = "container">
-            
-              <ion-col class = "col6">
-                <p class = "field_name"> Transfer Amount </p>
-              </ion-col>
-              
-              <ion-col class = "col6">
-                <p> $80.00 </p>
-              </ion-col>
-
-            </ion-row>
-
-            <ion-row class = "container">
-            
-              <ion-col class = "col6">
-                <p class = "field_name"> Transfer Rate </p>
-              </ion-col>
-              
-              <ion-col class = "col6">
-                <p> $10.00 </p>
-              </ion-col>
-
-            </ion-row>
-
-            <ion-row class = "container">
-            
-            <ion-col class = "col6">
-              <p class = "field_name"> Currency </p>
-            </ion-col>
-            
-            <ion-col class = "col6">
-              <p> USD </p>
-            </ion-col>
-
-          </ion-row>
-
-
-            <ion-row class = "container">
-            
-              <ion-col class = "col6">
-                <p class = "field_name"> Total Amount </p>
-              </ion-col>
-              
-              <ion-col class = "col6">
-                <p> $90.00 </p>
-              </ion-col>
-
-            </ion-row>
-            
-          </ion-card>
             
         </form>
 
         <br/>
 
       <ion-row>
+        <ion-col col col-6><button col-12 ion-button color = "dark" class = "button_grey" (click)="cancelPage()" clear>Cancel</button></ion-col>
         <ion-col col col-6><button col-12 ion-button class = "button_red" (click)="goToThankYou()"> Confirm </button></ion-col>
-        <ion-col col col-6><button col-12 ion-button color = "light" class = "button_grey" (click)="cancelPage()">Cancel</button></ion-col>
       </ion-row>
 
     </ion-content>

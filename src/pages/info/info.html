@@ -8,21 +8,6 @@
             <img src = "/assets/imgs/cibc1.png">
           </ion-col>
   
-          <ion-row col col-4 class = "head2">
-            <div col col-9 class = "profile_data_wrap">
-              <h3 class = "profile_title_username"> Hello <br/>Jack Huncho </h3>
-            </div>
-            <div col col-3 class = "profile_data_wrap_image">
-              <ion-icon name="contact"></ion-icon>
-            </div>
-          </ion-row>
-          
-          <ion-col col col-2 class = "head3">
-            <button ion-button menuToggle right>
-              <ion-icon name="menu"></ion-icon>
-            </button>
-          </ion-col>
-  
         </ion-row>
       
       </ion-title>
@@ -41,9 +26,9 @@
 
   <form (ngSubmit)="logForm()" [formGroup]="userRecipientBasicInformation" novalidate>
 
-  <ion-card padding>
+  <ion-card class = "transfer_info_wrap">
 
-    <h1 class = "header_title"> Recipients Details </h1>
+    <h1 class = "header_title"> Recipient Details </h1>
 
     <ion-row>
       <ion-col col col-6>
@@ -252,7 +237,7 @@
 
 <ion-row>
   <ion-col col col-6><button col-12 color = "dark" ion-button class = "button_grey" (click)="cancelPage()" clear>Cancel</button></ion-col>
-  <ion-col col col-6><button col-12 ion-button class = "button_red" (click)="nextPage($event,'reviewtransaction')"> Review </button></ion-col>
+  <ion-col col col-6><button col-12 ion-button class = "button_red" (click)="nextPage($event,'reviewtransaction')"> Next </button></ion-col>
 </ion-row>
 
 </ion-content>

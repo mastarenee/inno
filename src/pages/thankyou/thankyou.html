@@ -15,48 +15,28 @@
 
 <ion-content padding>
 
-<h2>Thank you for your transaction!</h2>
-<hr>
+  <ion-row text-center class = "transactionCompleteInformation">
+    <div class = "transactionCompleteInformation_img"><img src = "/assets/imgs/check-mark-button.png"></div>
+    <h4>Transaction Successful</h4>
+    <p>$5000.00 has been successfully transferred.</p>
+  </ion-row>
 
-<h2>Transaction Information</h2>
+  <ion-row class = "transactionCompleteInformation_details_Wrap">
 
-Transaction ID: 20181007098765 <br>
-Transaction Date/Time: 06-July-2018 15:06:01
+    <ion-col class = "transactionCompleteInformation_details" col col-6>
+      <h5> From </h5>
+      <div class = "option_title"> House Savings </div>
+      <div class = "option_account_number"> ******** 7402 </div>
+    </ion-col>
+    <ion-col col col-6>
+        <h5> To </h5>
+        <div class = "option_title"> John Smith </div>
+    </ion-col>
 
-<h2>Recipiant's Information</h2>
+  </ion-row>
 
-Recipiant's Name: James Bond<br>
-Recipiant's Address: <br>
-Recipiant's Country: <br>
-
-<h2> Payment Information</h2>
-
-Amount Transfered: <br>
-Amount charged: <br>
-Total: <br>
-
-<!-- 
-  constructor(private printer: Printer) { }
-
-...
-
-this.printer.isAvailable().then(onSuccess, onError);
-
-let options: PrintOptions = {
-     name: 'MyDocument',
-     printerId: 'printer007',
-     duplex: true,
-     landscape: true,
-     grayscale: true
-   };
-
-this.printer.print(content, options).then(onSuccess, onError);
- -->
-
- <ion-row>
-  <ion-col><button col-12 ion-button class = "button_red" (click)="goToHome()"> View Transactions</button></ion-col>
-</ion-row>
-<ion-col><button col-12 ion-button class = "button_blue" (click)="goToHome()"> Make Another Transaction </button></ion-col>
-
+  <ion-row id = "transactionCompleteInformation_button" text-center> 
+    <button ion-button color = "primary" (click)="viewTransactionDetails()"> View Transaction Details </button>
+  </ion-row>
 
 </ion-content>
