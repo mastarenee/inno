@@ -13,16 +13,33 @@ export class InfoPage {
   account;
   transaction = {};
   private myForm: FormGroup;
+  userRecipientBasicInformation: FormGroup;
   phoneNumber;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+    
     this.account = navParams.get('item');
+
+    this.userRecipientBasicInformation = new FormGroup({
+      recipient_first_name: new FormControl(''),
+      recipient_last_name: new FormControl(''),
+      recipient_tel: new FormControl(''),
+      recipient_nationality: new FormControl('')
+    });
+
+    this.userRecipientBasicInformation = this.formBuilder.group({
+      recipient_first_name: ['', Validators.required],
+      recipient_last_name: ['', Validators.required],
+      recipient_tel: ['', Validators.required],
+      recipient_nationality: ['', Validators.required]
+    });
+
   }
 
   ngOnInit() {
-      this.myForm = this.formBuilder.group({
+      /*this.myForm = this.formBuilder.group({
         phoneNumber: ['', Validators.required]
-      });
+      });*/
   }
 
   nextPage(event, accountsType) {

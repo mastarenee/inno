@@ -6,16 +6,16 @@
   <form (ngSubmit)="loginForm()" [formGroup]="userLoginForm">
     <ion-item>
       <ion-label color="primary" stacked>User ID:</ion-label>
-      <ion-input type = "number" formControlName="account"></ion-input>
+      <ion-input type = "number" id = "account" name = "account" formControlName="account"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" stacked>Password:</ion-label>
-      <ion-input type = "password" formControlName="password"></ion-input>
+      <ion-input type = "password" id = "password" name = "password" formControlName="password"></ion-input>
     </ion-item>
     
     <ion-row>
-      <ion-col><button col-12 ion-button class = "button_red" (click)="goToAccount()"> Log On </button></ion-col>
+      <ion-col><button type = "submit" col-12 ion-button id = "login" class = "button_red" (click)="goToAccount()"> Log On </button></ion-col>
     </ion-row>
 
     <ion-row> 
