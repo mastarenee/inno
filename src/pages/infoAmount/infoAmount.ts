@@ -3,14 +3,13 @@ import { NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { ReviewPage } from '../review/review';
 import { AccountsPage } from '../accounts/accounts';
-import { InfoAddressPage } from '../InfoAddress/InfoAddress';
 import {Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'page-info',
-  templateUrl: 'info.html'
+  selector: 'page-infoAmount',
+  templateUrl: 'infoAmount.html'
 })
-export class InfoPage {
+export class InfoAmountPage {
 
   account;
   transaction = {};
@@ -23,17 +22,15 @@ export class InfoPage {
     this.account = navParams.get('item');
 
     this.userRecipientBasicInformation = new FormGroup({
-      recipient_first_name: new FormControl(''),
-      recipient_last_name: new FormControl(''),
-      recipient_tel: new FormControl(''),
-      recipient_nationality: new FormControl('')
+      recipient_street_name: new FormControl(''),
+      recipient_city: new FormControl(''),
+      recipient_postal_code: new FormControl(''),
     });
 
     this.userRecipientBasicInformation = this.formBuilder.group({
-      recipient_first_name: ['', Validators.required],
-      recipient_last_name: ['', Validators.required],
-      recipient_tel: ['', Validators.required],
-      recipient_nationality: ['', Validators.required]
+      recipient_street_name: ['', Validators.required],
+      recipient_city: ['', Validators.required],
+      recipient_postal_code: ['', Validators.required]
     });
   }
 
@@ -44,8 +41,8 @@ export class InfoPage {
   }
 
   nextPage(event, accountsType) {
-    // Push to part 2
-    this.navCtrl.push(InfoAddressPage);
+    // That's right, we're pushing to ourselves!
+    this.navCtrl.push(ReviewPage);
   }
 
   cancelPage(){

@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-navbar hideBackButton = "true">
+      <ion-title>
+        
+        <ion-row>
+  
+          <ion-col col col-6 class = "headerLogo">
+            <img src = "/assets/imgs/cibc1.png">
+          </ion-col>
+  
+        </ion-row>
+      
+      </ion-title>
+      
+    </ion-navbar>
+  </ion-header>
+
+<ion-content padding>
+
+  <div class = "progressBar">
+    <ion-row class = "progress_step"> 
+      <ion-col col col-11><span class = "progress_step_title">Sending from </span><br/> House Investments</ion-col>
+      <ion-col col col-1><img src = "/assets/imgs/checked_small.png"> </ion-col>
+    </ion-row>
+  </div>
+
+  <form (ngSubmit)="logForm()" [formGroup]="userRecipientBasicInformation" novalidate>
+
+  <ion-card class = "transfer_info_wrap">
+
+    <h1 class = "header_title"> Transfer Amount </h1>
+
+    <ion-row>
+      <ion-col col col-8>
+        <ion-item>
+            <ion-label stacked>  </ion-label>
+            <ion-input type = "number" value = "0.00"></ion-input> 
+        </ion-item>
+      </ion-col>
+
+      <ion-col col col-4>
+        <ion-item>
+          <ion-label stacked> Currency </ion-label>
+          
+          <ion-select>
+            <ion-option value="USD"> USD </ion-option>
+            <ion-option value="BBD"> BBD </ion-option>
+          </ion-select>
+          
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+  </form>
+
+  <br/>
+
+<ion-row>
+  <ion-col col col-6><button col-12 color = "dark" ion-button class = "button_grey" (click)="cancelPage()" clear>Cancel</button></ion-col>
+  <ion-col col col-6><button col-12 ion-button class = "button_red" (click)="nextPage($event,'reviewtransaction')"> Review Information </button></ion-col>
+</ion-row>
+
+</ion-content>

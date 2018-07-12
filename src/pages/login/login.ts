@@ -78,7 +78,21 @@ export class LoginPage {
     
     if( this.userLoginForm.controls["account"].valid && this.userLoginForm.controls["password"].valid ){
       this.app.getRootNav().push(AccountsPage);
-    } 
+    }else{
+
+      const alert = this.alert.create({
+        title: 'Invalid Credential!',
+        subTitle: 'Please enter you FCIB MasterCard Send Credentials.',
+        buttons: [{
+          text: 'OK',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        }]
+      });
+      alert.present();
+
+    }
 
   }
 }

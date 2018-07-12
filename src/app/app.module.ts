@@ -8,6 +8,8 @@ import { LoginPage } from '../pages/login/login';
 import { ListPage } from '../pages/list/list';
 import { AccountsPage } from '../pages/accounts/accounts';
 import { InfoPage } from '../pages/info/info';
+import { InfoAddressPage } from '../pages/InfoAddress/InfoAddress';
+import { InfoAmountPage } from '../pages/InfoAmount/InfoAmount';
 import { ReviewPage } from '../pages/review/review';
 import { ProfilePage } from '../pages/profile/profile';
 import { TransactionHistoryPage } from '../pages/transactionhistory/transactionhistory';
@@ -26,6 +28,8 @@ import { EditProfilePage } from '../pages/edit-profile/edit-profile';
     LoginPage,
     AccountsPage,
     InfoPage,
+    InfoAddressPage,
+    InfoAmountPage,
     ReviewPage,
     ProfilePage,
     TransactionHistoryPage,
@@ -46,6 +50,8 @@ import { EditProfilePage } from '../pages/edit-profile/edit-profile';
     LoginPage,
     AccountsPage,
     InfoPage,
+    InfoAddressPage,
+    InfoAmountPage,
     ReviewPage,
     ProfilePage,
     TransactionHistoryPage,

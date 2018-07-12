@@ -36,12 +36,11 @@ $fcib_blue:#62b6f0;
     color:#fff;
 }
 
-.header_title{
+.header_title, h1.header_title{
     width:90%;
-    margin:0px auto;
     text-align: left;
     font-weight: bold;
-    font-size:12px;
+    font-size:14px;
 }
 
 .contentBG{
@@ -69,6 +68,7 @@ $fcib_blue:#62b6f0;
 }
 
 .text-center{
+    font-size: 40px;
     text-align: center;
 }
 
@@ -337,11 +337,25 @@ $fcib_blue:#62b6f0;
 }
 
 .progress_step{
+    border-bottom:1px solid rgb(197, 197, 197);
+    padding-bottom:10px;
+}
 
+.transfer_info_wrap{
+    box-shadow: none;
+}
+
+.transfer_info_wrap .item{
+    padding-left:0px;
 }
 
 .centerimg {
     display: block;
     margin-left: auto;
     margin-right: auto; 
+}
+.transfer_info_wrap h1.header_title{
+    margin-top:10px;
+    margin-bottom:0px;
+    padding-bottom: 0px;
 }

@@ -16,9 +16,10 @@ import { EditProfilePage } from '../pages/edit-profile/edit-profile';
   templateUrl: 'app.html' 
 })
 export class MyApp {
+  [x: string]: any;
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = EditProfilePage; 
+  rootPage: any = LoginPage;  
 
   pages: Array<{title: string, component: any, icon: string}>;
 
@@ -50,4 +51,8 @@ export class MyApp {
     
   }
 
+  
+  goToLogin(){
+    this.nav.push(LoginPage);
+  }
 }

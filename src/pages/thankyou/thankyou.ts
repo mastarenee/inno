@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Printer, PrintOptions } from '@ionic-native/printer';
 import { AccountsPage } from '../accounts/accounts';
-
+import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
 
 @IonicPage()
 @Component({
@@ -21,4 +21,9 @@ export class ThankyouPage {
   goToHome(){
     this.navCtrl.push(AccountsPage);
   }
+
+  viewTransactionDetails(){
+    this.navCtrl.push(TransactionHistoryDetailPage);
+  }
+
 }

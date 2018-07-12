@@ -1,3 +1,43 @@
 page-thankyou {
 
+    .transactionCompleteInformation{
+        h4{
+            margin-top:15px;
+            margin-bottom:5px;
+        }
+
+        h4, p{
+            text-align: center;
+            width:100%;
+            float:left;
+            padding:2px;
+            margin:0px;
+        }
+    }
+
+    .transactionCompleteInformation_img{
+        width:100%;
+        float:left;
+        text-align: center;
+        margin-bottom:30px;
+    }
+
+    #transactionCompleteInformation_button{
+        
+    }
+
+    #transactionCompleteInformation_button .button-default{
+        margin:30px auto;
+    }
+
+    .transactionCompleteInformation_details{
+        
+    }
+
+    .transactionCompleteInformation_details_Wrap{
+        margin: 34px 0px 0px;
+        background: #eee;
+        padding: 14px;
+    }
+
 }
