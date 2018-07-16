@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController, ViewController } from 'ionic-angular';
 import { InfoPage } from '../info/info';
 import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
+import { FilterPage } from '../filter/filter';
 
 @Component({
   selector: 'page-transactionhistory',
   templateUrl: 'transactionhistory.html'
 })
 export class TransactionHistoryPage {
+  //modalCtrl: any;
+  //viewCtrl: any;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
 
   }
 
@@ -21,4 +24,9 @@ export class TransactionHistoryPage {
     });
   }
 
+  openModal() {
+    let profileModal = this.modalCtrl.create(FilterPage);
+    profileModal.present();
+  }
+  
 }

@@ -72,6 +72,7 @@ $fcib_blue:#62b6f0;
 }
 
 .text-center{
+    font-size: 40px;
     text-align: center;
 }
 
@@ -352,12 +353,24 @@ $fcib_blue:#62b6f0;
     padding-left:0px;
 }
 
+.centerimg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+}
 .transfer_info_wrap h1.header_title{
     margin-top:10px;
     margin-bottom:0px;
     padding-bottom: 0px;
 }
 
+@font-face {
+   font-family: Glober;
+   src: url("../assets/fonts/Glober Regular.otf");
+}
+
+div {
+   font-family: Glober;
 .toolbar-title{
     color:#fff;
 }
@@ -369,4 +382,5 @@ $fcib_blue:#62b6f0;
     .label{
         margin-top:0px;
     }
+}
 }
