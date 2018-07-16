@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, PopoverController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Storage } from '@ionic/storage';
 
 import { LoginPage } from '../pages/login/login';
 import { AccountsPage } from '../pages/accounts/accounts';
@@ -16,6 +17,7 @@ import { ContactPage } from '../pages/contact/contact';
 @Component({
   templateUrl: 'app.html' 
 })
+
 export class MyApp {
   [x: string]: any;
   @ViewChild(Nav) nav: Nav;
@@ -24,7 +26,8 @@ export class MyApp {
 
   pages: Array<{title: string, component: any, icon: string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public popoverCtrl: PopoverController) {
+  constructor(public storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public popoverCtrl: PopoverController) {
+    
     this.initializeApp(); 
 
     // used for an example of ngFor and navigation
@@ -37,6 +40,26 @@ export class MyApp {
 
 
     ];
+  
+  }
+
+  ngOnInit() {
+    
+    this.storage.get('user_id').then((result) => {
+      if( result ){
+        // Check last login
+        //this.storage.get('user_last_login').then((last_login_result) => {
+          // Once the user is logged in for less than 10 mins
+          // Show the Accounts Page
+          //if( last_login_result <= 60*2*10 ){
+            this.rootPage = AccountsPage;
+          }else{
+            this.rootPage = LoginPage;
+          //}
+       // });
+
+      }
+    });
 
   }
   

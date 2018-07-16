@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController, AlertController, App, ViewController } from 'ionic-angular';
+import { NavController, MenuController, AlertController, App, ViewController, LoadingController } from 'ionic-angular';
 import { InfoPage } from '../info/info';
 import { AccountsPage } from '../accounts/accounts';
-import {Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Storage } from '@ionic/storage';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'page-login',
@@ -14,15 +15,29 @@ export class LoginPage {
   userError: String = "";
   userLoginForm: FormGroup;
 
+  passwordType: string = 'password';
+  passwordIcon: string = 'eye-off';
+
   loginForm() {
     console.log(this.userInformation);
   }
 
-  constructor(private formBuilder: FormBuilder, public viewCtrl: ViewController, public app: App, private alert: AlertController, private menu: MenuController, public navCtrl: NavController) {
+  validation_messages = {
+    'account': [
+        { type: 'required', message: 'User ID is required.' },
+        { type: 'minlength', message: 'Username must be equal to 16 characters long.' },
+        { type: 'maxlength', message: 'Username must be equal to 16 characters long.' },
+      ],
+      'password': [
+        { type: 'required', message: 'Password is required.' }
+      ],
+    }
+
+  constructor(public loaderCtrl: LoadingController, private storage:Storage, private formBuilder: FormBuilder, public viewCtrl: ViewController, public app: App, private alert: AlertController, private menu: MenuController, public navCtrl: NavController) {
 
     this.userLoginForm = new FormGroup({
-      account: new FormControl(''),
-      password: new FormControl('')
+      account: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     });
 
     this.userInformation = formBuilder.group({
@@ -32,9 +47,16 @@ export class LoginPage {
         Validators.pattern('[a-zA-Z ]*'), 
         Validators.required])
       ],
-      password: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([
+        Validators.required])
+      ],
     });
 
+  }
+
+  hideShowPassword() {
+      this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
+      this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
   }
 
   ionViewDidEnter() {
@@ -75,24 +97,47 @@ export class LoginPage {
   }
 
   goToAccount(){
+
+    const loader = this.loaderCtrl.create({
+      spinner: 'ios',
+      content: "Authenticating...",
+      duration: 3000
+    });
+
+        if( this.userLoginForm.controls["account"].valid && this.userLoginForm.controls["password"].valid ){
+          
+          // set a key/value
+          this.storage.set('user_id', this.userLoginForm.controls["account"].value);
+          this.storage.set('user_last_login', Date.now() );
+          console.log('User Information Saved Successful');
+          
+          loader.present();
+
+          // Show Loading Action
+          setTimeout(() => {
+            console.log('Login Successful');
+            this.app.getRootNav().push(AccountsPage);
+          }, 3010);
+
+        }else{
     
-    if( this.userLoginForm.controls["account"].valid && this.userLoginForm.controls["password"].valid ){
-      this.app.getRootNav().push(AccountsPage);
-    }else{
+          const alert = this.alert.create({
+            title: 'Invalid Credentials!',
+            subTitle: 'Please enter you FCIB Account Credentials.',
+            buttons: [{
+              text: 'OK',
+              handler: data => {
+                console.log('Cancel clicked');
+              }
+            }]
+          });
+          alert.present();
+    
+        }
+        
+      
 
-      const alert = this.alert.create({
-        title: 'Invalid Credential!',
-        subTitle: 'Please enter you FCIB MasterCard Send Credentials.',
-        buttons: [{
-          text: 'OK',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        }]
-      });
-      alert.present();
-
-    }
+    
 
   }
 }

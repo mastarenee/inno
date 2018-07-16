@@ -1,17 +1,32 @@
 
-<ion-content padding>
+<ion-content class = "contentBG" padding>
 
   <div id = "headerLogoLogin"></div> 
 
-  <form (ngSubmit)="loginForm()" [formGroup]="userLoginForm">
+  <form (ngSubmit)="loginForm()" id = "loginForm" [formGroup]="userLoginForm">
+  
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.username" >
+        <div class="error-message" *ngIf="userInformation.get('account').hasError(validation.type) && (userInformation.get('account').dirty || userInformation.get('account').touched)">
+        {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+      
     <ion-item>
       <ion-label color="primary" stacked>User ID:</ion-label>
-      <ion-input type = "number" id = "account" name = "account" formControlName="account"></ion-input>
+      <ion-input type = "number" id = "account" formControlName="account"></ion-input>
+
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" stacked>Password:</ion-label>
-      <ion-input type = "password" id = "password" name = "password" formControlName="password"></ion-input>
+      <ion-input [type]="passwordType" clearOnEdit="false" id = "password" formControlName="password"></ion-input>
+
+      <button ion-button clear item-end (click)='hideShowPassword()' style="height:32px;">
+        <ion-icon name="eye" style="font-size:32px;"></ion-icon>
+      </button>
+      
     </ion-item>
     
     <ion-row>

@@ -20,6 +20,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { PopoverComponent } from '../components/popover/popover';
 import { InternationalPhoneModule } from 'ng4-intl-phone';
+import { IonicStorageModule } from '@ionic/storage';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ContactPage } from '../pages/contact/contact';
 import { FilterPage } from '../pages/filter/filter';
@@ -46,6 +47,7 @@ import { FilterPage } from '../pages/filter/filter';
   imports: [
     BrowserModule,
     InternationalPhoneModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -71,6 +73,7 @@ import { FilterPage } from '../pages/filter/filter';
   providers: [
     StatusBar,
     SplashScreen,
+    Storage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
