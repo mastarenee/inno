@@ -11,6 +11,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { TransactionHistoryPage } from '../pages/transactionhistory/transactionhistory';
 import { PopoverComponent } from '../components/popover/popover';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
+import { ContactPage } from '../pages/contact/contact';
 
 @Component({
   templateUrl: 'app.html' 
@@ -30,7 +31,11 @@ export class MyApp {
     this.pages = [
       { title: 'New Transaction', component: AccountsPage, icon: 'menu_transfer.png' },
       { title: 'Transaction History', component: TransactionHistoryPage, icon: 'menu_history.png' },
-      { title: 'Profile Page', component: ProfilePage, icon: 'menu_user.png'}
+      { title: 'Profile Page', component: ProfilePage, icon: 'menu_user.png'},
+      { title: 'Contact Us', component: ContactPage, icon: 'contact.png'},
+      { title: 'Locations ', component: ProfilePage, icon: 'location.png'}
+
+
     ];
 
   }

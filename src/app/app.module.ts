@@ -21,6 +21,8 @@ import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { PopoverComponent } from '../components/popover/popover';
 import { InternationalPhoneModule } from 'ng4-intl-phone';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
+import { ContactPage } from '../pages/contact/contact';
+import { FilterPage } from '../pages/filter/filter';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { EditProfilePage } from '../pages/edit-profile/edit-profile';
     ListPage,
     ThankyouPage,
     EditProfilePage,
-    PopoverComponent
+    PopoverComponent,
+    ContactPage,
+    FilterPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,10 @@ import { EditProfilePage } from '../pages/edit-profile/edit-profile';
     ListPage,
     ThankyouPage,
     EditProfilePage,
-    PopoverComponent
+    PopoverComponent,
+    ContactPage,
+    FilterPage
+
   ],
   providers: [
     StatusBar,

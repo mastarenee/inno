@@ -359,3 +359,12 @@ $fcib_blue:#62b6f0;
     margin-bottom:0px;
     padding-bottom: 0px;
 }
+
+@font-face {
+   font-family: Glober;
+   src: url("../assets/fonts/Glober Regular.otf");
+}
+
+div {
+   font-family: Glober;
+}
