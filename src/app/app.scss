@@ -27,6 +27,10 @@ $fcib_blue:#62b6f0;
     background:$fcib_red !important;
 }
 
+.recipient_name{
+    color:$fcib_purple;
+}
+
 .toolbar-background {
     border-color: #af0b1c;
     background: #af0b1c;
@@ -352,4 +356,17 @@ $fcib_blue:#62b6f0;
     margin-top:10px;
     margin-bottom:0px;
     padding-bottom: 0px;
+}
+
+.toolbar-title{
+    color:#fff;
+}
+
+.error-message{
+    color:red;
+    font-size:11px;
+
+    .label{
+        margin-top:0px;
+    }
 }

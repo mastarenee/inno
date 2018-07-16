@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { InfoPage } from '../info/info';
 import { ThankyouPage } from '../thankyou/thankyou';
 import { AccountsPage } from '../accounts/accounts';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-review',
@@ -10,7 +11,18 @@ import { AccountsPage } from '../accounts/accounts';
 })
 export class ReviewPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public storage:Storage, public navCtrl: NavController) {
+
+  }
+
+  ionViewDidEnter(){
+
+    this.storage.get('transaction_information').then((val) => {
+        
+      this.storage.set('transaction_information',val);
+
+      console.log('Your val is', val);
+    });
 
   }
 
@@ -21,6 +33,7 @@ export class ReviewPage {
       item: accountsType 
     });
   }
+
   goToThankYou(){
     this.navCtrl.push(ThankyouPage);
   }

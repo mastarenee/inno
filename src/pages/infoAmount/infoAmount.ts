@@ -4,6 +4,7 @@ import { LoginPage } from '../login/login';
 import { ReviewPage } from '../review/review';
 import { AccountsPage } from '../accounts/accounts';
 import {Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-infoAmount',
@@ -14,35 +15,66 @@ export class InfoAmountPage {
   account;
   transaction = {};
   private myForm: FormGroup;
-  userRecipientBasicInformation: FormGroup;
+  userTransactionInformation: FormGroup;
   phoneNumber;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  public recipient_errors = [{
+    transfer_error: 'Transfer Amount Required. <br/> Max Allowed 5000 USD ',
+    bic_error: 'Bank Identifier Code is required',
+  }]
+
+  constructor(public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
     this.account = navParams.get('item');
 
-    this.userRecipientBasicInformation = new FormGroup({
-      recipient_street_name: new FormControl(''),
-      recipient_city: new FormControl(''),
-      recipient_postal_code: new FormControl(''),
+    this.userTransactionInformation = new FormGroup({
+      transfer: new FormControl(''),
+      bic: new FormControl(''), 
     });
 
-    this.userRecipientBasicInformation = this.formBuilder.group({
-      recipient_street_name: ['', Validators.required],
-      recipient_city: ['', Validators.required],
-      recipient_postal_code: ['', Validators.required]
+    this.userTransactionInformation = this.formBuilder.group({
+      transfer: ['0.00', Validators.required],
+      bic: ['', Validators.required],
     });
   }
 
   ngOnInit() {
-    /*this.myForm = this.formBuilder.group({
-      phoneNumber: ['', Validators.required]
-    });*/
+
   }
 
   nextPage(event, accountsType) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ReviewPage);
+    
+    if( this.userTransactionInformation.controls["transfer"].valid && 
+    this.userTransactionInformation.controls["bic"].valid ){
+
+      // Validate Information
+      let transfer = this.userTransactionInformation.controls["transfer"].value;
+      let bic = this.userTransactionInformation.controls["bic"].value;
+
+      this.storage.get('transaction_information').then((val) => {
+        
+        val["transfer"] = transfer;
+        val["bic"] = bic;
+      
+        this.storage.set('transaction_information',val);
+
+        console.log('Your val is', val);
+      });
+
+      this.navCtrl.push(ReviewPage);
+
+    }else{
+
+      if(this.userTransactionInformation.controls["transfer"].value == ''){
+        this.userTransactionInformation.controls.transfer.markAsTouched();
+      }
+
+      if(this.userTransactionInformation.controls["bic"].value == ''){
+        this.userTransactionInformation.controls.bic.markAsTouched();
+      }
+
+    }
+
   }
 
   cancelPage(){

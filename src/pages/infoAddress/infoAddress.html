@@ -15,27 +15,30 @@
     </ion-navbar>
   </ion-header>
 
-<ion-content padding>
+<ion-content class = "contentBG">
 
-  <div class = "progressBar">
+  <div class = "progressBar" padding>
     <ion-row class = "progress_step"> 
       <ion-col col col-11><span class = "progress_step_title">Sending from </span><br/> House Investments</ion-col>
       <ion-col col col-1><img src = "/assets/imgs/checked_small.png"> </ion-col>
     </ion-row>
   </div>
 
-  <form (ngSubmit)="logForm()" [formGroup]="userRecipientBasicInformation" novalidate>
+  <form (ngSubmit)="logForm()" [formGroup]="userRecipientAddressInformation" novalidate>
 
-  <ion-card class = "transfer_info_wrap">
+  <ion-card class = "transfer_info_wrap" padding>
 
     <h1 class = "header_title"> Recipient Address </h1>
 
     <ion-row>
       <ion-col col col-12>
         <ion-item>
-            <ion-label stacked>Street Address</ion-label>
-            <ion-textarea></ion-textarea>
+          <ion-label stacked>Street Address</ion-label>
+          <ion-textarea formControlName = "recipient_streetAddress"> 3410 Taft Boulevard </ion-textarea>
+          
         </ion-item>
+        <ion-item class="error-message" *ngIf="!userRecipientAddressInformation.controls.recipient_streetAddress.valid && userRecipientAddressInformation.controls.recipient_streetAddress.touched"> {{recipient_errors[0].streetAddress_error}} </ion-item>
+
       </ion-col>
     </ion-row>
 
@@ -44,8 +47,7 @@
       <ion-col col col-4>
         <ion-item>
             <ion-label stacked> Country </ion-label>
-            
-            <ion-select>
+            <ion-select formControlName = "recipient_country">
                 <ion-option value="AFG">Afghanistan</ion-option>
                 <ion-option value="ALA">Åland Islands</ion-option>
                 <ion-option value="ALB">Albania</ion-option>
@@ -298,20 +300,29 @@
               </ion-select>
 
         </ion-item>
+
+        <ion-item class="error-message" *ngIf="!userRecipientAddressInformation.controls.recipient_country.valid && userRecipientAddressInformation.controls.recipient_country.touched"> {{recipient_errors[0].country_error}} </ion-item>
+
       </ion-col>
       
       <ion-col col col-4>
         <ion-item>
           <ion-label stacked> City </ion-label>
-          <ion-input type="text" placeholder = ""></ion-input>
+          <ion-input type="text" formControlName = "recipient_city" placeholder = "Witchitau Falls"></ion-input>
         </ion-item>
+
+        <ion-item class="error-message" *ngIf="!userRecipientAddressInformation.controls.recipient_city.valid && userRecipientAddressInformation.controls.recipient_city.touched"> {{recipient_errors[0].city_error}} </ion-item>
+
       </ion-col>
 
       <ion-col col col-4>
         <ion-item>
           <ion-label stacked> Postal Code </ion-label>
-          <ion-input type="text" placeholder = ""></ion-input>
+          <ion-input type="text" formControlName = "recipient_postal_code" placeholder = "T23489"></ion-input>
         </ion-item>
+
+        <ion-item class="error-message" *ngIf="!userRecipientAddressInformation.controls.recipient_postal_code.valid && userRecipientAddressInformation.controls.recipient_postal_code.touched"> {{recipient_errors[0].postal_code_error}} </ion-item>
+
       </ion-col>
   
     </ion-row>

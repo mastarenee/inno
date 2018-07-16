@@ -9,10 +9,19 @@ page-accounts {
 
     .menu_option{
         border:1px solid rgba(0,0,0,0.2);
+        
+        img{
+            width:30px;
+        }
+
+        p{
+            margin:0px;
+        }
+
     }
 
-    .menu_option img{
-        width:16px;
+    #account_selection_list{
+        width:100% !important;
     }
 
 }

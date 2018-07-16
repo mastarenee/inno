@@ -20,6 +20,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { PopoverComponent } from '../components/popover/popover';
 import { InternationalPhoneModule } from 'ng4-intl-phone';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { InternationalPhoneModule } from 'ng4-intl-phone';
   imports: [
     BrowserModule,
     InternationalPhoneModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -56,11 +58,12 @@ import { InternationalPhoneModule } from 'ng4-intl-phone';
     TransactionHistoryDetailPage,
     ListPage,
     ThankyouPage,
-    PopoverComponent
+    PopoverComponent,
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Storage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
