@@ -25,6 +25,7 @@ import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ContactPage } from '../pages/contact/contact';
 import { FilterPage } from '../pages/filter/filter';
 import { AccountsactivityPage } from '../pages/accountsactivity/accountsactivity';
+import {NgxMaskModule} from 'ngx-mask'
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { AccountsactivityPage } from '../pages/accountsactivity/accountsactivity
     BrowserModule,
     InternationalPhoneModule,
     IonicModule.forRoot(MyApp),
+    NgxMaskModule.forRoot(),
     IonicStorageModule.forRoot({
       name: '__mydb',
       driverOrder: ['indexeddb', 'sqlite', 'websql']
