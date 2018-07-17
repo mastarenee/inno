@@ -24,6 +24,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ContactPage } from '../pages/contact/contact';
 import { FilterPage } from '../pages/filter/filter';
+import { AccountsactivityPage } from '../pages/accountsactivity/accountsactivity';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FilterPage } from '../pages/filter/filter';
     EditProfilePage,
     PopoverComponent,
     ContactPage,
-    FilterPage
+    FilterPage,
+    AccountsactivityPage
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,8 @@ import { FilterPage } from '../pages/filter/filter';
     EditProfilePage,
     PopoverComponent,
     ContactPage,
-    FilterPage
+    FilterPage,
+    AccountsactivityPage
 
   ],
   providers: [

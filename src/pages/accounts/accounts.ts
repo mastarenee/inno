@@ -4,6 +4,7 @@ import { InfoPage } from '../info/info';
 import { TransactionHistoryPage } from '../transactionhistory/transactionhistory';
 import { ModalController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { AccountsactivityPage } from '../accountsactivity/accountsactivity';
 
 @Component({
   selector: 'page-accounts',
@@ -57,7 +58,7 @@ export class AccountsPage {
   // Go to the step 1 - Select Recipient Page
   viewAccountHistory() {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(TransactionHistoryPage);
+    this.navCtrl.push(AccountsactivityPage);
   }
 
   optionSelected(event){
