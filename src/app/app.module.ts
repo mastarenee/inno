@@ -21,9 +21,10 @@ import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { PopoverComponent } from '../components/popover/popover';
 import { InternationalPhoneModule } from 'ng4-intl-phone';
 import { IonicStorageModule } from '@ionic/storage';
-//import { NgxPhoneMaskModule } from 'ngx-phone-mask';
-import { TextMaskModule } from 'angular2-text-mask';
-import { AppMaskerModule } from 'brmasker-ionic';
+import { EditProfilePage } from '../pages/edit-profile/edit-profile';
+import { ContactPage } from '../pages/contact/contact';
+import { FilterPage } from '../pages/filter/filter';
+import { AccountsactivityPage } from '../pages/accountsactivity/accountsactivity';
 
 @NgModule({
   declarations: [
@@ -39,14 +40,15 @@ import { AppMaskerModule } from 'brmasker-ionic';
     TransactionHistoryDetailPage,
     ListPage,
     ThankyouPage,
-    PopoverComponent
+    EditProfilePage,
+    PopoverComponent,
+    ContactPage,
+    FilterPage,
+    AccountsactivityPage
   ],
   imports: [
     BrowserModule,
     InternationalPhoneModule,
-    //NgxPhoneMaskModule,
-    TextMaskModule,
-    AppMaskerModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot({
       name: '__mydb',
@@ -67,7 +69,12 @@ import { AppMaskerModule } from 'brmasker-ionic';
     TransactionHistoryDetailPage,
     ListPage,
     ThankyouPage,
+    EditProfilePage,
     PopoverComponent,
+    ContactPage,
+    FilterPage,
+    AccountsactivityPage
+
   ],
   providers: [
     StatusBar,
