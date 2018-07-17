@@ -29,6 +29,7 @@
   <ion-row padding class = "noTopPadding">
     <ion-col col col-12 class = "progress_step_recip_details">
       <div class = "progress_step_title"> Transfer & Bank Details </div>
+      <small class = "color_red"> The daily transfer limit is 5000 USD.</small>
     </ion-col>
   </ion-row>
     
@@ -38,19 +39,43 @@
       <ion-col col col-12 padding>
         <ion-item>
             <ion-label stacked>  </ion-label>
-            <ion-input type = "number" formControlName = "transfer" value = "0.00"></ion-input> 
+            <ion-input type = "number" formControlName = "transfer" (change) = "checkTransferFundsAvailable()" value = "0.00"></ion-input> 
         </ion-item>
 
         <ion-item class="error-message" *ngIf="!userTransactionInformation.controls.transfer.valid && userTransactionInformation.controls.transfer.touched"> {{recipient_errors[0].transfer_error}} </ion-item>
-
+        <ion-item class="error-message" *ngIf="transaction_amount_error"> {{transaction_amount_error}} </ion-item>
+        
+        
       </ion-col>
 
-      <ion-col col col-12 padding>
+      <ion-item col col-12 class = "noTopPadding" padding>
+          <ion-label stacked> Bank Country </ion-label>
+          <ion-select (ionChange)="onSelectChange($event)" (ionSelected) = "updateBankCountry($event)" formControlName = "bank_country">
+            <ion-option value="CAN">Canada</ion-option>
+            <ion-option value="GBR">United Kingdom</ion-option>
+          </ion-select>
+      </ion-item>
+
+      <ion-col col col-12 class = "noTopPadding" *ngIf = "showBIC" padding>
+        <ion-item>
+            <ion-label stacked> Bank Identifier Code (BIC) </ion-label>
+            <ion-input type = "text" formControlName = "bic"></ion-input> 
+        </ion-item>
+        <ion-item class="error-message" *ngIf="!userTransactionInformation.controls.bic.valid && userTransactionInformation.controls.bic.touched"> {{recipient_errors[0].bic_error}} </ion-item>  
+      </ion-col>
+
+      <ion-col col col-12 class = "noTopPadding" *ngIf = "showIBAN" padding>
+        <ion-item>
+          <ion-label stacked> International Bank Account Number (IBAN) </ion-label>
+          <ion-input type = "text" formControlName = "iban"></ion-input> 
+        </ion-item>
+      </ion-col>
+
+      <ion-col col col-12 class = "noTopPadding" *ngIf = "showBAN" padding>
           <ion-item>
-              <ion-label stacked> Bank Identifier Code (BIC) </ion-label>
-              <ion-input type = "text" formControlName = "bic"></ion-input> 
+            <ion-label stacked> Bank Account Number (BAN) </ion-label>
+            <ion-input type = "text" formControlName = "ban"></ion-input> 
           </ion-item>
-          <ion-item class="error-message" *ngIf="!userTransactionInformation.controls.bic.valid && userTransactionInformation.controls.bic.touched"> {{recipient_errors[0].bic_error}} </ion-item>  
         </ion-col>
 
     </ion-row>

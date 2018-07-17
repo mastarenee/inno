@@ -49,8 +49,11 @@ import { AccountsactivityPage } from '../pages/accountsactivity/accountsactivity
   imports: [
     BrowserModule,
     InternationalPhoneModule,
-    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

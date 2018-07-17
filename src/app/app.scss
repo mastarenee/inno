@@ -18,6 +18,10 @@
 $fcib_red:#af0b1c;
 $fcib_purple: #69007D;
 $fcib_blue:#62b6f0;
+
+.color_red{
+    color:$fcib_red !important;
+}
  
 .button_blue{
     background:$fcib_blue !important;
