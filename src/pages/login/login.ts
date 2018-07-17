@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
-import { NavController, MenuController, AlertController, App, ViewController, LoadingController } from 'ionic-angular';
+import { Component,} from '@angular/core';
+import { IonicPage, NavController, MenuController, AlertController, App, ViewController, LoadingController } from 'ionic-angular';
 import { InfoPage } from '../info/info';
 import { AccountsPage } from '../accounts/accounts';
 import { Storage } from '@ionic/storage';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
+@IonicPage({
+  name: 'Login'
+})
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'

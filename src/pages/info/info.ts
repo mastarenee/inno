@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage,NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { ReviewPage } from '../review/review';
 import { AccountsPage } from '../accounts/accounts';
@@ -7,6 +7,10 @@ import { InfoAddressPage } from '../InfoAddress/InfoAddress';
 import { PhoneValidator } from '../../services/phone.validator';
 import {Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Storage } from '@ionic/storage';
+
+@IonicPage({
+  name: 'RecipientInformation'
+})
 
 @Component({
   selector: 'page-info',

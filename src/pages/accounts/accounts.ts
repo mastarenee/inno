@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { InfoPage } from '../info/info';
 import { TransactionHistoryPage } from '../transactionhistory/transactionhistory';
 import { ModalController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AccountsactivityPage } from '../accountsactivity/accountsactivity';
+
+@IonicPage({
+  name: 'Accounts'
+})
 
 @Component({
   selector: 'page-accounts',
