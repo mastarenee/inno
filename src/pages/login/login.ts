@@ -15,6 +15,9 @@ export class LoginPage {
   userError: String = "";
   userLoginForm: FormGroup;
 
+  // For Selenium Testing
+  selog_data:string = "";
+
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
 
@@ -112,6 +115,7 @@ export class LoginPage {
           console.log('User Information Saved Successful');
           
           loader.present();
+          this.selog_data = "PASS - LOGIN SUCCESSFUL";
 
           // Show Loading Action
           setTimeout(() => {
@@ -120,6 +124,8 @@ export class LoginPage {
           }, 3010);
 
         }else{
+
+          this.selog_data = "FAIL - INVALID USER CREDENTIALS";
     
           const alert = this.alert.create({
             title: 'Invalid Credentials!',
