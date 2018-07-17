@@ -1,0 +1,99 @@
+<!--
+  Generated template for the AccountsactivityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>accountsactivity</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <div class = "contentBG" padding>
+
+        <div class = "col12 filter_action"> 
+            <button ion-button block (click)="openModal()">Filter
+               </button>
+               </div>
+
+        <ion-list>
+          <ion-item class = "transaction_wrap" (click)="openTransaction($event,'232')"> 
+
+            <ion-row>
+
+              <ion-col col col-5>
+                <div class = "transaction_number"> 1290723678623 </div>
+                <div class = "transaction_date"> June 10th 2018 </div>
+              </ion-col>
+
+              <ion-col col col-3> <span class = "tag tag_pending">Pending</span> </ion-col>
+              <ion-col col col-3 class = "transaction_amount"> $90.00 </ion-col>
+
+            </ion-row>
+
+          </ion-item>
+
+        </ion-list>
+
+        <ion-list>
+            <ion-item class = "transaction_wrap" (click)="openTransaction($event,'232')"> 
+
+              <ion-row>
+
+                <ion-col col col-5>
+                  <div class = "transaction_number"> 1290723698023 </div>
+                  <div class = "transaction_date"> May 21st 2018 </div>
+                </ion-col>
+
+                <ion-col col col-3> <span class = "tag tag_completed">Complete</span> </ion-col>
+                <ion-col col col-3 class = "transaction_amount"> $120.00 </ion-col>
+              </ion-row>
+
+            </ion-item>
+
+          </ion-list>
+
+          <ion-list>
+              <ion-item class = "transaction_wrap" (click)="openTransaction($event,'232')"> 
+  
+                <ion-row>
+  
+                  <ion-col col col-5>
+                    <div class = "transaction_number"> 1290723654601 </div>
+                    <div class = "transaction_date"> July 2nd 2018 </div>
+                  </ion-col>
+  
+                  <ion-col col col-3> <span class = "tag tag_pending">Pending</span> </ion-col>
+                  <ion-col col col-3 class = "transaction_amount"> $210.00 </ion-col>
+                </ion-row>
+
+              </ion-item>
+  
+            </ion-list>
+
+            <ion-list>
+                <ion-item class = "transaction_wrap" (click)="openTransaction($event,'232')"> 
+    
+                  <ion-row>
+     
+                    <ion-col col col-5>
+                      <div class = "transaction_number"> 1290723987654 </div>
+                      <div class = "transaction_date"> July 15nd 2018 </div>
+                    </ion-col>
+    
+                    <ion-col col col-3> <span class = "tag tag_rejected">Rejected</span> </ion-col>
+                    <ion-col col col-3 class = "transaction_amount"> $10,010.00 </ion-col>
+                  </ion-row>
+  
+                </ion-item>
+    
+              </ion-list>
+    </div>
+
+</ion-content>
