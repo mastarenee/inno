@@ -6,7 +6,6 @@ import { AccountsPage } from '../accounts/accounts';
 import { InfoAddressPage } from '../InfoAddress/InfoAddress';
 import { PhoneValidator } from '../../services/phone.validator';
 import {Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import libphonenumber from 'google-libphonenumber';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -24,6 +23,9 @@ export class InfoPage {
   transaction = {};
   private myForm: FormGroup;
   userRecipientBasicInformation: FormGroup;
+
+  public myModel = '';
+  public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
   public accountslists = [
     {
@@ -53,11 +55,6 @@ export class InfoPage {
 
   constructor( public storage: Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
-
-    this.masks = {
-      phoneNumber: ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
-    };
-
     this.account = navParams.get('item');
 
     this.userRecipientBasicInformation = new FormGroup({
@@ -88,6 +85,19 @@ export class InfoPage {
 
   checkValidityFirstName(event){
     console.log(event);
+  }
+
+  formatTelephoneNumber(event){
+    console.log(event);
+    
+    let tel = event.srcElement.value;
+    if(tel.length+1 >= 11){
+      let USNumber = tel.match(/(\d{3})(\d{3})(\d{4})/);
+      console.log(USNumber);
+      USNumber = "(" + USNumber[1] + ") " + USNumber[2] + "-" + USNumber[3];
+      this.userRecipientBasicInformation.controls["recipient_tel"].setValue( USNumber );
+    }
+
   }
 
   nextPage(event, accountsType) {
@@ -123,10 +133,6 @@ export class InfoPage {
         });
 
       });
-
-      
-
-      
 
     }else{
 

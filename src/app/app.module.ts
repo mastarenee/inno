@@ -26,6 +26,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { FilterPage } from '../pages/filter/filter';
 import { AccountsactivityPage } from '../pages/accountsactivity/accountsactivity';
 import {NgxMaskModule} from 'ngx-mask'
+import { InputMaskModule } from 'ionic-input-mask';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {NgxMaskModule} from 'ngx-mask'
   imports: [
     BrowserModule,
     InternationalPhoneModule,
+    InputMaskModule,
     IonicModule.forRoot(MyApp),
     NgxMaskModule.forRoot(),
     IonicStorageModule.forRoot({
