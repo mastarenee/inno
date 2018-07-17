@@ -21,6 +21,9 @@ import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { PopoverComponent } from '../components/popover/popover';
 import { InternationalPhoneModule } from 'ng4-intl-phone';
 import { IonicStorageModule } from '@ionic/storage';
+//import { NgxPhoneMaskModule } from 'ngx-phone-mask';
+import { TextMaskModule } from 'angular2-text-mask';
+import { AppMaskerModule } from 'brmasker-ionic';
 
 @NgModule({
   declarations: [
@@ -41,8 +44,14 @@ import { IonicStorageModule } from '@ionic/storage';
   imports: [
     BrowserModule,
     InternationalPhoneModule,
-    IonicStorageModule.forRoot(),
+    //NgxPhoneMaskModule,
+    TextMaskModule,
+    AppMaskerModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

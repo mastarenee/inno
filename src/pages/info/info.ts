@@ -13,10 +13,14 @@ import { Storage } from '@ionic/storage';
   selector: 'page-info',
   templateUrl: 'info.html'
 })
-export class InfoPage {
+export class InfoPage { 
 
   account;
+  masks:any;
+  phoneNumber: any = "";
+
   account_selected;
+  phone;
   transaction = {};
   private myForm: FormGroup;
   userRecipientBasicInformation: FormGroup;
@@ -46,8 +50,14 @@ export class InfoPage {
     street_address_error: 'Street Address is required',
   }]
 
+
   constructor( public storage: Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
+
+    this.masks = {
+      phoneNumber: ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
+    };
+
     this.account = navParams.get('item');
 
     this.userRecipientBasicInformation = new FormGroup({
@@ -92,28 +102,31 @@ export class InfoPage {
       let tel = this.userRecipientBasicInformation.controls["recipient_tel"].value;
       let nationality = this.userRecipientBasicInformation.controls["recipient_nationality"].value;
 
-      this.storage.get('transaction_information').then((val) => {
-        if( !val ){
-          val = []
-        }
+      this.storage.ready().then(() => {
+        
+        this.storage.get('transaction_information').then((val) => {
+        
+          if( !val ){
+            val = [];
+          }
+  
+          val["account"] = this.account_selected;
+          val["firstname"] = firstname;
+          val["lastname"] = lastname;
+          val["tel"] = tel;
+          val["nationality"] = nationality;
+        
+          this.storage.set('transaction_information',val);
+  
+          console.log('Your val is', val);
+          this.navCtrl.push(InfoAddressPage); 
+        });
 
-        val["firstname"] = firstname;
-        val["lastname"] = lastname;
-        val["tel"] = tel;
-        val["nationality"] = nationality;
-        val["streetAddress"] = '';
-        val["country"] = '';
-        val["postalCode"] = '';
-        val["city"] = '';
-        val["transfer"] = '';
-        val["bic"] = '';
-      
-        this.storage.set('transaction_information',val);
-
-        console.log('Your val is', val);
       });
 
-      this.navCtrl.push(InfoAddressPage); 
+      
+
+      
 
     }else{
 

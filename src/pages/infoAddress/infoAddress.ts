@@ -44,7 +44,7 @@ export class InfoAddressPage {
 
   }
 
-  nextPage(event, accountsType) {
+  nextPage(event) { 
 
     if( this.userRecipientAddressInformation.controls["recipient_streetAddress"].valid && 
     this.userRecipientAddressInformation.controls["recipient_country"].valid &&
@@ -56,21 +56,33 @@ export class InfoAddressPage {
       let country = this.userRecipientAddressInformation.controls["recipient_country"].value;
       let postalCode = this.userRecipientAddressInformation.controls["recipient_postal_code"].value;
       let city = this.userRecipientAddressInformation.controls["recipient_city"].value;
-    
+      
       this.storage.get('transaction_information').then((val) => {
         
+        console.log(val);
+
+      });
+
+      this.storage.get('transaction_address').then((val) => {
+        
+        if( !val ){
+          val = [];
+        }
+
         val["streetAddress"] = streetAddress;
         val["country"] = country;
         val["postalCode"] = postalCode;
         val["city"] = city;
       
-        this.storage.set('transaction_information',val);
+        this.storage.set('transaction_address',val);
 
         console.log('Your val is', val);
+
+        // That's right, we're pushing to ourselves!
+        this.navCtrl.push(InfoAmountPage);
+        
       });
 
-      // That's right, we're pushing to ourselves!
-      this.navCtrl.push(InfoAmountPage);
       
     }else{
 
