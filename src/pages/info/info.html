@@ -75,7 +75,8 @@
 
         <ion-item>
             <ion-label stacked>Telephone Number</ion-label>
-            <ion-input type="text" name="cpf" formControlName="recipient_tel" placeholder="CPF" [brmasker]="{mask:'000.000.000-00', len:14}"></ion-input>
+            <ion-input type="text" name="cpf" formControlName="recipient_tel" placeholder="CPF" mask="(000) 000-0000"></ion-input>
+            {{userRecipientBasicInformation.controls.recipient_tel.value}}
         </ion-item>
 
         <ion-item class="error-message" *ngIf="!userRecipientBasicInformation.controls.recipient_tel.valid 
