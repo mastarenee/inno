@@ -63,8 +63,9 @@ page-transactionhistory {
 }
 
 .backgroundBanner{
+    font-size: 26px;
     background-color:#ffffff;
-    padding: 40px 0px;
+    padding: 10px 0px;
     margin: 0px !important;
     /* color: #fff; */
 }
@@ -77,4 +78,8 @@ page-transactionhistory {
     font-weight: bold;
 }
 
+}
+
+.transaction_title{
+    font-family: "Elephant";
 }
