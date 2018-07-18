@@ -37,17 +37,19 @@
     <ion-col class = "menu_option" (click) = "showTransactionHistory($event)" padding col-6> <img src = "assets/imgs/icon_history.png"> <p>Transaction History</p> </ion-col>
   </ion-row>
   
-  <h2 class = "heading_title_small" text-center> Your Accounts </h2>
+  <h2 class = "heading_title_small" text-center>Accounts </h2>
 
   <ion-row class = "account_selection_wrap">
 
-    <ion-card padding *ngFor = "let accounts of accountslists" (click)="viewAccountHistory()">
+    <ion-card padding class = "noTopPadding" *ngFor = "let accounts of accountslists" (click)="viewAccountHistory()">
       <ion-row>
-        <ion-col class = "col col-8"> 
+        <ion-col class = "col col-10"> 
             <div class = "option_title"> {{accounts.alias}} </div>
+          </ion-col>
+            <ion-col class = "col col-1"> 
             <div class = "option_account_number"> {{accounts.account}} </div>
         </ion-col>
-        <ion-col class = "col col-4"> <div class="option_amount"> ${{accounts.amount}} </div> </ion-col>
+        <ion-col class = "col col-1"> <div class="option_amount"> ${{accounts.amount}} </div> </ion-col>
       </ion-row>
     </ion-card>
 
