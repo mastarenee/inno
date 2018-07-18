@@ -5,6 +5,7 @@ import { TransactionHistoryPage } from '../transactionhistory/transactionhistory
 import { ModalController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AccountsactivityPage } from '../accountsactivity/accountsactivity';
+import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
 
 @Component({
   selector: 'page-accounts',
@@ -18,19 +19,29 @@ export class AccountsPage {
   public accountslists = [
     {
         alias: 'House Savings',
-        amount: '98000',
+        amount: '98,000',
         account: '7402',
     },
     {
-        alias: 'Investment Savings',
-        amount: '8000',
+        alias: 'Online Chequing',
+        amount: '8,000',
         account:'3833',
     },
     {
         alias: 'Business Savings',
-        amount: '12000',
+        amount: '12,000',
         account:'8763',
-    }
+    },
+    {
+      alias: 'College Savings',
+      amount: '1,000',
+      account:'8763',
+  },
+    {
+      alias: 'Student Chequing',
+      amount: '300',
+      account:'7184',
+  }
   ]
 
 
@@ -46,9 +57,7 @@ export class AccountsPage {
   }
 
   showTransactionHistory(event){
-    this.navCtrl.push(InfoPage, {
-      item: TransactionHistoryPage 
-    });
+    this.navCtrl.push(TransactionHistoryPage);
   }
 
   startWireTransaction(){

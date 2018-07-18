@@ -33,10 +33,19 @@
 
 <ion-content padding>
 
+
+
+  <img src="/assets/imgs/phone.png" (tap)="phone()">
+  <a ion-button href="tel:123 456 789">Call me 1 </a>
+  <button ion-button (click)="callIT('tel:+1-1800-555-5555')">call function</button>
+
+
+
     <h4 align="center">For Telephone Banking</h4>
     <h5>(These calls will be subject to relevant long distance charges)
       Please toll free if you are calling from: 
       </h5>
+      
 
 TCI, BVI, Cayman and Bahamas: 1-242-502-6800
 <br>

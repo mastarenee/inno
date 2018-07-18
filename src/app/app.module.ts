@@ -24,6 +24,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ContactPage } from '../pages/contact/contact';
 import { FilterPage } from '../pages/filter/filter';
+import { CallNumber} from '@ionic-native/call-number';
 import { AccountsactivityPage } from '../pages/accountsactivity/accountsactivity';
 import {NgxMaskModule} from 'ngx-mask'
 
@@ -81,6 +82,7 @@ import {NgxMaskModule} from 'ngx-mask'
   providers: [
     StatusBar,
     SplashScreen,
+    CallNumber,
     Storage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

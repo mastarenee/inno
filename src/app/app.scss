@@ -18,6 +18,8 @@
 $fcib_red:#af0b1c;
 $fcib_purple: #69007D;
 $fcib_blue:#62b6f0;
+$fcib_dgreen:#95a800;
+
 
 .color_red{
     color:$fcib_red !important;
@@ -151,7 +153,7 @@ $fcib_blue:#62b6f0;
     justify-content: right;
     margin-left: 22%;
     margin-right: 5%;
-    color:$fcib_blue;
+    color:green;
     text-align:left;
     font-size: 15px;
 }
@@ -160,7 +162,7 @@ $fcib_blue:#62b6f0;
     text-align: left;
     justify-content: left;
     font-weight:bold;
-    font-size: 10px;
+    font-size: 12px;
     color:$fcib_purple;
 }
 
@@ -256,8 +258,12 @@ $fcib_blue:#62b6f0;
 }
 
 .heading_title_small{
-    font-size:12px;
-    font-weight: bold;
+   // margin-left: 9px;
+    font-size: 25px;
+    color: $fcib_red;
+    font-family: "Elephant";
+    // letter-spacing: 1px;
+   // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #closeMenuIcon{
