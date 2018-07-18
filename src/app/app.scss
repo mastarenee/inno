@@ -130,6 +130,7 @@ $fcib_blue:#62b6f0;
 
 .account_selection_wrap .card{
     background:#f8f8f8;
+    margin: 2px 2%;
 }
 
 .account_selection{
@@ -139,7 +140,10 @@ $fcib_blue:#62b6f0;
 
 .option_account_number{
     color:#000;
-}
+    white-space: nowrap ;
+    margin-left: 35%;
+
+} 
 
 .option_amount{
     float:right;
@@ -149,14 +153,14 @@ $fcib_blue:#62b6f0;
     margin-right: 5%;
     color:$fcib_blue;
     text-align:left;
-    font-size: 22px;
+    font-size: 15px;
 }
 
 .option_title{
     text-align: left;
     justify-content: left;
     font-weight:bold;
-    font-size:14px;
+    font-size: 10px;
     color:$fcib_purple;
 }
 

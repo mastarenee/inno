@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>accountsactivity</ion-title>
+    <ion-title>House Savings</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,24 +16,18 @@
 <ion-content padding>
 
     <div class = "contentBG" padding>
-
-        <div class = "col12 filter_action"> 
-            <button ion-button block (click)="openModal()">Filter
-               </button>
-               </div>
+        <h1 class = "header_title"> DATE   TRANSACTION   AMOUNT   BALANCE </h1>
 
         <ion-list>
-          <ion-item class = "transaction_wrap" (click)="openTransaction($event,'232')"> 
-
+          <ion-item class = "transaction_wrap"> 
             <ion-row>
 
-              <ion-col col col-5>
-                <div class = "transaction_number"> 1290723678623 </div>
+              <ion-col col col-2>
                 <div class = "transaction_date"> June 10th 2018 </div>
               </ion-col>
-
-              <ion-col col col-3> <span class = "tag tag_pending">Pending</span> </ion-col>
-              <ion-col col col-3 class = "transaction_amount"> $90.00 </ion-col>
+              <ion-col col col-3 class = "transaction_number"> ABM Withdraw </ion-col>
+              <ion-col col col-3 class = "transaction_currency"> $90.00 </ion-col>
+              <ion-col col col-2 class = "transaction_amount"> $920 </ion-col>
 
             </ion-row>
 
@@ -51,7 +45,6 @@
                   <div class = "transaction_date"> May 21st 2018 </div>
                 </ion-col>
 
-                <ion-col col col-3> <span class = "tag tag_completed">Complete</span> </ion-col>
                 <ion-col col col-3 class = "transaction_amount"> $120.00 </ion-col>
               </ion-row>
 
@@ -69,7 +62,6 @@
                     <div class = "transaction_date"> July 2nd 2018 </div>
                   </ion-col>
   
-                  <ion-col col col-3> <span class = "tag tag_pending">Pending</span> </ion-col>
                   <ion-col col col-3 class = "transaction_amount"> $210.00 </ion-col>
                 </ion-row>
 
@@ -87,7 +79,6 @@
                       <div class = "transaction_date"> July 15nd 2018 </div>
                     </ion-col>
     
-                    <ion-col col col-3> <span class = "tag tag_rejected">Rejected</span> </ion-col>
                     <ion-col col col-3 class = "transaction_amount"> $10,010.00 </ion-col>
                   </ion-row>
   

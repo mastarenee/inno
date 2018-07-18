@@ -23,5 +23,9 @@ page-accounts {
     #account_selection_list{
         width:100% !important;
     }
-
+    
+    .noTopPadding{
+        padding-top:0px !important;
+        padding-bottom:0px !important;
+    }
 }
