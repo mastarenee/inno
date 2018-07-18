@@ -5,6 +5,7 @@ import { TransactionHistoryPage } from '../transactionhistory/transactionhistory
 import { ModalController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AccountsactivityPage } from '../accountsactivity/accountsactivity';
+import { ProfilePage } from '../profile/profile';
 
 @IonicPage({
   name: 'Accounts'
@@ -57,6 +58,10 @@ export class AccountsPage {
 
   startWireTransaction(){
     this.navCtrl.push(InfoPage);
+  }
+
+  openProfile(){
+    this.navCtrl.push(ProfilePage);
   }
 
   // Go to the step 1 - Select Recipient Page

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { ReviewPage } from '../review/review';
 import { AccountsPage } from '../accounts/accounts';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Storage } from '@ionic/storage';
+import { TransactionServices } from '../../services/transaction.services';
 
 @Component({
   selector: 'page-infoAmount',
@@ -24,7 +25,7 @@ export class InfoAmountPage {
     bic_error: 'Bank Identifier Code is required',
   }]
 
-  constructor(public loaderCtrl: LoadingController, public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public alert:AlertController, public transactionServices: TransactionServices, public loaderCtrl: LoadingController, public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
     this.account = navParams.get('item');
 
@@ -40,11 +41,7 @@ export class InfoAmountPage {
       transfer: ['0.00', Validators.required],
       iban: [''],
       ban: [''],
-      bic: ['', Validators.compose([
-        Validators.maxLength(11), 
-        Validators.minLength(8),
-        Validators.required])
-      ],
+      bic: [''],
       bank_country: ['GBR', Validators.required]
     });
   }
@@ -70,35 +67,15 @@ export class InfoAmountPage {
       // Validate Information
       let transfer = this.userTransactionInformation.controls["transfer"].value;
       let bic = this.userTransactionInformation.controls["bic"].value;
-      
-      this.storage.get('transaction_details').then((val) => {
-        
-        if( !val ){
-          val = []
-        }
 
-        val["transfer"] = transfer;
-        val["bic"] = bic;
-      
-        this.storage.set('transaction_details',val);
-
-        console.log('Your val is', val);
-        
-  
-      });
-
-      // Begin API Get Quote
-      const loader = this.loaderCtrl.create({
-        spinner: 'ios',
-        content: "Calculating Your Transaction Fee...",
-        duration: 3000
-      });
+      this.transactionServices.set('transfer_amount', transfer);
+      this.transactionServices.set('bic', bic);
 
       // Show Loading Action
-      setTimeout(() => {
-        this.navCtrl.push(ReviewPage);
-      }, 3010);
 
+      this.navCtrl.push(ReviewPage, {
+        amount: transfer 
+      });
 
     }else{
 
@@ -113,6 +90,7 @@ export class InfoAmountPage {
     }
 
   }
+
 
   public showIBAN = true;
   public showBAN = false;

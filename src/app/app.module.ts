@@ -14,6 +14,8 @@ import { ReviewPage } from '../pages/review/review';
 import { ProfilePage } from '../pages/profile/profile';
 import { TransactionHistoryPage } from '../pages/transactionhistory/transactionhistory';
 import { TransactionHistoryDetailPage } from '../pages/transactionhistorydetail/transactionhistorydetail';
+import { TransactionServices } from '../services/transaction.services';
+import { HttpModule } from '@angular/http';
 
 import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
@@ -53,6 +55,7 @@ import { InputMaskModule } from 'ionic-input-mask';
     BrowserModule,
     InternationalPhoneModule,
     InputMaskModule,
+    HttpModule,
     IonicModule.forRoot(MyApp, {}, {
       links: [
         { component: LoginPage, name: 'Login', segment: 'login' },
@@ -93,7 +96,7 @@ import { InputMaskModule } from 'ionic-input-mask';
     ListPage,
     ThankyouPage,
     EditProfilePage,
-    PopoverComponent,
+    PopoverComponent, 
     ContactPage,
     FilterPage,
     AccountsactivityPage
@@ -102,7 +105,8 @@ import { InputMaskModule } from 'ionic-input-mask';
   providers: [
     StatusBar,
     SplashScreen,
-    Storage,
+    TransactionServices,
+    Storage, 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
