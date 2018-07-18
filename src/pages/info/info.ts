@@ -5,8 +5,9 @@ import { ReviewPage } from '../review/review';
 import { AccountsPage } from '../accounts/accounts';
 import { InfoAddressPage } from '../InfoAddress/InfoAddress';
 import { PhoneValidator } from '../../services/phone.validator';
-import {Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Storage } from '@ionic/storage';
+//import { TransactionServices } from '../../services/transaction.services';
 
 @IonicPage({
   name: 'RecipientInformation'
@@ -116,6 +117,11 @@ export class InfoPage {
       let tel = this.userRecipientBasicInformation.controls["recipient_tel"].value;
       let nationality = this.userRecipientBasicInformation.controls["recipient_nationality"].value;
 
+      /*this.transactionServices.set('firstname', firstname);
+      this.transactionServices.set('lastname', lastname);
+      this.transactionServices.set('tel', tel);
+      this.transactionServices.set('nationality', nationality);*/
+
       this.storage.ready().then(() => {
         
         this.storage.get('transaction_information').then((val) => {
@@ -134,6 +140,11 @@ export class InfoPage {
   
           console.log('Your val is', val);
           this.navCtrl.push(InfoAddressPage); 
+
+          this.storage.get('transaction_information').then((val) => {
+            console.log('Transaction Information Val', val);
+          });
+
         });
 
       });
