@@ -29,8 +29,8 @@ export class ContactPage {
       .catch(() => console.log('Error launching dialer'));
        }
 
-       callIT(passedNumber){
-        //add logic here
+      /* callIT(passedNumber){
+         add logic here
          window.location = passedNumber;
-        }
+        } */
 }
