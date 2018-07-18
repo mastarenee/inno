@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
-import { NavController, MenuController, AlertController, App, ViewController, LoadingController } from 'ionic-angular';
+import { Component,} from '@angular/core';
+import { IonicPage, NavController, MenuController, AlertController, App, ViewController, LoadingController } from 'ionic-angular';
 import { InfoPage } from '../info/info';
 import { AccountsPage } from '../accounts/accounts';
 import { Storage } from '@ionic/storage';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
+@IonicPage({
+  name: 'Login'
+})
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -14,6 +17,9 @@ export class LoginPage {
   userInformation = {}
   userError: String = "";
   userLoginForm: FormGroup;
+
+  // For Selenium Testing
+  selog_data:string = "";
 
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
@@ -112,6 +118,7 @@ export class LoginPage {
           console.log('User Information Saved Successful');
           
           loader.present();
+          this.selog_data = "PASS - LOGIN SUCCESSFUL";
 
           // Show Loading Action
           setTimeout(() => {
@@ -120,6 +127,8 @@ export class LoginPage {
           }, 3010);
 
         }else{
+
+          this.selog_data = "FAIL - INVALID USER CREDENTIALS";
     
           const alert = this.alert.create({
             title: 'Invalid Credentials!',

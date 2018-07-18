@@ -1,0 +1,1 @@
+export const HOST = 'http://10.129.24.158:8080';

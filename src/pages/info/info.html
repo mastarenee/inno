@@ -75,13 +75,12 @@
 
         <ion-item>
             <ion-label stacked>Telephone Number</ion-label>
-            <ion-input type="text" name="cpf" formControlName="recipient_tel" placeholder="CPF" mask="(000) 000-0000"></ion-input>
+            <ion-input type="tel" (keypress)="formatTelephoneNumber($event)" formControlName="recipient_tel" name="phone"></ion-input>
             {{userRecipientBasicInformation.controls.recipient_tel.value}}
         </ion-item>
 
         <ion-item class="error-message" *ngIf="!userRecipientBasicInformation.controls.recipient_tel.valid 
           && userRecipientBasicInformation.controls.recipient_tel.touched"> {{recipient_errors[0].tel_error}} </ion-item>
-
 
       </ion-col>
 

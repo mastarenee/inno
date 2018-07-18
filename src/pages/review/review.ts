@@ -4,6 +4,7 @@ import { InfoPage } from '../info/info';
 import { ThankyouPage } from '../thankyou/thankyou';
 import { AccountsPage } from '../accounts/accounts';
 import { Storage } from '@ionic/storage';
+import { TransactionServices } from '../../services/transaction.services';
 
 @Component({
   selector: 'page-review',
@@ -16,34 +17,19 @@ export class ReviewPage {
   public transaction_total;
   public recipient_name;
   public recipient_address;
+  public recipient_nationality;
+  public recipient_tel;
   public account_transfer_from;
 
-  constructor(public loaderCtrl: LoadingController, public storage:Storage, public navCtrl: NavController) {
+  constructor(public transactionServices:TransactionServices, public loaderCtrl: LoadingController, public storage:Storage, public navCtrl: NavController) {
 
   }
 
   ionViewDidEnter(){
 
-    // Transaction Information
-    this.storage.get('transaction_information').then((val) => {
-      if(val){
-        console.log(val);
-      }
-    });
-
-    // Transaction Address
-    this.storage.get('transaction_address').then((val) => {
-      if(val){
-        console.log(val);
-      }
-    });
-
-    // Transaction Transfer
-    this.storage.get('transaction_details').then((val) => {
-      if(val){
-        console.log(val);
-      }
-    });
+    this.recipient_name = this.transactionServices.get('firstname') + ' ' + this.transactionServices.get('lastname'); 
+    this.recipient_tel = this.transactionServices.get('tel');
+    this.recipient_nationality = this.transactionServices.get('nationality');
 
   }
 

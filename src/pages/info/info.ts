@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage,NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { ReviewPage } from '../review/review';
 import { AccountsPage } from '../accounts/accounts';
 import { InfoAddressPage } from '../InfoAddress/InfoAddress';
 import { PhoneValidator } from '../../services/phone.validator';
-import {Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import libphonenumber from 'google-libphonenumber';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Storage } from '@ionic/storage';
+//import { TransactionServices } from '../../services/transaction.services';
+
+@IonicPage({
+  name: 'RecipientInformation'
+})
 
 @Component({
   selector: 'page-info',
@@ -24,6 +28,9 @@ export class InfoPage {
   transaction = {};
   private myForm: FormGroup;
   userRecipientBasicInformation: FormGroup;
+
+  public myModel = '';
+  public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
   public accountslists = [
     {
@@ -53,11 +60,6 @@ export class InfoPage {
 
   constructor( public storage: Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
-
-    this.masks = {
-      phoneNumber: ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
-    };
-
     this.account = navParams.get('item');
 
     this.userRecipientBasicInformation = new FormGroup({
@@ -90,6 +92,19 @@ export class InfoPage {
     console.log(event);
   }
 
+  formatTelephoneNumber(event){
+    console.log(event);
+    
+    let tel = event.srcElement.value;
+    if(tel.length+1 >= 11){
+      let USNumber = tel.match(/(\d{3})(\d{3})(\d{4})/);
+      console.log(USNumber);
+      USNumber = "(" + USNumber[1] + ") " + USNumber[2] + "-" + USNumber[3];
+      this.userRecipientBasicInformation.controls["recipient_tel"].setValue( USNumber );
+    }
+
+  }
+
   nextPage(event, accountsType) {
 
     if( this.userRecipientBasicInformation.controls["recipient_first_name"].valid && 
@@ -101,6 +116,11 @@ export class InfoPage {
       let lastname = this.userRecipientBasicInformation.controls["recipient_last_name"].value;
       let tel = this.userRecipientBasicInformation.controls["recipient_tel"].value;
       let nationality = this.userRecipientBasicInformation.controls["recipient_nationality"].value;
+
+      /*this.transactionServices.set('firstname', firstname);
+      this.transactionServices.set('lastname', lastname);
+      this.transactionServices.set('tel', tel);
+      this.transactionServices.set('nationality', nationality);*/
 
       this.storage.ready().then(() => {
         
@@ -120,13 +140,14 @@ export class InfoPage {
   
           console.log('Your val is', val);
           this.navCtrl.push(InfoAddressPage); 
+
+          this.storage.get('transaction_information').then((val) => {
+            console.log('Transaction Information Val', val);
+          });
+
         });
 
       });
-
-      
-
-      
 
     }else{
 
