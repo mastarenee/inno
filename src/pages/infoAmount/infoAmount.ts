@@ -3,7 +3,7 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { ReviewPage } from '../review/review';
 import { AccountsPage } from '../accounts/accounts';
-import {Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -54,13 +54,12 @@ export class InfoAmountPage {
   }
 
   checkTransferFundsAvailable(){
-    alert();
     let transferFinds = 0;
-    if( this.userTransactionInformation.controls["transfer"].value > transferFinds ){
+    /*if( this.userTransactionInformation.controls["transfer"].value > transferFinds ){
       this.transaction_amount_error = 'Account currently does not have sufficient funds';
     }else{
       this.transaction_amount_error = '';
-    }
+    }*/
   }
 
   nextPage(event, accountsType) {
