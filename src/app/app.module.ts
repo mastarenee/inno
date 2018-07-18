@@ -19,6 +19,7 @@ import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ContactPage } from '../pages/contact/contact';
 import { FilterPage } from '../pages/filter/filter';
+import { CallNumber} from '@ionic-native/call-number';
 import { AccountsactivityPage } from '../pages/accountsactivity/accountsactivity';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -102,6 +103,7 @@ import { InputMaskModule } from 'ionic-input-mask';
   providers: [
     StatusBar,
     SplashScreen,
+    CallNumber,
     Storage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
