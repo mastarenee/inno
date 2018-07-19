@@ -23,7 +23,7 @@ export class AccountsPage {
   public accountslists = [
     {
         alias: 'House Savings',
-        amount: '98,000',
+        amount: '98,000,000',
         account: '7402',
     },
     {
