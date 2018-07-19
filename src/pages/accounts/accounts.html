@@ -5,12 +5,12 @@
       <ion-row>
 
         <ion-col col col-6 class = "headerLogo">
-          <img src = "/assets/imgs/cibc1.png">
+          <img src = "assets/imgs/cibc1.png">
         </ion-col>
 
-        <ion-row col col-4 class = "head2">
+        <ion-row col col-4 class = "head2" (click) = "openProfile()">
           <div col col-9 class = "profile_data_wrap">
-            <h3 class = "profile_title_username"> Hello <br/>Jack Huncho </h3>
+            <h3 class = "profile_title_username"> Hello <br/>Harry Lewis </h3>
           </div>
           <div col col-3 class = "profile_data_wrap_image">
             <ion-icon name="contact"></ion-icon>
@@ -28,7 +28,7 @@
     </ion-title>
     
   </ion-navbar>
-</ion-header>
+</ion-header> 
 
 <ion-content> 
   
@@ -36,10 +36,15 @@
     <ion-col class = "menu_option" (click) = "startWireTransaction()" padding col-6> <img src = "assets/imgs/icon_transfer.png"> <p>Send Money</p> </ion-col>
     <ion-col class = "menu_option" (click) = "showTransactionHistory($event)" padding col-6> <img src = "assets/imgs/icon_history.png"> <p>Transfer History</p> </ion-col>
   </ion-row>
+<<<<<<< HEAD
   
   <h2 class = "heading_title_small">Accounts </h2>
   
+=======
+>>>>>>> f31d379cd5803a0284fca1f3ea6e4a63ceadf26d
 
+  <ion-row padding><h2 class = "heading_title_small" text-left>Accounts </h2></ion-row>
+  
   <ion-row class = "account_selection_wrap">
 
     <ion-card padding class = "noTopPadding" *ngFor = "let accounts of accountslists" (click)="viewAccountHistory()">
@@ -56,7 +61,7 @@
 
   </ion-row>
 
-  <div id = "footerImage"> <img src = "/assets/imgs/guyathome.jpg"> </div>
+  <div id = "footerImage"> <img src = "assets/imgs/guyathome.jpg"> </div>
 
   <span id = "selog_accounts" class = "selog"></span>
 

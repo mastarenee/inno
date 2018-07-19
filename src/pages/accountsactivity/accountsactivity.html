@@ -1,91 +1,74 @@
-<!--
-  Generated template for the AccountsactivityPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
+    <ion-navbar>
+      <ion-title>
+        
+        <ion-row>
+  
+          <ion-col col col-6 class = "headerLogo">
+            <img src = "assets/imgs/cibc1.png">
+          </ion-col>
+  
+          <ion-row col col-4 class = "head2">
+            
+          </ion-row>
+          
+          <ion-col col col-2 class = "head3">
+            <button ion-button menuToggle right>
+              <ion-icon name="menu"></ion-icon>
+            </button>
+          </ion-col>
+  
+        </ion-row>
+      
+      </ion-title>
+      
+    </ion-navbar>
+  </ion-header>
 
-  <ion-navbar>
-    <ion-title>House Savings</ion-title>
-  </ion-navbar>
 
-</ion-header>
+<ion-content class = "contentBG">
 
-
-<ion-content padding>
-
-    <div class = "contentBG" padding>
-        <h1 class = "header_title"> DATE   TRANSACTION   AMOUNT   BALANCE </h1>
-
-        <ion-list>
-          <ion-item class = "transaction_wrap"> 
-            <ion-row>
-
-              <ion-col col col-2>
-                <div class = "transaction_date"> June 10th 2018 </div>
-              </ion-col>
-              <ion-col col col-3 class = "transaction_number"> ABM Withdraw </ion-col>
-              <ion-col col col-3 class = "transaction_currency"> $90.00 </ion-col>
-              <ion-col col col-2 class = "transaction_amount"> $920 </ion-col>
-
-            </ion-row>
-
-          </ion-item>
-
-        </ion-list>
-
-        <ion-list>
-            <ion-item class = "transaction_wrap" (click)="openTransaction($event,'232')"> 
-
-              <ion-row>
-
-                <ion-col col col-5>
-                  <div class = "transaction_number"> 1290723698023 </div>
-                  <div class = "transaction_date"> May 21st 2018 </div>
-                </ion-col>
-
-                <ion-col col col-3 class = "transaction_amount"> $120.00 </ion-col>
-              </ion-row>
-
+      <ion-row class = "account_status_wrap" padding>
+        
+          <ion-col col col-12>
+            <ion-item class = "account_selected_details">
+              <ion-label> Accounts </ion-label>
+              <ion-select [(ngModel)]="account_selected" (ionChange) = "showAccount($event)" multiple="false">
+                <ion-option *ngFor = "let account of accountslists" value = "{{account.account_num}}">{{account.alias}}</ion-option>
+              </ion-select>
             </ion-item>
+          </ion-col>
 
-          </ion-list>
+        <ion-col col col-6>
+          <small> Current Amount </small>
+          <h4> $45, 000.00 </h4>
+        </ion-col>
+        <ion-col col col-6>
+          <small> Available Amount </small>
+          <h4> $44, 700.00 </h4>
+        </ion-col>
 
-          <ion-list>
-              <ion-item class = "transaction_wrap" (click)="openTransaction($event,'232')"> 
-  
-                <ion-row>
-  
-                  <ion-col col col-5>
-                    <div class = "transaction_number"> 1290723654601 </div>
-                    <div class = "transaction_date"> July 2nd 2018 </div>
-                  </ion-col>
-  
-                  <ion-col col col-3 class = "transaction_amount"> $210.00 </ion-col>
-                </ion-row>
+      </ion-row>
 
-              </ion-item>
-  
-            </ion-list>
+      <span *ngFor = "let transaction of transactionLists">
+        <ion-card padding *ngIf = "transaction.type == account_selected && showAccounts == true">
+            <ion-row> 
 
-            <ion-list>
-                <ion-item class = "transaction_wrap" (click)="openTransaction($event,'232')"> 
-    
-                  <ion-row>
-     
-                    <ion-col col col-5>
-                      <div class = "transaction_number"> 1290723987654 </div>
-                      <div class = "transaction_date"> July 15nd 2018 </div>
-                    </ion-col>
-    
-                    <ion-col col col-3 class = "transaction_amount"> $10,010.00 </ion-col>
-                  </ion-row>
-  
-                </ion-item>
-    
-              </ion-list>
-    </div>
+              <ion-col col col-6> 
+                <div col col-12 class = "transaction_name"> {{transaction.name}} </div>
+                <div col col-12 class = "transaction_date"> <ion-icon name="calendar"></ion-icon>  {{transaction.date}} </div>
+              </ion-col>
+              
+              <ion-col col col-6>
+                <div col col-12 class = "transaction_amount">  {{transaction.amount}} </div>
+                <div col col-12 class = "transaction_amount_left">  {{transaction.amount_left}}  </div>
+              </ion-col>
+
+              <span class = "icon_about_transaction"><img src = "assets/imgs/{{transaction.icon}}"></span>
+
+          </ion-row>
+        </ion-card>
+      </span>
 
     <span id = "selog_accounts_activity" class = "selog"></span>
   

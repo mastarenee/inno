@@ -9,10 +9,9 @@
   <ion-navbar hideBackButton="true">
       <ion-row>
       <ion-col col col-6 class = "headerLogo">
-          <img src = "/assets/imgs/cibc1.png">
+          <img src = "assets/imgs/cibc1.png">
         </ion-col>
       </ion-row>
-    <ion-title color = "white">Thank You</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -21,32 +20,31 @@
 <ion-content padding>
 
   <ion-row text-center class = "transactionCompleteInformation">
-    <div class = "transactionCompleteInformation_img"><img src = "/assets/imgs/check-mark-button.png"></div>
+    <div class = "transactionCompleteInformation_img"><img src = "assets/imgs/check-mark-button.png"></div>
     <h4>Transaction Successful</h4>
-    <p>$5000.00 has been successfully transferred.</p>
+    <p>${{transaction_amount}} has been successfully transferred.</p>
   </ion-row>
 
   <ion-row class = "transactionCompleteInformation_details_Wrap">
 
     <ion-col class = "transactionCompleteInformation_details" col col-6>
       <h5> From </h5>
-      <div class = "option_title"> House Savings </div>
+      <div class = "option_title"> Harry Lewis </div>
       <div class = "option_account_number"> ******** 7402 </div>
     </ion-col>
     <ion-col col col-6>
         <h5> To </h5>
-        <div class = "option_title"> John Smith </div>
-        <strong>BIC:</strong> 3458963<br/>
-        #1 Beachlands Villa <br/>
-        Holetown, St.James <br/>
-        Barbados<br/>
-        BB79012<br/>
+        <div class = "option_title"> {{recipient_name}}  {{recipient_name_last}}</div>
+        <strong>BIC:</strong> {{bic}}<br/>
+        {{recipient_city}} <br/>
+        {{recipient_country}}<br/>
+        {{recipient_postal_code}}<br/>
     </ion-col>
 
   </ion-row>
 
   <ion-row id = "transactionCompleteInformation_button" text-center> 
-    <button ion-button color = "primary" (click)="viewTransactionDetails()"> View Transaction Details </button>
+    <button ion-button color = "primary" (click)="goToHome()"> Home </button>
   </ion-row>
 
   <span id = "selog_confirm" class = "selog"></span>

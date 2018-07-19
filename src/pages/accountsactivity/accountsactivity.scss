@@ -1,7 +1,5 @@
 page-accountsactivity {
 
-
-
         .tag{
             padding:6px 10px;
             font-size:10px;
@@ -78,6 +76,63 @@ page-accountsactivity {
             font-weight: bold;
         }
         
-        
+        .account_status_wrap{
+            background: #ad5389;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            
+            color:#fff;  
+            text-align: center;    
 
+            small{
+                font-weight: bold;
+                text-transform: uppercase;
+
+            }
+
+            h4{
+                margin-top:0px;
+            }
+        }
+
+        .item.item-block .item-inner {
+            padding-right: 8px;
+            border-bottom: 1px solid transparent;
+        }
+
+        .account_selected_details{
+            background-color: rgba(255, 255, 255, 0.59);
+
+            .label{
+                color:$fcib_purple;
+                font-weight: bold;
+            }
+        }
+
+        .transaction_name{
+            font-weight: bold;
+        }
+
+        .transaction_amount{
+            font-size: 15px;
+        }
+
+        .transaction_amount_left{
+            font-size: 11px;
+            text-align: right;
+            color:rgb(153, 153, 153);
+        }
+
+        .transaction_date{
+            font-size:11px;
+            color:rgb(153, 153, 153);
+        }
+
+        .icon_about_transaction{
+            position: absolute;
+            right: 25%;
+            opacity: 0.1;
+            width: 32px;
+            margin-top: 12px;
+        }
 }

@@ -7,7 +7,7 @@ import { InfoAddressPage } from '../InfoAddress/InfoAddress';
 import { PhoneValidator } from '../../services/phone.validator';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Storage } from '@ionic/storage';
-//import { TransactionServices } from '../../services/transaction.services';
+import { TransactionServices } from '../../services/transaction.services'; 
 
 @IonicPage({
   name: 'RecipientInformation'
@@ -58,7 +58,7 @@ export class InfoPage {
   }]
 
 
-  constructor( public storage: Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor( public transactionServices: TransactionServices, public storage: Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
     this.account = navParams.get('item');
 
@@ -117,37 +117,13 @@ export class InfoPage {
       let tel = this.userRecipientBasicInformation.controls["recipient_tel"].value;
       let nationality = this.userRecipientBasicInformation.controls["recipient_nationality"].value;
 
-      /*this.transactionServices.set('firstname', firstname);
+      this.transactionServices.set('firstname', firstname);
       this.transactionServices.set('lastname', lastname);
       this.transactionServices.set('tel', tel);
-      this.transactionServices.set('nationality', nationality);*/
+      this.transactionServices.set('nationality', nationality);
+      this.transactionServices.set('account_name', this.account);
 
-      this.storage.ready().then(() => {
-        
-        this.storage.get('transaction_information').then((val) => {
-        
-          if( !val ){
-            val = [];
-          }
-  
-          val["account"] = this.account_selected;
-          val["firstname"] = firstname;
-          val["lastname"] = lastname;
-          val["tel"] = tel;
-          val["nationality"] = nationality;
-        
-          this.storage.set('transaction_information',val);
-  
-          console.log('Your val is', val);
-          this.navCtrl.push(InfoAddressPage); 
-
-          this.storage.get('transaction_information').then((val) => {
-            console.log('Transaction Information Val', val);
-          });
-
-        });
-
-      });
+      this.navCtrl.push(InfoAddressPage); 
 
     }else{
 

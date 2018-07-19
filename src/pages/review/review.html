@@ -5,7 +5,7 @@
         <ion-row>
   
           <ion-col col col-6 class = "headerLogo">
-            <img src = "/assets/imgs/cibc1.png">
+            <img src = "assets/imgs/cibc1.png">
           </ion-col>
   
         </ion-row>
@@ -28,26 +28,26 @@
 
         <ion-row>
           <ion-col col col-6> </ion-col>
-          <ion-col col col-3 class = "boldme"> USD </ion-col>
-          <ion-col col col-3 class = "boldme"> BBD </ion-col>
+          <ion-col col col-3 class = "boldme">  </ion-col>
+          <ion-col col col-3 class = "boldme">  </ion-col>
         </ion-row>
         
         <ion-row>
-          <ion-col col col-6 class = "boldme"> Total Transaction Fee </ion-col>
-          <ion-col col col-3> $2505.00 </ion-col>
-          <ion-col col col-3> $5010.00 </ion-col>
+          <ion-col col col-6 class = "boldme"> Charged Amount </ion-col>
+          <ion-col col col-3> ${{charged_amt}} </ion-col>
+          <ion-col col col-3>  </ion-col>
         </ion-row>
         
         <ion-row>
           <ion-col col col-6 class = "boldme"> Total Transfer </ion-col>
-          <ion-col col col-3> $2500.00 </ion-col>
-          <ion-col col col-3> $5000.00 </ion-col>
+          <ion-col col col-3> ${{credited_amt}} </ion-col>
+          <ion-col col col-3>  </ion-col>
         </ion-row>
         
         <ion-row>
-          <ion-col col col-6 class = "boldme"> Transfer Fee </ion-col>
-          <ion-col col col-3> $5.00 </ion-col>
-          <ion-col col col-3> $10.00 </ion-col>
+          <ion-col col col-6 class = "boldme"> Principal Amount </ion-col>
+          <ion-col col col-3> ${{principal_amt}} </ion-col>
+          <ion-col col col-3>  </ion-col>
         </ion-row>
       
       </ion-card>
@@ -58,12 +58,10 @@
         <ion-col col col-6>
 
             <h6 class = "boldme recipient_name"> {{recipient_name}} </h6>
-            + {{recipient_nationality}} <br/>
+            Nationality: {{recipient_nationality}} <br/>
             
-            {{recipient_name}} <br/>
-            Holetown, St.James <br/>
-            Barbados<br/>
-            BB79012<br/>
+            {{recipient_city}} <br/>
+            {{recipient_postal_code}}<br/>
         </ion-col>
       </ion-row>
 

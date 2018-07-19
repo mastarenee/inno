@@ -14,6 +14,8 @@ import { ReviewPage } from '../pages/review/review';
 import { ProfilePage } from '../pages/profile/profile';
 import { TransactionHistoryPage } from '../pages/transactionhistory/transactionhistory';
 import { TransactionHistoryDetailPage } from '../pages/transactionhistorydetail/transactionhistorydetail';
+import { TransactionServices } from '../services/transaction.services';
+import { HttpModule } from '@angular/http';
 
 import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
@@ -49,7 +51,7 @@ import { NgxMaskModule } from 'ngx-mask'
     ContactPage,
     FilterPage,
     AccountsactivityPage
-  ],
+  ], 
   imports: [
     BrowserModule,
     InternationalPhoneModule,
@@ -93,7 +95,7 @@ import { NgxMaskModule } from 'ngx-mask'
     ListPage,
     ThankyouPage,
     EditProfilePage,
-    PopoverComponent,
+    PopoverComponent, 
     ContactPage,
     FilterPage,
     AccountsactivityPage
@@ -102,6 +104,7 @@ import { NgxMaskModule } from 'ngx-mask'
   providers: [
     StatusBar,
     SplashScreen,
+    TransactionServices,
     CallNumber,
     Storage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

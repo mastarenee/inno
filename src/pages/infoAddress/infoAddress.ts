@@ -6,6 +6,7 @@ import { AccountsPage } from '../accounts/accounts';
 import { InfoAmountPage } from '../InfoAmount/InfoAmount';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Storage } from '@ionic/storage';
+import { TransactionServices } from '../../services/transaction.services'; 
 
 @Component({
   selector: 'page-infoAddress',
@@ -26,7 +27,7 @@ export class InfoAddressPage {
     postal_code_error: 'Postal Code is required',
   }]
  
-  constructor(public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public transactionServices: TransactionServices, public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
     this.userRecipientAddressInformation = new FormGroup({
       recipient_streetAddress: new FormControl(''),
@@ -37,7 +38,7 @@ export class InfoAddressPage {
 
     this.userRecipientAddressInformation = this.formBuilder.group({
       recipient_streetAddress: ['', Validators.required],
-      recipient_country: ['USA', Validators.required],
+      recipient_country: ['BRB', Validators.required],
       recipient_postal_code: ['', Validators.required],
       recipient_city: ['', Validators.required],
     });
@@ -57,33 +58,14 @@ export class InfoAddressPage {
       let postalCode = this.userRecipientAddressInformation.controls["recipient_postal_code"].value;
       let city = this.userRecipientAddressInformation.controls["recipient_city"].value;
       
-      this.storage.get('transaction_information').then((val) => {
-        
-        console.log(val);
+      this.transactionServices.set('streetAddress', streetAddress);
+      this.transactionServices.set('country', country);
+      this.transactionServices.set('postal_code', postalCode);
+      this.transactionServices.set('city', city);
 
-      });
-
-      this.storage.get('transaction_address').then((val) => {
-        
-        if( !val ){
-          val = [];
-        }
-
-        val["streetAddress"] = streetAddress;
-        val["country"] = country;
-        val["postalCode"] = postalCode;
-        val["city"] = city;
-      
-        this.storage.set('transaction_address',val);
-
-        console.log('Your val is', val);
-
-        // That's right, we're pushing to ourselves!
-        this.navCtrl.push(InfoAmountPage);
-        
-      });
-
-      
+      // That's right, we're pushing to ourselves!
+      this.navCtrl.push(InfoAmountPage);
+              
     }else{
 
       if(this.userRecipientAddressInformation.controls["recipient_streetAddress"].value == ''){
