@@ -1,5 +1,9 @@
 page-accountsactivity {
 
+        ion-select{
+            max-width: 100%;
+        }
+
         .tag{
             padding:6px 10px;
             font-size:10px;
@@ -82,7 +86,7 @@ page-accountsactivity {
             background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             
             color:#fff;  
-            text-align: center;    
+            text-align: left;    
 
             small{
                 font-weight: bold;
@@ -93,6 +97,15 @@ page-accountsactivity {
             h4{
                 margin-top:0px;
             }
+
+            .amount_sec:first-child{
+                border-right:1px solid rgba(255, 255, 255, 0.3);
+            }
+
+            .amount_sec{
+                padding-left: 8%;
+            }
+
         }
 
         .item.item-block .item-inner {

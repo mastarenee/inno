@@ -32,48 +32,65 @@ export class TransactionServices {
 
   }
 
-  getTransactionQuote(amount){
+  getTransactionQuote(currency, amount, receiverUri, country, bic, bank_code){
+    console.log(bank_code);
+    let additionalCountry;
+    if(currency=="GBP")
+    {
+      additionalCountry = "GBR";
+    }
+    else
+    if(currency=="CAD")
+    {
+      additionalCountry = "CAN";
+    }
+    var data = {
+        "sender_uri":"iban:" + receiverUri, //"78876876",
+        "currency":currency, //"GBP",
+        "amount":amount, //"120",
+        "recipient_uri":receiverUri, //"GB98MIDL07009312345678",
+        "country":country, //"BRB",
+        "bank_code":bank_code, //"0123653935",
+        "pay_type":"P2P",
+        "additional_data":["701",additionalCountry]
+    };
 
-    let sUri = "tel%3A06877676";
-    let rUri = "iban%3AGB98MIDL07009312345678";
-    let amt = "80";
-    let cur = "GBP"; // Currency
-    let originCtry = "BRB";
-    let additional = "701"; // Country of the sender
-    let additional1 = "GBR";
-    let bankCode = "0123653935";
-    
-    this.get("transfer_amount")
-    .then(
-      res => { // Success
-        console.log(res);
-        amt = res;
-      },
-      err => { // Error
-        
-      }
-    );
+    console.log(data);
 
-    this.get("country")
-    .then(
-      res => { // Success
-        console.log(res);
-        originCtry = res;
-      },
-      err => { // Error
-        
-      }
-    );
+    let header: Headers = new Headers();
+    header.append('Content-Type', 'application/json');
 
-    return this.http.get(Config.HOST + "/payment/mastercard/quote?sUri="+sUri+"&rUri="+rUri+"&amt="+amount+"&cur="+cur+"&originCtry="+originCtry+"&additional="+additional+"&additional="+additional1+"&bankCode="+bankCode)
-    .map(res => res.json());
-    
+    return this.http.post(Config.HOST + "/payment/quote",data, { headers: header }).map(res => res.json());
+
   }
 
-  doTransactionPayment(transaction_ref, proposal_id){
+  doTransactionPayment( recipient_name, recipient_name_last, recipient_tel, recipient_nationality, recipient_city, recipient_address, recipient_country, recipient_postal_code, account_name, bic, ban,iban, proposal_id, transaction_ref ){
 
-    return this.http.get(Config.HOST + "/payment/mastercard/payment?propId="+proposal_id+"=&sFName=Brandon&sLName=Alleyne&sNat=BRB&sAddr=123MainStreet&sCity=Arlington&sCtry=BRB&sDOB=1985-06-24&rFName=George&rLName=Thomas&rNat=GBR&rAddr=123MainStreet&rCity=Arlington&rCtry=GBR&transRef="+transaction_ref+"&additional=701&additional=GBR")
-    .map(res => res.json());
+    let data = {
+        "proposal_id": proposal_id, //"+JLt+na/P5PtEQU+XtMQ9c0Q0EA=",
+        "transaction_ref": transaction_ref, //"AQnmzl8lTXixBodnDl8HQVnY",
+        "sender_fName":"Brandon",
+        "sender_lName":"Alleyne",
+        "sender_nationality":"BRB",
+        "sender_addr":"North West",
+        "sender_city":"Bridgetown",
+        "sender_country":"BRB",
+        "sender_dob":"1985-06-24",
+        "recipient_fName": recipient_name, //"George",
+        "recipient_lName": recipient_name_last, //"Thomas",
+        "recipient_nationality": recipient_nationality, //"GBR",
+        "recipient_addr": recipient_address, //"North George",
+        "recipient_city": recipient_city, //"Bridgetown",
+        "recipient_country": recipient_country, //"GBR",
+        "additional":["701",recipient_country] // ["701","GBR"]
+    };
+      
+    console.log(data);
+
+    let header: Headers = new Headers();
+    header.append('Content-Type', 'application/json');
+
+    return this.http.post(Config.HOST + "/payment/payment",data, { headers: header }).map(res => res.json());
     
   }
   

@@ -30,20 +30,22 @@
 
       <ion-row class = "account_status_wrap" padding>
         
-          <ion-col col col-12>
-            <ion-item class = "account_selected_details">
-              <ion-label> Accounts </ion-label>
-              <ion-select [(ngModel)]="account_selected" (ionChange) = "showAccount($event)" multiple="false">
-                <ion-option *ngFor = "let account of accountslists" value = "{{account.account_num}}">{{account.alias}}</ion-option>
-              </ion-select>
-            </ion-item>
-          </ion-col>
+        <ion-col col col-12> Account Activity </ion-col>
 
-        <ion-col col col-6>
+        <ion-col col col-12>
+          <ion-item class = "account_selected_details">
+            <ion-label> Accounts </ion-label>
+            <ion-select [(ngModel)]="account_selected" (ionChange) = "showAccount($event)" multiple="false">
+              <ion-option *ngFor = "let account of accountslists" value = "{{account.account_num}}">{{account.alias}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col col-6 class = "amount_sec">
           <small> Current Amount </small>
           <h4> $45, 000.00 </h4>
         </ion-col>
-        <ion-col col col-6>
+        <ion-col col col-6 class = "amount_sec">
           <small> Available Amount </small>
           <h4> $44, 700.00 </h4>
         </ion-col>

@@ -15,6 +15,7 @@ export class ReviewPage {
   public transaction_fee;
   public total_transaction_fee;
   public transaction_total;
+  public dob;
   public recipient_name;
   public recipient_address;
   public recipient_nationality;
@@ -30,11 +31,14 @@ export class ReviewPage {
   public recipient_city;
   public recipient_country;
   public recipient_postal_code;
+  public bank_country;
+  public bank_code;
 
-  pid;
-  tref;
+  public pid;
+  public tref;
+  public transactionID;
 
-  amount;
+  public amount;
 
   constructor(public navParams: NavParams, public alert:AlertController, public transactionServices:TransactionServices, public loaderCtrl: LoadingController, public storage:Storage, public navCtrl: NavController) {
 
@@ -51,155 +55,111 @@ export class ReviewPage {
     });
 
     loader.present();
+
+    let firstname = this.navParams.get('firstname');
+    let lastname = this.navParams.get('lastname');
+    let tel = this.navParams.get('tel');
+    let nationality = this.navParams.get('nationality');
+    let dob = this.navParams.get('dob');
+    let streetAddress = this.navParams.get('streetAddress');
+    let country = this.navParams.get('country');
+    let postalCode = this.navParams.get('postalCode');
+    let city = this.navParams.get('city');
+    let amount = this.navParams.get('amount');
+    let account = this.navParams.get('account');
+    let bic = this.navParams.get('bic');
+    let ban = this.navParams.get('ban');
+    let iban = this.navParams.get('iban');
+
+    let bank_code="0123653935";
+    let receiverUri = "iban:"+iban;
+
+    let cur = "CAD";
+    if(nationality =="GBR")
+    {
+      cur = "GBP";
+    }
+
+    if (cur == "CAD")
+    {
+      bank_code = "000400012";
+      receiverUri = "ban:"+ban+";bic="+bic;
+    } 
+   
     
-    this.transactionServices.getTransactionQuote(this.amount)
+    this.transactionServices.getTransactionQuote(cur, amount, receiverUri, country, bic,bank_code)
     .subscribe(data => {
 
       console.log(data);
         
-        this.charged_amt = data["charged_amt"]; // Total Transaction Fee
-        this.charged_amt_currency = data.charged_amt_currency;
-        this.credited_amt = data.credited_amt; // Amount received by the reciever
-        this.credited_amt_currency = data.credited_amt_currency;
-        this.principal_amt = data.principal_amt; // Amount to send to sender
-        this.principal_amt_currency = data.principal_amt_currency
+      this.charged_amt = data.charged_amt; // Total Transaction Fee
+      this.charged_amt_currency = data.charged_cur;
+      this.credited_amt = data.credited_amt; // Amount received by the reciever
+      this.credited_amt_currency = data.credited_cur;
+      this.principal_amt = data.principal_amt; // Amount to send to sender
+      this.principal_amt_currency = data.principal_cur;
 
-        this.tref = data.transaction_ref;
-        this.pid = data.proposal_id;
-
-        /*charged_amt:"107.81"
-        charged_amt_currency:"USD"
-
-        credited_amt:"80.00"
-        credited_amt_currency:"GBP"
-        expiration_id:"2018-07-18T21:14:29.578-05:00"
-        fees_included:"false"
-        fx_rate:"0.75956025000000"
-        principal_amt:"105.32"
-        principal_amt_currency:"USD"
-        proposal_id:"1rm0rAPdiHZiIj3UAOEfRSqwA5E="
-        transaction_id:"kvG7JEeoXjN_gSOksoxzKgZY"
-        transaction_ref:"HlzsYUBvFvt5ZSFESXsklIOg"*/
-
+      this.tref = data.transaction_ref;
+      this.pid = data.prop_id;
+      this.transactionID = data.transaction_id;
+        
       loader.dismiss();
   
     }, err => {
       this.presentError(err);
     })
-    
-    this.transactionServices.get('firstname')
-      .then(
-        res => { // Success
-          console.log(res);
-          this.recipient_name = res;
-        },
-        err => { // Error
-          console.error(err);
-        }
-      );
-  
-    this.transactionServices.get("lastname")
-      .then(
-        res => { // Success
-          console.log(res);
-          this.recipient_name = this.recipient_name + " " + res;
-        },
-        err => { // Error
-          this.presentError(err);
-        }
-      );
-    
 
-    this.transactionServices.get("tel")
-      .then(
-        res => { // Success
-          console.log(res);
-          this.recipient_tel = res;
-        },
-        err => { // Error
-          this.presentError(err);
-        }
-      );
-    
-      this.transactionServices.get("nationality")
-      .then(
-        res => { // Success
-          console.log(res);
-          this.recipient_nationality = res;
-        },
-        err => { // Error
-          this.presentError(err);
-        }
-      );
-
-      this.transactionServices.get("city")
-      .then(
-        res => { // Success
-          console.log(res);
-          this.recipient_city = res;
-        },
-        err => { // Error
-          this.presentError(err);
-        }
-      );
-
-      this.transactionServices.get("country")
-      .then(
-        res => { // Success
-          console.log(res);
-          this.recipient_country = res;
-        },
-        err => { // Error
-          this.presentError(err);
-        }
-      );
-
-      this.transactionServices.get("postal_code")
-      .then(
-        res => { // Success
-          console.log(res);
-          this.recipient_postal_code = res;
-        },
-        err => { // Error
-          this.presentError(err);
-        }
-      );
+    this.recipient_name = this.navParams.get('firstname') + " " + this.navParams.get('lastname');
+    this.recipient_tel = this.navParams.get('tel');
+    this.recipient_nationality = this.navParams.get('nationality');
+    this.dob = this.navParams.get('dob');
+    this.recipient_address = this.navParams.get('streetAddress');
+    this.recipient_country = this.navParams.get('country');
+    this.recipient_postal_code = this.navParams.get('postalCode');
+    this.recipient_city = this.navParams.get('city');
+    this.bank_country = this.navParams.get('bank_country');
   }
 
-  getStorageSetting(name){
-    this.transactionServices.get("tel")
-      .then(
-        res => { // Success
-          return res;
-        },
-        err => { // Error
-          this.presentError(err);
-        }
-      );
-
-  }
-
-  ionViewDidLoad() {
-    
-  }
-
-  selectAccount(event, accountsType) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(InfoPage, {
-      item: accountsType 
-    });
-  }
 
   transactionText:string = "Connecting to Master Card Send...";
 
   goToThankYou(){
 
-    this.navCtrl.push(ThankyouPage,{
+    let firstname = this.navParams.get('firstname');
+    let lastname = this.navParams.get('lastname');
+    let tel = this.navParams.get('tel');
+    let nationality = this.navParams.get('nationality');
+    let dob = this.navParams.get('dob');
+    let streetAddress = this.navParams.get('streetAddress');
+    let country = this.navParams.get('country');
+    let postalCode = this.navParams.get('postalCode');
+    let city = this.navParams.get('city');
+    let amount = this.navParams.get('amount');
+    let account = this.navParams.get('account');
+    let bic = this.navParams.get('bic');
+    let ban = this.navParams.get('ban');
+    let iban = this.navParams.get('iban');
+    
+    this.navCtrl.push(ThankyouPage, {
+      firstname:firstname,
+      lastname: lastname,
+      tel:tel,
+      nationality:nationality,
+      account:account,
+      dob: dob,
+      streetAddress:streetAddress,
+      country:country,
+      postalCode:postalCode,
+      city:city,
+      amount:amount,
+      bic:bic,
+      ban:ban,
+      iban:iban,
       tref: this.tref,
       pid: this.pid,
-      trans_amount: this.amount
-    });
-
+      bank_country: this.bank_country
+    }); 
+    
   }
 
   presentError(err){
@@ -217,6 +177,25 @@ export class ReviewPage {
   }
 
   cancelPage(){
-    this.navCtrl.push(AccountsPage);
+
+    const alert = this.alert.create({
+      title: 'Cancel Transaction!',
+      subTitle: 'Are you sure you want to cancel this transaction?.',
+      buttons: [{
+        text: 'Yes',
+        handler: data => {
+          this.navCtrl.push(AccountsPage);
+        }
+      }, {
+        text: 'Cancel',
+        handler: data => {
+          // Do Nothing
+        }
+      }]
+    });
+    alert.present();
+
+    
   }
+
 }

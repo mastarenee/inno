@@ -17,27 +17,27 @@
 
 <ion-content class = "contentBG">
 
-  <div class = "progressBar" padding>
-    <ion-row class = "progress_step"> 
-      <ion-col col col-12>
-        <span class = "progress_step_title">Sending from </span> 
-        <br/> 
-          
-        <ion-item>
-          <ion-label> Accounts </ion-label>
-          <ion-select [(ngModel)]="account_selected" multiple="false">
-            <ion-option *ngFor = "let account of accountslists">{{account.alias}}</ion-option>
-          </ion-select>
-        </ion-item>
+    <ion-row class = "account_status_wrap" padding>
+        
+        <ion-col col col-12> Send Money from </ion-col>
 
-      </ion-col>
+        <ion-col col col-12>
+          <ion-item class = "account_selected_details">
+            <ion-label> Accounts </ion-label>
+            <h2> {{account_selected}} </h2>
 
-    </ion-row>
-  </div>
+            <ion-select [(ngModel)]="account_selected" (ionChange) = "showAccount($event)" multiple="false">
+              <ion-option *ngFor = "let account of accountslists" value = "{{account.alias}}">{{account.alias}}</ion-option> 
+            </ion-select>
+
+          </ion-item>
+        </ion-col>
+
+      </ion-row>
 
   <form (ngSubmit)="logForm()" [formGroup]="userRecipientBasicInformation" validate>
 
-      <ion-row padding><ion-col col col-12 class = "progress_step_recip_details">
+  <ion-row class = "no_top_bottom" padding><ion-col col col-12 class = "progress_step_recip_details">
     <div class = "progress_step_title"> Recipient Details </div>
   </ion-col></ion-row>
 
@@ -66,21 +66,33 @@
     </ion-row>
 
     <ion-row>
-      <ion-col col col-12>
+      <ion-col col col-6>
         
         <!--<ion-item>
           <ion-label stacked>Telephone Number</ion-label>
           <ion-input type="text" id = "recipient_tel" formControlName="recipient_tel" placeholder = "1246-234-1234"></ion-input>
         </ion-item>-->
-
-        <ion-item>
-            <ion-label stacked>Telephone Number</ion-label>
-            <ion-input type="tel" (keypress)="formatTelephoneNumber($event)" formControlName="recipient_tel" name="phone"></ion-input>
-            {{userRecipientBasicInformation.controls.recipient_tel.value}}
-        </ion-item>
+          <ion-item>
+              <ion-label stacked>Telephone Number</ion-label>
+              <ion-input type="tel" (keypress)="formatTelephoneNumber($event)" formControlName="recipient_tel" name="phone"></ion-input>
+              {{userRecipientBasicInformation.controls.recipient_tel.value}}
+          </ion-item>
 
         <ion-item class="error-message" *ngIf="!userRecipientBasicInformation.controls.recipient_tel.valid 
           && userRecipientBasicInformation.controls.recipient_tel.touched"> {{recipient_errors[0].tel_error}} </ion-item>
+
+      </ion-col>
+
+      <ion-col col col-6>
+
+          <ion-item>
+              <ion-label stacked>D.O.B</ion-label>
+              <ion-input type="date" formControlName="recipient_dob" name="dob"></ion-input>
+              {{userRecipientBasicInformation.controls.recipient_dob.value}}
+          </ion-item>
+
+        <ion-item class="error-message" *ngIf="!userRecipientBasicInformation.controls.recipient_dob.valid 
+          && userRecipientBasicInformation.controls.recipient_dob.touched"> {{recipient_errors[0].dob_error}} </ion-item>
 
       </ion-col>
 
@@ -90,7 +102,7 @@
               <ion-label stacked>Nationality</ion-label>
     
               <ion-select id = "recipient_nationality" multiple="false" formControlName="recipient_nationality">
-                <ion-option value="AFG">Afghanistan</ion-option>
+                <!--<ion-option value="AFG">Afghanistan</ion-option>
                 <ion-option value="ALA">Åland Islands</ion-option>
                 <ion-option value="ALB">Albania</ion-option>
                 <ion-option value="DZA">Algeria</ion-option>
@@ -339,6 +351,9 @@
                 <ion-option value="YEM">Yemen</ion-option>
                 <ion-option value="ZMB">Zambia</ion-option>
                 <ion-option value="ZWE">Zimbabwe</ion-option>
+                -->
+                <ion-option value="CAN">Canada</ion-option>
+                <ion-option value="GBR">United Kingdom</ion-option>
               </ion-select>
     
             </ion-item>  

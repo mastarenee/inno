@@ -67,15 +67,44 @@ export class InfoAmountPage {
       // Validate Information
       let transfer = this.userTransactionInformation.controls["transfer"].value;
       let bic = this.userTransactionInformation.controls["bic"].value;
+      let ban = this.userTransactionInformation.controls["ban"].value;
+      let iban = this.userTransactionInformation.controls["iban"].value;
+      let bank_country = this.userTransactionInformation.controls["bank_country"].value;
 
       this.transactionServices.set('transfer_amount', transfer);
       this.transactionServices.set('bic', bic);
+      this.transactionServices.set('ban', bic);
+      this.transactionServices.set('iban', bic);
 
       // Show Loading Action
 
+      let firstname = this.navParams.get('firstname');
+      let lastname = this.navParams.get('lastname');
+      let tel = this.navParams.get('tel');
+      let nationality = this.navParams.get('nationality');
+      let dob = this.navParams.get('dob');
+      let streetAddress = this.navParams.get('streetAddress');
+      let country = this.navParams.get('country');
+      let postalCode = this.navParams.get('postalCode');
+      let city = this.navParams.get('city');
+      
       this.navCtrl.push(ReviewPage, {
-        amount: transfer 
-      });
+        firstname:firstname,
+        lastname: lastname,
+        tel:tel,
+        nationality:nationality,
+        account:this.account,
+        dob: dob,
+        streetAddress:streetAddress,
+        country:country,
+        postalCode:postalCode,
+        city:city,
+        amount:transfer,
+        bic:bic,
+        ban:ban,
+        iban:iban,
+        bank_country:bank_country
+      }); 
 
     }else{
 
@@ -113,7 +142,26 @@ export class InfoAmountPage {
   }
 
   cancelPage(){
-    this.navCtrl.push(AccountsPage);
+
+    const alert = this.alert.create({
+      title: 'Cancel Transaction!',
+      subTitle: 'Are you sure you want to cancel this transaction?.',
+      buttons: [{
+        text: 'Yes',
+        handler: data => {
+          this.navCtrl.push(AccountsPage);
+        }
+      }, {
+        text: 'Cancel',
+        handler: data => {
+          // Do Nothing
+        }
+      }]
+    });
+    alert.present();
+
+    
   }
+
 
 }

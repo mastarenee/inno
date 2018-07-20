@@ -34,124 +34,35 @@ export class ThankyouPage {
   public recipient_postal_code;
   public account_name;
   public bic;
+  public ban;
+  public iban;
 
-  transaction_ref;
-  proposal_id;
-  
+  public transaction_ref;
+  public proposal_id;
 
-  constructor(public alert: AlertController, public loaderCtrl: LoadingController, public transactionServices: TransactionServices, public navCtrl: NavController, public navParams: NavParams) {
-  
-  }
+  constructor(public alert: AlertController, public loaderCtrl: LoadingController, public transactionServices: TransactionServices, public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
 
+    this.recipient_name = this.navParams.get('firstname');
+    this.recipient_name_last = this.navParams.get('lastname');
+    
+    this.recipient_tel = this.navParams.get('tel');
+    this.recipient_nationality = this.navParams.get('nationality');
+    this.recipient_city = this.navParams.get('dob');
+    this.recipient_address = this.navParams.get('streetAddress');
+    this.recipient_country = this.navParams.get('country');
+    this.recipient_postal_code = this.navParams.get('postalCode');
+    this.recipient_city = this.navParams.get('city');
+    this.account_name = this.navParams.get('account');
+    this.bic = this.navParams.get('bic');
+    this.ban = this.navParams.get('ban');
+    this.iban = this.navParams.get('iban');
+
     this.transaction_ref = this.navParams.get('tref');
     this.proposal_id = this.navParams.get('pid');
-    this.transaction_amount = this.navParams.get('trans_amount');
+    this.transaction_amount = this.navParams.get('amount');
     
-    this.transactionServices.get("firstname")
-      .then(
-        res => { // Success
-          console.log(res);
-          this.recipient_name = res;
-        },
-        err => { // Error
-          this.presentError(err);
-        }
-      );
-    
-
-    this.transactionServices.get("lastname")
-      .then(
-        res => { // Success
-          console.log(res);
-          this.recipient_name_last = res;
-        },
-        err => { // Error
-          this.presentError(err);
-        }
-      );
-    
-
-    this.transactionServices.get("tel")
-      .then(
-        res => { // Success
-          console.log(res);
-          this.recipient_tel = res;
-        },
-        err => { // Error
-          this.presentError(err);
-        }
-      );
-    
-      this.transactionServices.get("nationality")
-      .then(
-        res => { // Success
-          console.log(res);
-          this.recipient_nationality = res;
-        },
-        err => { // Error
-          this.presentError(err);
-        }
-      );
-
-      this.transactionServices.get("city")
-      .then(
-        res => { // Success
-          console.log(res);
-          this.recipient_city = res;
-        },
-        err => { // Error
-          this.presentError(err);
-        }
-      );
-
-      this.transactionServices.get("country")
-      .then(
-        res => { // Success
-          console.log(res);
-          this.recipient_country = res;
-        },
-        err => { // Error
-          this.presentError(err);
-        }
-      );
-
-      this.transactionServices.get("postal_code")
-      .then(
-        res => { // Success
-          console.log(res);
-          this.recipient_postal_code = res;
-        },
-        err => { // Error
-          this.presentError(err);
-        }
-      );
-
-      this.transactionServices.get('account_name')
-      .then(
-        res => { // Success
-          console.log(res);
-          this.account_name = res;
-        },
-        err => { // Error
-          console.error(err);
-        }
-      );
-
-      this.transactionServices.get('bic')
-      .then(
-        res => { // Success
-          console.log(res);
-          this.bic = res;
-        },
-        err => { // Error
-          console.error(err);
-        }
-      );
-
-    console.log('ionViewDidLoad ThankyouPage');
-
     // Begin API Get Quote
     const loader = this.loaderCtrl.create({
       spinner: 'ios',
@@ -160,7 +71,11 @@ export class ThankyouPage {
 
     loader.present();
 
-    this.transactionServices.doTransactionPayment(this.transaction_ref, this.proposal_id)
+    this.transaction_ref = this.navParams.get('tref');
+    this.proposal_id = this.navParams.get('pid');
+    this.transaction_amount
+
+    this.transactionServices.doTransactionPayment( this.recipient_name, this.recipient_name_last, this.recipient_tel, this.recipient_nationality, this.recipient_city,this.recipient_address, this.recipient_country, this.recipient_postal_code, this.account_name, this.bic, this.ban, this.iban, this.proposal_id, this.transaction_ref )
       .subscribe(data => {
         console.log(data);
         loader.dismiss();
