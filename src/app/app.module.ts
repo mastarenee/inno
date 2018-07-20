@@ -17,6 +17,7 @@ import { TransactionHistoryDetailPage } from '../pages/transactionhistorydetail/
 import { TransactionServices } from '../services/transaction.services';
 import { HttpModule } from '@angular/http';
 
+
 import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ContactPage } from '../pages/contact/contact';
@@ -53,6 +54,7 @@ import { NgxMaskModule } from 'ngx-mask'
     AccountsactivityPage
   ], 
   imports: [
+    HttpModule,
     BrowserModule,
     InternationalPhoneModule,
     IonicModule.forRoot(MyApp, {}, {
