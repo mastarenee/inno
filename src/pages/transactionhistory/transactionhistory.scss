@@ -80,6 +80,18 @@ page-transactionhistory {
 
 }
 
-.transaction_title{
+/*.transaction_title{
     font-family: "Elephant";
+}
+*/
+
+#headerLogo{
+    background-image:url("../assets/imgs/cibc1.png");
+    background-size:cover;
+    width: 143px;
+    height: 37px;
+    float: left;
+    background-size: 170px 42px;
+    background-repeat: no-repeat;
+    background-position: 2px;
 }

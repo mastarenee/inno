@@ -36,15 +36,9 @@
     <ion-col class = "menu_option" (click) = "startWireTransaction()" padding col-6> <img src = "assets/imgs/icon_transfer.png"> <p>Send Money</p> </ion-col>
     <ion-col class = "menu_option" (click) = "showTransactionHistory($event)" padding col-6> <img src = "assets/imgs/icon_history.png"> <p>Transfer History</p> </ion-col>
   </ion-row>
-<<<<<<< HEAD
-  
   <h2 class = "heading_title_small">Accounts </h2>
   
-=======
->>>>>>> f31d379cd5803a0284fca1f3ea6e4a63ceadf26d
 
-  <ion-row padding><h2 class = "heading_title_small" text-left>Accounts </h2></ion-row>
-  
   <ion-row class = "account_selection_wrap">
 
     <ion-card padding class = "noTopPadding" *ngFor = "let accounts of accountslists" (click)="viewAccountHistory()">

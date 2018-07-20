@@ -1,62 +1,38 @@
-<<<<<<< HEAD
-<!--<ion-header>
-    <ion-navbar>
-      <ion-title>
-        <ion-row>
-=======
 <ion-header>
     <ion-navbar>
       <ion-title>
-
-        Transaction History
-        
-       <!-- <ion-row>
->>>>>>> f31d379cd5803a0284fca1f3ea6e4a63ceadf26d
+        <ion-row>
   
-          <ion-col col col-6 class = "headerLogo">
+          <ion-col col col-4 class = "headerLogo">
             <img src = "assets/imgs/cibc1.png">
           </ion-col>
-  
-          <ion-row col col-4 class = "head2">
-            <div col col-9 class = "profile_data_wrap">
-              <h3 class = "profile_title_username"> Hello <br/>Harry Lewis </h3>
-            </div>
-            <div col col-3 class = "profile_data_wrap_image">
-              <ion-icon name="contact"></ion-icon>
-            </div>
-          </ion-row>
-          
+          <ion-row col col-6 class = "head2">
+          Transfer History 
+        </ion-row>
           <ion-col col col-2 class = "head3">
             <button ion-button menuToggle right>
               <ion-icon name="menu"></ion-icon>
             </button>
           </ion-col>
   
-        </ion-row>-->
+        </ion-row>
       
       </ion-title>
       
     </ion-navbar>
   </ion-header>
-<<<<<<< HEAD
-  -->
+
+  <!--
+
   <ion-header>
-=======
 
-  
-
-  
-  <ion-content class = "contentBG">
-        
-      <h1 class = "text-center backgroundBanner"> 
->>>>>>> f31d379cd5803a0284fca1f3ea6e4a63ceadf26d
-
-      <ion-navbar>
+    <ion-navbar>
         <ion-title>             Transfer History 
           </ion-title>
       </ion-navbar>
     
     </ion-header>
+  -->
 
   <ion-content class = "contentBG">
         
@@ -66,14 +42,15 @@
         <!-- <div class = "contentBG" padding> -->
 
           <div class = "col12 filter_action"> 
-<<<<<<< HEAD
-              <button ion-button  block (click)="openModal()">Filter
-=======
-              <button ion-button float-right (click)="openModal()">Filter
->>>>>>> f31d379cd5803a0284fca1f3ea6e4a63ceadf26d
+          <!--    <button ion-button  block (click)="openModal()">Filter
                  </button>
-                <!-- </div> -->
-
+                 </div> -->
+                 <div (click)="openModal()">
+                  <img src = "assets/imgs/filter.png">
+  </div>
+                <div (click)="openModal()">
+                <img src = "assets/imgs/filter2.png">
+</div>
           <ion-list>
             <ion-item class = "transaction_wrap" (click)="openTransaction($event,'232')"> 
 
