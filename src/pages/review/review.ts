@@ -32,6 +32,7 @@ export class ReviewPage {
   public recipient_country;
   public recipient_postal_code;
   public bank_country;
+  public bank_code;
 
   public pid;
   public tref;
@@ -70,12 +71,23 @@ export class ReviewPage {
     let ban = this.navParams.get('ban');
     let iban = this.navParams.get('iban');
 
-    let cur = "GBP";
-    if( this.bank_country == "CAN" ){
-      cur = "CAD";
+    let bank_code="0123653935";
+    let receiverUri = "iban:"+iban;
+
+    let cur = "CAD";
+    if(nationality =="GBR")
+    {
+      cur = "GBP";
     }
+
+    if (cur == "CAD")
+    {
+      bank_code = "000400012";
+      receiverUri = "ban:"+ban+";bic="+bic;
+    } 
+   
     
-    this.transactionServices.getTransactionQuote(cur, amount, iban, country, bic)
+    this.transactionServices.getTransactionQuote(cur, amount, receiverUri, country, bic,bank_code)
     .subscribe(data => {
 
       console.log(data);

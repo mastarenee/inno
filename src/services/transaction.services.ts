@@ -32,17 +32,27 @@ export class TransactionServices {
 
   }
 
-  getTransactionQuote(currency, amount, iban, country, bic){
-
+  getTransactionQuote(currency, amount, receiverUri, country, bic, bank_code){
+    console.log(bank_code);
+    let additionalCountry;
+    if(currency=="GBP")
+    {
+      additionalCountry = "GBR";
+    }
+    else
+    if(currency=="CAD")
+    {
+      additionalCountry = "CAN";
+    }
     var data = {
-        "sender_uri":"iban:" + iban, //"78876876",
+        "sender_uri":"iban:" + receiverUri, //"78876876",
         "currency":currency, //"GBP",
         "amount":amount, //"120",
-        "recipient_uri":"iban:"+ iban, //"GB98MIDL07009312345678",
+        "recipient_uri":receiverUri, //"GB98MIDL07009312345678",
         "country":country, //"BRB",
-        "bank_code":bic, //"0123653935",
+        "bank_code":bank_code, //"0123653935",
         "pay_type":"P2P",
-        "additional_data":["701","GBR"]
+        "additional_data":["701",additionalCountry]
     };
 
     console.log(data);
