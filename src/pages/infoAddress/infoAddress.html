@@ -19,7 +19,7 @@
 
   <div class = "progressBar" padding>
     <ion-row class = "progress_step"> 
-      <ion-col col col-11><span class = "progress_step_title">Sending from </span><br/> House Investments</ion-col>
+      <ion-col col col-11><span class = "progress_step_title">Sending from </span><br/> {{account}} </ion-col>
       <ion-col col col-1><img src = "assets/imgs/checked_small.png"> </ion-col>
     </ion-row>
   </div>
@@ -43,8 +43,20 @@
     </ion-row>
 
     <ion-row>
+    <ion-col col col-12>
+        <ion-item>
+          <ion-label stacked> City </ion-label>
+          <ion-input type="text" formControlName = "recipient_city" placeholder = "Witchitau Falls"></ion-input>
+        </ion-item>
 
-      <ion-col col col-4>
+        <ion-item class="error-message" *ngIf="!userRecipientAddressInformation.controls.recipient_city.valid && userRecipientAddressInformation.controls.recipient_city.touched"> {{recipient_errors[0].city_error}} </ion-item>
+
+      </ion-col>
+      </ion-row>
+
+    <ion-row>
+
+      <ion-col col col-6>
         <ion-item>
             <ion-label stacked> Country </ion-label>
             <ion-select formControlName = "recipient_country">
@@ -304,18 +316,8 @@
         <ion-item class="error-message" *ngIf="!userRecipientAddressInformation.controls.recipient_country.valid && userRecipientAddressInformation.controls.recipient_country.touched"> {{recipient_errors[0].country_error}} </ion-item>
 
       </ion-col>
-      
-      <ion-col col col-4>
-        <ion-item>
-          <ion-label stacked> City </ion-label>
-          <ion-input type="text" formControlName = "recipient_city" placeholder = "Witchitau Falls"></ion-input>
-        </ion-item>
-
-        <ion-item class="error-message" *ngIf="!userRecipientAddressInformation.controls.recipient_city.valid && userRecipientAddressInformation.controls.recipient_city.touched"> {{recipient_errors[0].city_error}} </ion-item>
-
-      </ion-col>
-
-      <ion-col col col-4>
+     
+      <ion-col col col-6>
         <ion-item>
           <ion-label stacked> Postal Code </ion-label>
           <ion-input type="text" formControlName = "recipient_postal_code" placeholder = "T23489"></ion-input>
