@@ -30,7 +30,7 @@ import { PopoverComponent } from '../components/popover/popover';
 import { InternationalPhoneModule } from 'ng4-intl-phone';
 import { IonicStorageModule } from '@ionic/storage';
 import { NgxMaskModule } from 'ngx-mask'
-import { InputMaskModule } from 'ionic-input-mask';
+
 
 @NgModule({
   declarations: [
@@ -55,8 +55,6 @@ import { InputMaskModule } from 'ionic-input-mask';
   imports: [
     BrowserModule,
     InternationalPhoneModule,
-    InputMaskModule,
-    HttpModule,
     IonicModule.forRoot(MyApp, {}, {
       links: [
         { component: LoginPage, name: 'Login', segment: 'login' },

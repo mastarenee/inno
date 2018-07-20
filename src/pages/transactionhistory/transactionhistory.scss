@@ -63,8 +63,9 @@ page-transactionhistory {
 }
 
 .backgroundBanner{
+    font-size: 26px;
     background-color:#ffffff;
-    padding: 40px 0px;
+    padding: 10px 0px;
     margin: 0px !important;
     /* color: #fff; */
 }
@@ -77,4 +78,20 @@ page-transactionhistory {
     font-weight: bold;
 }
 
+}
+
+/*.transaction_title{
+    font-family: "Elephant";
+}
+*/
+
+#headerLogo{
+    background-image:url("../assets/imgs/cibc1.png");
+    background-size:cover;
+    width: 143px;
+    height: 37px;
+    float: left;
+    background-size: 170px 42px;
+    background-repeat: no-repeat;
+    background-position: 2px;
 }

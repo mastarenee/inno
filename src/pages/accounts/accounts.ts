@@ -24,28 +24,28 @@ export class AccountsPage {
   public accountslists = [
     {
         alias: 'House Savings',
-        amount: '98,000',
-        account: '7402',
+        amount: '98,000,000',
+        account: '...7402',
     },
     {
         alias: 'Online Chequing',
         amount: '8,000',
-        account:'3833',
+        account:'...3833',
     },
     {
         alias: 'Business Savings',
         amount: '12,000',
-        account:'8763',
+        account:'...8763',
     },
     {
       alias: 'College Savings',
       amount: '1,000',
-      account:'8763',
+      account:'...4509',
   },
     {
       alias: 'Student Chequing',
       amount: '300',
-      account:'7184',
+      account:'...7184',
   }
   ]
 
