@@ -54,6 +54,7 @@ export class AccountsPage {
 
   }
 
+
   selectAccount(event, accountsType){
 
     this.navCtrl.push(InfoPage, {

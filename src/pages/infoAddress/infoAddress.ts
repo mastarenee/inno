@@ -21,8 +21,9 @@ export class InfoAddressPage {
   public account:string;
   transaction = {};
   private myForm: FormGroup;
-  userRecipientAddressInformation: FormGroup;
-  phoneNumber;
+  public userRecipientAddressInformation: FormGroup;
+  public phoneNumber;
+  public recipient_name:String;
 
   public recipient_errors = [{
     streetAddress_error: 'Street Address is required',
@@ -33,7 +34,6 @@ export class InfoAddressPage {
  
   constructor(public alert:AlertController, public transactionServices: TransactionServices, public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
-
     this.userRecipientAddressInformation = new FormGroup({
       recipient_streetAddress: new FormControl(''),
       recipient_country: new FormControl(''),
@@ -51,6 +51,8 @@ export class InfoAddressPage {
   }
 
   ionViewDidLoad() {
+
+    this.recipient_name = this.navParams.get('firstname') + ' ' + this.navParams.get('lastname');
 
     this.account = this.navParams.get('account');
     console.log(this.account);

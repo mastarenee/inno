@@ -16,7 +16,7 @@ import { TransactionHistoryPage } from '../pages/transactionhistory/transactionh
 import { TransactionHistoryDetailPage } from '../pages/transactionhistorydetail/transactionhistorydetail';
 import { TransactionServices } from '../services/transaction.services';
 import { HttpModule } from '@angular/http';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
@@ -31,7 +31,7 @@ import { PopoverComponent } from '../components/popover/popover';
 import { InternationalPhoneModule } from 'ng4-intl-phone';
 import { IonicStorageModule } from '@ionic/storage';
 import { NgxMaskModule } from 'ngx-mask'
-
+import { NativePageTransitions } from '@ionic-native/native-page-transitions';
 
 @NgModule({
   declarations: [
@@ -55,6 +55,7 @@ import { NgxMaskModule } from 'ngx-mask'
   ], 
   imports: [
     HttpModule,
+    BrowserAnimationsModule,
     BrowserModule,
     InternationalPhoneModule,
     IonicModule.forRoot(MyApp, {}, {
@@ -107,6 +108,7 @@ import { NgxMaskModule } from 'ngx-mask'
     StatusBar,
     SplashScreen,
     TransactionServices,
+    NativePageTransitions,
     CallNumber,
     Storage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

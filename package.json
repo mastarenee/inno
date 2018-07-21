@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/call-number": "^4.9.2",
     "@ionic-native/core": "4.8.0",
+    "@ionic-native/native-page-transitions": "^4.10.0",
     "@ionic-native/printer": "^4.9.0",
     "@ionic-native/splash-screen": "4.8.0",
     "@ionic-native/status-bar": "4.8.0",
@@ -31,6 +32,7 @@
     "angular2-text-mask": "^9.0.0",
     "brmasker-ionic": "^1.0.12",
     "call-number": "^1.0.1",
+    "com.telerik.plugins.nativepagetransitions": "^0.6.5",
     "cordova-android": "7.0.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
@@ -73,7 +75,8 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-printer": {},
       "cordova-sqlite-storage": {},
-      "mx.ferreyra.callnumber": {}
+      "mx.ferreyra.callnumber": {},
+      "com.telerik.plugins.nativepagetransitions": {}
     },
     "platforms": [
       "android"

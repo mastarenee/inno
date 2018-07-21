@@ -23,6 +23,18 @@ export class LoginPage {
 
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
+  class_options:string = 'contentBG';
+
+
+  updateBG(event){
+    //if( this.userLoginForm.controls["account"].value ){
+      this.class_options = "contentBG filterHeavy";
+    //}
+  }
+
+  updateBGBlur(event){
+    this.class_options = "contentBG";
+  }
 
   loginForm() {
     console.log(this.userInformation);
@@ -54,12 +66,13 @@ export class LoginPage {
         Validators.required])
       ],
       password: ['', Validators.compose([
+        Validators.minLength(8),
         Validators.required])
       ],
     });
 
   }
-
+  
   hideShowPassword() {
     this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
     this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';

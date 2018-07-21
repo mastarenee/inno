@@ -58,6 +58,9 @@ export class TransactionServices {
     console.log(data);
 
     let header: Headers = new Headers();
+    header.append('Access-Control-Allow-Origin' , '*');
+    header.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+    header.append('Accept','application/json');
     header.append('Content-Type', 'application/json');
 
     return this.http.post(Config.HOST + "/payment/quote",data, { headers: header }).map(res => res.json());
@@ -88,6 +91,9 @@ export class TransactionServices {
     console.log(data);
 
     let header: Headers = new Headers();
+    header.append('Access-Control-Allow-Origin' , '*');
+    header.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+    header.append('Accept','application/json');
     header.append('Content-Type', 'application/json');
 
     return this.http.post(Config.HOST + "/payment/payment",data, { headers: header }).map(res => res.json());

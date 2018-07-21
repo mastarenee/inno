@@ -10,4 +10,56 @@ page-infoAmount {
         padding-bottom:0px !important;
     }
 
+    .range_transfer{
+        background: transparent;
+        padding: 0px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        padding-top: 0px !important;
+        margin: -21px 0px 0px;
+    }
+
+    .transfer_amount_numer{
+        border-bottom: none;
+        font-size: 30px;
+
+        .text-input{
+            border-bottom: none;
+        }
+    }
+
+    .transfer_amount_numer_wrap{
+        position: relative;
+    }
+
+    .transfer_amount_numer_wrap:after{
+        content: '$';
+        position: absolute;
+        left: 20px;
+        font-size: 25px;
+        color: #ddd;
+        top: 38%;
+    }
+
+    .transfer_amount_numer_wrap:before{
+        content: 'USD';
+        position: absolute;
+        right: 11%;
+        font-weight: bold;
+        font-size: 21px;
+        color: #ddd;
+        top: 42%;
+        z-index: 99;
+    }
+
+
+    .transfer_input{
+        padding: 10px 42px !important;
+    }
+
+    .account_status_wrap:after {
+        top: 28px;
+        right: 48%;
+    }
 }

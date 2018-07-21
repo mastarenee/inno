@@ -28,6 +28,8 @@ export class ThankyouPage {
   public credited_amt_currency;
   public principal_amt; 
   public principal_amt_currency;
+  public error_status;
+  public transaction_status;
 
   public recipient_city;
   public recipient_country;
@@ -58,6 +60,7 @@ export class ThankyouPage {
     this.bic = this.navParams.get('bic');
     this.ban = this.navParams.get('ban');
     this.iban = this.navParams.get('iban');
+    this.account_transfer_from = this.navParams.get('account');
 
     this.transaction_ref = this.navParams.get('tref');
     this.proposal_id = this.navParams.get('pid');
@@ -79,8 +82,10 @@ export class ThankyouPage {
       .subscribe(data => {
         console.log(data);
         loader.dismiss();
+        this.error_status = false;
       }, err => {
         loader.dismiss();
+        this.error_status = true;
         this.presentError(err);
       });
 

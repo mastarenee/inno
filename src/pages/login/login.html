@@ -1,5 +1,5 @@
 
-<ion-content class = "contentBG" padding>
+<ion-content class = "{{class_options}}" padding>
 
   <div id = "headerLogoLogin"></div> 
 
@@ -13,15 +13,14 @@
       </ng-container>
     </div>
       
-    <ion-item>
+    <ion-item class = "login_item">
       <ion-label color="primary" stacked>User ID:</ion-label>
-      <ion-input type = "number" id = "account" formControlName="account"></ion-input>
-
+      <ion-input type = "number" (ionBlur) = "updateBGBlur($event)" (click) = "updateBG($event)" showCancelButton id = "account" formControlName="account"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" stacked>Password:</ion-label>
-      <ion-input [type]="passwordType" clearOnEdit="false" id = "password" formControlName="password"></ion-input>
+      <ion-input [type]="passwordType" (ionBlur) = "updateBGBlur($event)" (click) = "updateBG($event)" clearOnEdit="false" id = "password" formControlName="password"></ion-input>
 
       <button ion-button clear item-end (click)='hideShowPassword()' style="height:32px;">
         <ion-icon name="eye" style="font-size:32px;"></ion-icon>
@@ -30,13 +29,15 @@
     </ion-item>
     
     <ion-row>
-      <ion-col><button col-12 ion-button id = "login" class = "button_red" (click)="goToAccount()"> Log On </button></ion-col>
+      <ion-col no-padding><button [disabled]="!userLoginForm.valid" col-12 ion-button id = "login" class = "button_red" (click)="goToAccount()"> Log On </button></ion-col>
     </ion-row>
 
     <ion-row> 
-      <ion-col (click) = "openForgotPassword()" text-center> Having trouble signing in? </ion-col>
+      <ion-col class = "text-white" (click) = "openForgotPassword()" text-center> Having trouble signing in? </ion-col>
     </ion-row>
   </form>
+
+  <div id = "logo_watermark"> Inno Wire </div>
 
   <span id = "selog_login" class = "selog">{{selog_data}}</span>
 

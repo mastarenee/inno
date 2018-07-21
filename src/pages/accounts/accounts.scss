@@ -8,14 +8,20 @@ page-accounts {
     }
 
     .menu_option{
-        border:1px solid rgba(0,0,0,0.2);
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.2);
         
         img{
-            width:30px;
+            width: 50px;
+            position: absolute;
+            right: 10px;
+            opacity: 0.5;
         }
 
         p{
             margin:0px;
+            font-size: 15px;
+            letter-spacing: 0.5px;
         }
 
     }
@@ -28,4 +34,43 @@ page-accounts {
         padding-top:0px !important;
         padding-bottom:0px !important;
     }
+
+    .accountCard{
+
+    }
+    
+    .option_account_number{
+        margin-left:0px;
+    }
+
+    .account_status_wrap{
+
+        color:#fff;  
+        text-align: left;    
+
+        small{
+            font-weight: bold;
+            text-transform: uppercase;
+
+        }
+
+        h4{
+            margin-top:0px;
+        }
+
+        .amount_sec:first-child{
+            border-right:1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .amount_sec{
+            padding-left: 8%;
+        }
+
+    }
+
+    .account_status_wrap:after{
+        display:none;
+    }
+
+
 }
