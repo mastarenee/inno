@@ -40,6 +40,8 @@ import { AssistantPage } from '../pages/assistant/assistant';
 import { NativePageTransitions } from '@ionic-native/native-page-transitions';
 import { ChartsModule } from 'ng2-charts';
 
+import {TextToSpeech} from '@ionic-native/text-to-speech';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -126,6 +128,7 @@ import { ChartsModule } from 'ng2-charts';
     SenderInfoService,
     NativePageTransitions,
     CallNumber,
+    TextToSpeech,
     Storage, 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
