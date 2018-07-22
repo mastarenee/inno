@@ -31,31 +31,41 @@
 </ion-header> 
 
 <ion-content> 
-  
-  <ion-row class = "account_selection_wrap" text-center>
-    <ion-col class = "menu_option" (click) = "startWireTransaction()" padding col-6> <img src = "assets/imgs/icon_transfer.png"> <p>Send Money</p> </ion-col>
-    <ion-col class = "menu_option" (click) = "showTransactionHistory($event)" padding col-6> <img src = "assets/imgs/icon_history.png"> <p>Transaction History</p> </ion-col>
-  </ion-row>
 
-  <ion-row padding><h2 class = "heading_title_small" text-left>Accounts </h2></ion-row>
+    <ion-row class = "account_status_wrap account_selection_wrap" padding>
+      
+    <ion-col class = "menu_option" (click) = "startWireTransaction()" padding col-5> <img src = "assets/imgs/menu_transfer.png"> <p> <span class = 'boldme'>Send</span> <br/>Money</p> </ion-col>
+    <ion-col col-1></ion-col>
+    <ion-col class = "menu_option" (click) = "showTransactionHistory($event)" padding col-5> <img src = "assets/imgs/menu_history.png"> <p> <span class = 'boldme'>Transfer</span> <br/>History</p> </ion-col>
+    
+    <img id = "rectSpace" src = "assets/imgs/Rectangle.svg">
+    </ion-row>
+    
+  <h2 class = "heading_title_small noTopPadding" padding>Accounts </h2>
   
+
   <ion-row class = "account_selection_wrap">
 
-    <ion-card padding class = "noTopPadding" *ngFor = "let accounts of accountslists" (click)="viewAccountHistory()">
+    <ion-card class = "accountCard" *ngFor = "let accounts of accountslists" (click)="viewAccountHistory()" (swipe)="swipe($event, accounts.alias)">
+      
       <ion-row>
+        
         <ion-col class = "col col-10"> 
-            <div class = "option_title"> {{accounts.alias}} </div>
-          </ion-col>
-            <ion-col class = "col col-1"> 
-            <div class = "option_account_number"> {{accounts.account}} </div>
+          <div class = "option_title"> {{accounts.alias}} </div>
+          <div class = "option_account_number"> {{accounts.account}} </div>
         </ion-col>
+           
         <ion-col class = "col col-1"> <div class="option_amount"> ${{accounts.amount}} </div> </ion-col>
+      
       </ion-row>
     </ion-card>
 
   </ion-row>
 
-  <div id = "footerImage"> <img src = "assets/imgs/guyathome.jpg"> </div>
+
+  <div id = "logo_watermark" class = "logo_watermark_black"> Inno Wire </div>
+
+  <!--<div id = "footerImage"> <img src = "assets/imgs/guyathome.jpg"> </div>-->
 
   <span id = "selog_accounts" class = "selog"></span>
 

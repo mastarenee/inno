@@ -17,25 +17,26 @@
 
 <ion-content class = "contentBG">
 
-    <ion-row class = "account_status_wrap" padding>
-        
-        <ion-col col col-12> Send Money from </ion-col>
+  <ion-row class = "account_status_wrap" padding>
+      
+      <ion-col col col-12> Send Money from </ion-col>
 
-        <ion-col col col-12>
-          <ion-item class = "account_selected_details">
-            <ion-label> Accounts </ion-label>
-            <h2> {{account_selected}} </h2>
+      <ion-col col col-12>
+        <h3 (click) = "selectAccount()"> {{account_selected}} </h3> 
+      </ion-col>
 
-            <ion-select [(ngModel)]="account_selected" (ionChange) = "showAccount($event)" multiple="false">
-              <ion-option *ngFor = "let account of accountslists" value = "{{account.alias}}">{{account.alias}}</ion-option> 
-            </ion-select>
+      <ion-list *ngIf = "!account_selected" [@enterAnimation] class = "account_selection_list_radio_group_wrap" [(ngModel)]="account_selected" radio-group>
+      
+        <ion-item class = "account_selection_list_radio_group" *ngFor = "let accounts of accountslists" (ionSelect)="radioChecked(accounts.accountNumber)">
+          <ion-label>{{accounts.alias}} <span class = "account_number">({{accounts.accountNumber}})</span> <span class = "account_amount"> ${{accounts.amount}} </span> </ion-label>
+          <ion-radio value="{{accounts.alias}}"></ion-radio>
+        </ion-item>
+      
+      </ion-list>
 
-          </ion-item>
-        </ion-col>
+    </ion-row>
 
-      </ion-row>
-
-  <form (ngSubmit)="logForm()" [formGroup]="userRecipientBasicInformation" validate>
+  <form (ngSubmit)="logForm()" [formGroup]="userRecipientBasicInformation" [ngClass]="account_selected ? 'show_full' : 'partial_hide'" validate>
 
   <ion-row class = "no_top_bottom" padding><ion-col col col-12 class = "progress_step_recip_details">
     <div class = "progress_step_title"> Recipient Details </div>

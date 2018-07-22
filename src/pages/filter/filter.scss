@@ -15,6 +15,25 @@ page-filter {
 
     .toolbar-background {
         border-color: #000000;
-        background: #62b6f0;
+        background: #000000;
     }
+
+    .filter_heading{
+        position: relative;
+        z-index: 2;
+        background: #efeff4;
+        margin-top: -1px;
+        border-bottom: 1px solid #ccc;
+        color: #6d6d72;
+        font-size: 15px;
+        line-height: 1.5em;
+        text-transform: uppercase;
+        padding: 15px;
+    }
+
+    .mbsc-ios.mbsc-form {
+        background: transparent;
+        color: #000;
+    }
+
 }

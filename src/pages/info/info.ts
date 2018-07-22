@@ -8,9 +8,11 @@ import { PhoneValidator } from '../../services/phone.validator';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { TransactionServices } from '../../services/transaction.services'; 
-
+import { ActionSheetController } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Navbar } from 'ionic-angular';
+import { trigger, style, animate, transition } from '@angular/animations';
+import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 
 @IonicPage({
   name: 'RecipientInformation'
@@ -18,6 +20,20 @@ import { Navbar } from 'ionic-angular';
 
 @Component({
   selector: 'page-info',
+  animations: [
+    trigger(
+      'enterAnimation', [
+        transition(':enter', [
+          style({transform: 'translateY(100%)', opacity: 0}),
+          animate('500ms', style({transform: 'translateX(0)', opacity: 1}))
+        ]),
+        transition(':leave', [
+          style({transform: 'translateY(0)', opacity: 1}),
+          animate('500ms', style({transform: 'translateY(-100%)', opacity: 0}))
+        ])
+      ]
+    )
+  ],
   templateUrl: 'info.html'
 })
 export class InfoPage { 
@@ -30,6 +46,7 @@ export class InfoPage {
   public account_selected_error:boolean = false;
 
   public account_selected;
+  public account_selected_prev;
   public phone;
   public transaction = {};
   public valid_account_view = true;
@@ -42,18 +59,28 @@ export class InfoPage {
   public accountslists = [
     {
         alias: 'House Savings',
-        amount: '98000',
-        account:'7402',
+        amount: '98,000,000',
+        accountNumber: '...7402',
     },
     {
-        alias: 'Investment Savings',
-        amount: '8000',
-        account:'3833',
+        alias: 'Online Chequing',
+        amount: '8,000',
+        accountNumber:'...3833',
     },
     {
         alias: 'Business Savings',
-        amount: '12000',
-        account:'8763',
+        amount: '12,000',
+        accountNumber:'...8763',
+    },
+    {
+      alias: 'College Savings',
+      amount: '1,000',
+      accountNumber:'...4509',
+    },
+    {
+      alias: 'Student Chequing',
+      amount: '300',
+      accountNumber:'...7184',
     }
   ]
 
@@ -67,14 +94,19 @@ export class InfoPage {
   }]
 
 
-  constructor( public alert: AlertController, public transactionServices: TransactionServices, public storage: Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor( private nativePageTransitions: NativePageTransitions, public actionSheetCtrl: ActionSheetController, public alert: AlertController, public transactionServices: TransactionServices, public storage: Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
+    let account = this.navParams.get('account');
+    if( account ){
+      this.account_selected = account;
+    }
+
     // Setup form fields
     this.userRecipientBasicInformation = new FormGroup({
       recipient_first_name: new FormControl(''),
       recipient_last_name: new FormControl(''),
       recipient_tel: new FormControl(''),
-      recipient_nationality: new FormControl('BRB'),
+      recipient_nationality: new FormControl('CAN'),
       recipient_dob: new FormControl(''),
     });
 
@@ -83,9 +115,14 @@ export class InfoPage {
       recipient_first_name: ['', Validators.required],
       recipient_last_name: ['', Validators.required],
       recipient_tel: ['', Validators.required],
-      recipient_nationality: ['BRB', Validators.required],
+      recipient_nationality: ['CAN', Validators.required],
       recipient_dob: ['', Validators.required],
     });
+  }
+
+  selectAccount(){
+    this.account_selected_prev = this.account_selected;
+    this.account_selected = '';
   }
 
   showAccount(event){
@@ -117,7 +154,8 @@ export class InfoPage {
 
     if( this.userRecipientBasicInformation.controls["recipient_first_name"].valid && 
     this.userRecipientBasicInformation.controls["recipient_last_name"].valid &&
-    this.userRecipientBasicInformation.controls["recipient_tel"].valid){
+    this.userRecipientBasicInformation.controls["recipient_tel"].valid &&
+    this.userRecipientBasicInformation.controls["recipient_dob"].valid){
           
       // Validate Information
       let firstname = this.userRecipientBasicInformation.controls["recipient_first_name"].value;
@@ -133,6 +171,7 @@ export class InfoPage {
       this.transactionServices.set('account_name', this.account);
       this.transactionServices.set('dob', dob);
 
+      this.nativePageTransitions.fade(null);
       this.navCtrl.push(InfoAddressPage, {
         firstname:firstname,
         lastname: lastname,

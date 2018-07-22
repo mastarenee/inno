@@ -7,21 +7,19 @@ page-transactionhistory {
     width:100%;
     text-align: center;
     float:left;
+    text-transform: capitalize;
 }
 
 .tag.tag_completed{
-    background: rgb(0, 158, 21);
-    color:#fff;
+    color: rgb(0, 158, 21);
 }
 
 .tag.tag_pending{
-    background: rgb(0, 140, 255);
-    color:#fff;
+    color: rgb(0, 140, 255);
 }
 
 .tag.tag_rejected{
-    background: red;
-    color:#fff;
+    color: red;
 }
 
 .transaction_number{
@@ -42,15 +40,30 @@ page-transactionhistory {
 }
 
 .transaction_amount{
-    font-size: 14px;
+    font-size: 16px;
     padding:6px;
     text-align: right;
-    padding: 3px;
+    padding: 6px 3px;
 }
 
 .transaction_wrap{
     border-bottom:1px solid #eee;
     margin-bottom:5px;
+    background: #fff;
+    float: left;
+    width: 100%;
+}
+
+.transaction_completed{
+    border-left:2px solid rgb(0, 158, 21);
+}
+
+.transaction_pending{
+    border-left:2px solid rgb(0, 140, 255);
+}
+
+.transaction_rejected{
+    border-left:2px solid red;
 }
 
 .transaction_wrap .container{
@@ -63,8 +76,9 @@ page-transactionhistory {
 }
 
 .backgroundBanner{
+    font-size: 26px;
     background-color:#ffffff;
-    padding: 40px 0px;
+    padding: 10px 0px;
     margin: 0px !important;
     /* color: #fff; */
 }
@@ -77,4 +91,20 @@ page-transactionhistory {
     font-weight: bold;
 }
 
+
+[overlay-portal] {
+    display: inline;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #00000045;
+    top: 44px;
 }
+
+
+}
+
+/*.transaction_title{
+    font-family: "Elephant";
+}
+*/

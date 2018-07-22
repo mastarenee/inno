@@ -6,17 +6,23 @@ import { AccountsPage } from '../accounts/accounts';
 import { Storage } from '@ionic/storage';
 import { TransactionServices } from '../../services/transaction.services';
 
+import { ViewChild } from '@angular/core';
+import { Navbar } from 'ionic-angular';
+
 @Component({
   selector: 'page-review',
   templateUrl: 'review.html'
 })
 export class ReviewPage {
 
+  @ViewChild(Navbar) navBar: Navbar;
+
   public transaction_fee;
   public total_transaction_fee;
   public transaction_total;
   public dob;
   public recipient_name;
+  public recipientname;
   public recipient_address;
   public recipient_nationality;
   public recipient_tel;
@@ -33,20 +39,59 @@ export class ReviewPage {
   public recipient_postal_code;
   public bank_country;
   public bank_code;
+  public iban;
+  public error_occured = false;
 
   public pid;
   public tref;
   public transactionID;
 
   public amount;
+  public fx_expiration;
 
   constructor(public navParams: NavParams, public alert:AlertController, public transactionServices:TransactionServices, public loaderCtrl: LoadingController, public storage:Storage, public navCtrl: NavController) {
 
   }
 
+  ionViewDidLoad() {
+
+    this.recipient_name = this.navParams.get('firstname') + ' ' + this.navParams.get('lastname');
+    this.recipient_address = this.navParams.get('streetAddress');
+
+    this.account_transfer_from = this.navParams.get('account');
+    this.amount = this.navParams.get('amount');
+    this.iban = "iban:" + this.navParams.get('iban');
+    this.bank_country = this.navParams.get('bank_country');
+
+    this.navBar.backButtonClick = (e:UIEvent)=>{
+     // todo something
+     this.cancelPage();
+    }
+  }
+
+  editAmount(){
+
+  }
+
+  editAccount(){
+
+  }
+
+  editContact(){
+
+  }
+
+  editAddress(){
+
+  }
+
+  tryAgain(){
+    this.ionViewDidEnter();
+  }
+
   ionViewDidEnter(){
 
-    this.amount = this.navParams.get('amount');
+    //this.amount = this.navParams.get('amount');
 
     // Begin API Get Quote
     const loader = this.loaderCtrl.create({
@@ -102,18 +147,20 @@ export class ReviewPage {
       this.tref = data.transaction_ref;
       this.pid = data.prop_id;
       this.transactionID = data.transaction_id;
+      //this.fx_expiration;
         
       loader.dismiss();
+      this.error_occured = false;
   
     }, err => {
+      loader.dismiss();
+      this.error_occured = true;
       this.presentError(err);
     })
 
-    this.recipient_name = this.navParams.get('firstname') + " " + this.navParams.get('lastname');
     this.recipient_tel = this.navParams.get('tel');
     this.recipient_nationality = this.navParams.get('nationality');
     this.dob = this.navParams.get('dob');
-    this.recipient_address = this.navParams.get('streetAddress');
     this.recipient_country = this.navParams.get('country');
     this.recipient_postal_code = this.navParams.get('postalCode');
     this.recipient_city = this.navParams.get('city');
@@ -165,7 +212,7 @@ export class ReviewPage {
   presentError(err){
     const alert = this.alert.create({
       title: 'An Error Occured !',
-      subTitle: 'An error occured generating your transaction cost, please try again ' + err,
+      subTitle: 'An error occured generating your transaction cost, please try again.',
       buttons: [{
         text: 'OK',
         handler: data => {
