@@ -18,6 +18,7 @@ import { TransactionServices } from '../services/transaction.services';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { IntroductionPage } from '../pages/introduction/introduction';
 import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ContactPage } from '../pages/contact/contact';
@@ -47,6 +48,7 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
     TransactionHistoryDetailPage,
     ListPage,
     ThankyouPage,
+    IntroductionPage,
     EditProfilePage,
     PopoverComponent,
     ContactPage,
@@ -61,6 +63,7 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
     IonicModule.forRoot(MyApp, {}, {
       links: [
         { component: LoginPage, name: 'Login', segment: 'login' },
+        { component: IntroductionPage, name: 'Introduction', segment: 'introduction' },
         { component: ListPage, name: 'List', segment: 'list' },
         { component: AccountsPage, name: 'Accounts', segment: 'accounts' },
         { component: InfoPage, name: 'RecipientInfo', segment: 'recipientinfo' },
@@ -95,6 +98,7 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
     ProfilePage,
     TransactionHistoryPage,
     TransactionHistoryDetailPage,
+    IntroductionPage,
     ListPage,
     ThankyouPage,
     EditProfilePage,

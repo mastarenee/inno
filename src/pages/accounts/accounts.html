@@ -45,7 +45,8 @@
 
   <ion-row class = "account_selection_wrap">
 
-    <ion-card class = "accountCard" *ngFor = "let accounts of accountslists" (click)="viewAccountHistory()">
+    <ion-card class = "accountCard" *ngFor = "let accounts of accountslists" (click)="viewAccountHistory()" (swipe)="swipe($event, accounts.alias)">
+      
       <ion-row>
         
         <ion-col class = "col col-10"> 

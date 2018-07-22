@@ -62,6 +62,21 @@ export class AccountsPage {
     });
   }
 
+  swipe(event, account){
+    console.log(event);
+
+    //Right
+    if(event.direction == 2){
+      this.navCtrl.push(TransactionHistoryPage,{
+        account:account
+      });
+    }else{
+      this.navCtrl.push(InfoPage,{
+        account:account
+      });
+    }
+  }
+
   showTransactionHistory(event){
     this.navCtrl.push(TransactionHistoryPage);
   }

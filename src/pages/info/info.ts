@@ -96,6 +96,11 @@ export class InfoPage {
 
   constructor( private nativePageTransitions: NativePageTransitions, public actionSheetCtrl: ActionSheetController, public alert: AlertController, public transactionServices: TransactionServices, public storage: Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
+    let account = this.navParams.get('account');
+    if( account ){
+      this.account_selected = account;
+    }
+
     // Setup form fields
     this.userRecipientBasicInformation = new FormGroup({
       recipient_first_name: new FormControl(''),
