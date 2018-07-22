@@ -102,6 +102,10 @@ $fcib_dgreen:#95a800;
     color: #fff;
 }
 
+#logo_watermark.logo_watermark_black{
+    color: #292929;
+}
+
 .labelTitle{
     width:100%;
     float:left;
@@ -293,6 +297,13 @@ $fcib_dgreen:#95a800;
     color: #fff;
     padding: 15px;
     font-weight: bold;
+
+    img{
+        width: 24px;
+        top: 27px;
+        right: 30px;
+        position: absolute;
+    }
 }
 
 .headerLogo{

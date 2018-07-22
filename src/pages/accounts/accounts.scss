@@ -47,6 +47,7 @@ page-accounts {
 
         color:#fff;  
         text-align: left;    
+        background:none;
 
         small{
             font-weight: bold;
@@ -72,5 +73,20 @@ page-accounts {
         display:none;
     }
 
+    #rectSpace{
+        position: absolute;
+        top: 0px;
+        z-index:-1;
+    }
+
+    #headerPath {
+        animation: dance 2s infinite alternate;
+    }
+    
+    @keyframes dance {
+        100% {
+            transform: rotate(3deg);
+        }
+    }
 
 }

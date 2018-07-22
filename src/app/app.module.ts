@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { MbscModule } from '@mobiscroll/angular-lite';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -33,6 +35,7 @@ import { InternationalPhoneModule } from 'ng4-intl-phone';
 import { IonicStorageModule } from '@ionic/storage';
 import { NgxMaskModule } from 'ngx-mask'
 import { NativePageTransitions } from '@ionic-native/native-page-transitions';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -55,8 +58,11 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
     FilterPage,
     AccountsactivityPage
   ], 
-  imports: [
+  imports: [ 
+    FormsModule, 
+    MbscModule,
     HttpModule,
+    ChartsModule,
     BrowserAnimationsModule,
     BrowserModule,
     InternationalPhoneModule,
@@ -105,8 +111,7 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
     PopoverComponent, 
     ContactPage,
     FilterPage,
-    AccountsactivityPage
-
+    AccountsactivityPage,
   ],
   providers: [
     StatusBar,
@@ -114,7 +119,7 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
     TransactionServices,
     NativePageTransitions,
     CallNumber,
-    Storage,
+    Storage, 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

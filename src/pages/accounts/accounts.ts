@@ -67,7 +67,7 @@ export class AccountsPage {
 
     //Right
     if(event.direction == 2){
-      this.navCtrl.push(TransactionHistoryPage,{
+      this.navCtrl.push(AccountsactivityPage,{
         account:account
       });
     }else{
