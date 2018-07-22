@@ -31,6 +31,8 @@ import { InternationalPhoneModule } from 'ng4-intl-phone';
 import { IonicStorageModule } from '@ionic/storage';
 import { NgxMaskModule } from 'ngx-mask'
 import { InputMaskModule } from 'ionic-input-mask';
+import { SenderInfoService } from '../services/senderInfo';
+import { AssistantPage } from '../pages/assistant/assistant';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { InputMaskModule } from 'ionic-input-mask';
     PopoverComponent,
     ContactPage,
     FilterPage,
-    AccountsactivityPage
+    AccountsactivityPage,
+    AssistantPage
   ], 
   imports: [
     BrowserModule,
@@ -100,13 +103,15 @@ import { InputMaskModule } from 'ionic-input-mask';
     PopoverComponent, 
     ContactPage,
     FilterPage,
-    AccountsactivityPage
+    AccountsactivityPage,
+    AssistantPage
 
   ],
   providers: [
     StatusBar,
     SplashScreen,
     TransactionServices,
+    SenderInfoService,
     CallNumber,
     Storage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

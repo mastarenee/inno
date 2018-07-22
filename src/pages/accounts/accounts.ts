@@ -7,6 +7,7 @@ import { Storage } from '@ionic/storage';
 import { AccountsactivityPage } from '../accountsactivity/accountsactivity';
 import { ProfilePage } from '../profile/profile';
 import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
+import { AssistantPage } from '../assistant/assistant';
 
 @IonicPage({
   name: 'Accounts'
@@ -82,6 +83,11 @@ export class AccountsPage {
   optionSelected(event){
     console.log(event);
     this.navCtrl.push(InfoPage);
+  }
+
+  openChatbot(){
+    //Chatbot that you can type and talk to
+    this.navCtrl.push(AssistantPage);
   }
 
 }

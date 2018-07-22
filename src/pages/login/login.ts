@@ -4,6 +4,7 @@ import { InfoPage } from '../info/info';
 import { AccountsPage } from '../accounts/accounts';
 import { Storage } from '@ionic/storage';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { SenderInfoService } from '../../services/senderInfo';
 
 @IonicPage({
   name: 'Login'
@@ -39,7 +40,10 @@ export class LoginPage {
       ],
     }
 
-  constructor(public loaderCtrl: LoadingController, private storage:Storage, private formBuilder: FormBuilder, public viewCtrl: ViewController, public app: App, private alert: AlertController, private menu: MenuController, public navCtrl: NavController) {
+  constructor(public loaderCtrl: LoadingController, private storage:Storage, private formBuilder: FormBuilder, public viewCtrl: ViewController, public app: App, private alert: AlertController, private menu: MenuController, public navCtrl: NavController, private senderService: SenderInfoService) {
+
+   this.senderService.addUser(1234567898,"password","John", "Doe", "BRB","BRB","Bridgetown","Welches Hill");
+   
 
     this.userLoginForm = new FormGroup({
       account: new FormControl('', Validators.required),

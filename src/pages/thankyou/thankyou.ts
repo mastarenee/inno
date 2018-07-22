@@ -5,12 +5,16 @@ import { AccountsPage } from '../accounts/accounts';
 import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
 import { TransactionServices } from '../../services/transaction.services';
 
+import { SenderInfoService } from '../../services/senderInfo';
+
 @IonicPage()
 @Component({
   selector: 'page-thankyou',
   templateUrl: 'thankyou.html',
 })
 export class ThankyouPage {
+
+  public sender_name;
 
   public transaction_amount = "";
   public transaction_fee;
@@ -40,9 +44,11 @@ export class ThankyouPage {
   public transaction_ref;
   public proposal_id;
 
-  constructor(public alert: AlertController, public loaderCtrl: LoadingController, public transactionServices: TransactionServices, public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public alert: AlertController, public loaderCtrl: LoadingController, public transactionServices: TransactionServices, public navCtrl: NavController, public navParams: NavParams, private senderService: SenderInfoService) {}
 
   ionViewDidLoad() {
+
+    //this.sender_name = this.senderService.fetchUserData(76876876);
 
     this.recipient_name = this.navParams.get('firstname');
     this.recipient_name_last = this.navParams.get('lastname');
