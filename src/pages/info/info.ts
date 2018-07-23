@@ -90,7 +90,7 @@ export class InfoPage {
     tel_error: 'Telelphone is required',
     street_address_error: 'Street Address is required',
     account_error: 'Select an account',
-    dob_error: 'A D.O.B is required'
+    dob_error: 'A Date of Birth is required'
   }]
 
 

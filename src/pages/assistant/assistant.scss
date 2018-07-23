@@ -42,7 +42,8 @@ page-assistant {
 
     .me {
         float: left;   
-        margin: 5px 45px 5px 20px;         
+        margin: 5px 45px 5px 20px;    
+        border-radius: .4em;
     }
 
     .me::before {
@@ -52,11 +53,14 @@ page-assistant {
 
     .you {
         float: right;    
-        margin: 5px 20px 5px 45px;         
+        margin: 5px 20px 5px 45px;   
+        border-radius: .4em;
+        background-color: #00ffff;      
     }
 
     .you::before {
         box-shadow: 2px -2px 2px 0 rgba( 178, 178, 178, .4 );
         right: -9px;    
+        background-color: #00ffff;
     }
 }

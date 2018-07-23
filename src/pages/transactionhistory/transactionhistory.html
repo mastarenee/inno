@@ -1,13 +1,20 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>
+    <ion-navbar hideBackButton = "true">
+        <ion-title>
         <ion-row>
   
-          <ion-col col col-7 class = "headerLogo">
+          <ion-col col col-6 class = "headerLogo">
             <img src = "assets/imgs/cibc1.png">
           </ion-col>
 
-          <ion-col col col-3></ion-col>
+          <ion-row col col-4 class = "head2">
+              <div col col-9 class = "profile_data_wrap">
+                <h3 class = "profile_title_username"> Hello <br/>Harry Lewis </h3>
+              </div>
+              <div col col-3 class = "profile_data_wrap_image">
+                <ion-icon name="contact"></ion-icon>
+              </div>
+            </ion-row>
           
           <ion-col col col-2 class = "head3">
             <button ion-button menuToggle right>
@@ -39,6 +46,7 @@
             </button>
           </ion-chip>
 
+<<<<<<< HEAD
           <ion-chip *ngIf = "startDate" #startDate>
             <ion-label>Start Date {{start_date}}</ion-label>
             <button ion-button clear color="light" (click)="delete(startDate, 'sdate')">
@@ -64,6 +72,12 @@
 
     <div class = "col12 filter_action"> 
       
+=======
+    <div class = "col12 filter_action"> 
+      <div class = " filter_word" (click)="openModal()"> <b>Filter</b>  </div>
+      <!-- <div (click)="openModal()"> <img src = "assets/imgs/filter2.png"> </div> -->
+<br>
+>>>>>>> 056ed4c72668970d3425d154b65d99e65f47c267
       <ion-list>
         <span *ngFor = "let transaction of transactionLists">
         <ion-item  *ngIf = "checkFilter(transaction.status)" class = "transaction_wrap transaction_{{transaction.status}}" (click)="openTransaction($event,'232')"> 
@@ -72,11 +86,11 @@
 
             <ion-col col col-5>
               <div class = "transaction_number"> {{transaction.transaction_id}} </div>
-              <div class = "transaction_date"> {{transaction.date}} </div>
+              <div class = "transaction_date" > {{transaction.date}} </div>
             </ion-col>
 
             <ion-col col col-3> <span class = "tag tag_{{transaction.status}}">{{transaction.status}}</span> </ion-col>
-            <ion-col col col-3 class = "transaction_amount"> {{transaction.amount}} </ion-col>
+            <ion-col col col-3 class = "transaction_amount boldme"> {{transaction.amount}} </ion-col>
 
           </ion-row>
 

@@ -11,13 +11,13 @@
 <ion-content padding>
 
 <ion-fab bottom right>
-  <button ion-fab color="danger">
+  <button ion-fab color="danger" (click)="sendVoiceMessage()">
     <ion-icon name="mic"></ion-icon>
   </button>
 </ion-fab>
 
 <ion-list no-lines class="chat-list">
-  <ion-item *ngFor="let message of messages" class="chat-item">
+  <ion-item text-wrap *ngFor="let message of messages" class="chat-item">
     <ion-avatar item-left *ngIf="message.sender == 'api'">
       <img src="assets/imgs/icon.png">
     </ion-avatar>
@@ -41,8 +41,8 @@
 <ion-footer>
     <ion-toolbar>
       <ion-item>
-         <ion-input type="text" placeholder="Your message here.." [(ngModel)]="text"></ion-input>
-         <button ion-button icon-only item-right clear (click)="sendTextMessage()">
+         <ion-input #input type="text" placeholder="Your message here.." [(ngModel)]="text"></ion-input>
+         <button ion-button icon-only item-right clear (click)="sendTextMessage(); input.setFocus()">
              <ion-icon name="send"></ion-icon>
          </button>
        </ion-item>
