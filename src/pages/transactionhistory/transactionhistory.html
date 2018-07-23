@@ -1,13 +1,20 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>
+    <ion-navbar hideBackButton = "true">
+        <ion-title>
         <ion-row>
   
-          <ion-col col col-7 class = "headerLogo">
+          <ion-col col col-6 class = "headerLogo">
             <img src = "assets/imgs/cibc1.png">
           </ion-col>
 
-          <ion-col col col-3></ion-col>
+          <ion-row col col-4 class = "head2">
+              <div col col-9 class = "profile_data_wrap">
+                <h3 class = "profile_title_username"> Hello <br/>Harry Lewis </h3>
+              </div>
+              <div col col-3 class = "profile_data_wrap_image">
+                <ion-icon name="contact"></ion-icon>
+              </div>
+            </ion-row>
           
           <ion-col col col-2 class = "head3">
             <button ion-button menuToggle right>
@@ -30,23 +37,14 @@
         
       </ion-row>
 
-          <div class = "col12 filter_action"> 
-          
-                 <div (click)="openModal()">
-Filter  </div>
-<br>
-          <ion-list>
-            <ion-item class = "transaction_wrap" (click)="openTransaction($event,'232')"> 
 
     <div class = "col12 filter_action"> 
-      <div (click)="openModal()"> Filter  </div>
-      <div (click)="openModal()"> <img src = "assets/imgs/filter2.png"> </div>
-
+      <div class = " filter_word" (click)="openModal()"> <b>Filter</b>  </div>
+      <!-- <div (click)="openModal()"> <img src = "assets/imgs/filter2.png"> </div> -->
+<br>
       <ion-list>
         <ion-item *ngFor = "let transaction of transactionLists" class = "transaction_wrap transaction_{{transaction.status}}" (click)="openTransaction($event,'232')"> 
 
-                <ion-col col col-3> Pending </ion-col>
-                <ion-col col col-3 class = "transaction_amount"> $90.00 </ion-col>
           <ion-row>
 
             <ion-col col col-5>
@@ -59,57 +57,6 @@ Filter  </div>
 
           </ion-row>
 
-          <ion-list>
-              <ion-item class = "transaction_wrap" (click)="openTransaction($event,'232')"> 
-  
-                <ion-row>
-  
-                  <ion-col col col-5>
-                    <div class = "transaction_number"> 1290723698023 </div>
-                    <div class = "transaction_date"> May 21st 2018 </div>
-                  </ion-col>
-  
-                  <ion-col col col-3> Complete </ion-col>
-                  <ion-col col col-3 class = "transaction_amount"> $120.00 </ion-col>
-                </ion-row>
-
-              </ion-item>
-  
-            </ion-list>
-
-            <ion-list>
-                <ion-item class = "transaction_wrap" (click)="openTransaction($event,'232')"> 
-    
-                  <ion-row>
-    
-                    <ion-col col col-5>
-                      <div class = "transaction_number"> 1290723654601 </div>
-                      <div class = "transaction_date"> July 2nd 2018 </div>
-                    </ion-col>
-    
-                    <ion-col col col-3> Pending </ion-col>
-                    <ion-col col col-3 class = "transaction_amount"> $210.00 </ion-col>
-                  </ion-row>
-  
-                </ion-item>
-    
-              </ion-list>
-
-              <ion-list>
-                  <ion-item class = "transaction_wrap" (click)="openTransaction($event,'232')"> 
-      
-                    <ion-row>
-       
-                      <ion-col col col-5>
-                        <div class = "transaction_number"> 1290723987654 </div>
-                        <div class = "transaction_date"> July 15nd 2018 </div>
-                      </ion-col>
-      
-                      <ion-col col col-3>Rejected </ion-col>
-                      <ion-col col col-3 class = "transaction_amount"> $10,010.00 </ion-col>
-                    </ion-row>
-    
-                  </ion-item>
         </ion-item>
 
       </ion-list>
