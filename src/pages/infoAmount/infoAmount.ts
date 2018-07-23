@@ -7,6 +7,7 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { Storage } from '@ionic/storage';
 import { TransactionServices } from '../../services/transaction.services';
 import { Navbar } from 'ionic-angular';
+import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 
 @Component({
   selector: 'page-infoAmount',
@@ -30,16 +31,16 @@ export class InfoAmountPage {
     bic_error: 'Bank Identifier Code is required',
   }]
 
-  constructor(public alert:AlertController, public transactionServices: TransactionServices, public loaderCtrl: LoadingController, public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor( private nativePageTransitions: NativePageTransitions, public alert:AlertController, public transactionServices: TransactionServices, public loaderCtrl: LoadingController, public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
     this.account = navParams.get('account');
 
     this.userTransactionInformation = new FormGroup({
       transfer: new FormControl(''),
       transfer_amount: new FormControl(''),
-      bic: new FormControl(''), 
+      bic: new FormControl('TDOMCATTTOR'), 
       iban: new FormControl(''), 
-      ban: new FormControl(''), 
+      ban: new FormControl('6539354'), 
       bank_country: new FormControl(''), 
     });
 
@@ -105,6 +106,7 @@ export class InfoAmountPage {
       let postalCode = this.navParams.get('postalCode');
       let city = this.navParams.get('city');
       
+      this.nativePageTransitions.fade(null);
       this.navCtrl.push(ReviewPage, {
         firstname:firstname,
         lastname: lastname,

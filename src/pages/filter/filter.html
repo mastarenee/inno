@@ -13,7 +13,7 @@
           <ion-col class = "col col-3"> 
       <button ion-button color="danger" (click)="closeModal()" float-left >Cancel</button>    </ion-col>
       <ion-col class = "col col-5"> 
-          <p align="center" style="color:white;"> FILTERS </p>
+          <p align="center" style="color:white;" no-padding> FILTERS </p>
         </ion-col> 
           <ion-col class = "col col-3"> 
       <button ion-button clear (click)="closeModal()" float-right>Apply</button>
@@ -30,13 +30,13 @@
 
     <ion-item>
         <ion-label>Start Date</ion-label> 
-        <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="StartDate">
+        <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="startDate">
         </ion-datetime>
       </ion-item>
 
       <ion-item>
           <ion-label>End Date</ion-label> 
-          <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="EndDate">
+          <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="endDate">
           </ion-datetime>
         </ion-item>
 
@@ -44,8 +44,8 @@
 
         <mbsc-form [options]="formSettings">
             <div class="mbsc-form-group">
-                <mbsc-segmented-group [(ngModel)]="Status">
-                    <mbsc-segmented value="complete"> Complete </mbsc-segmented>
+                <mbsc-segmented-group [(ngModel)]="type">
+                    <mbsc-segmented value="completed"> Complete </mbsc-segmented>
                     <mbsc-segmented value="pending"> Pending </mbsc-segmented>
                     <mbsc-segmented value="rejected">Rejected</mbsc-segmented>
                 </mbsc-segmented-group>

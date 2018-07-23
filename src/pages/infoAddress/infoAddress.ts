@@ -7,6 +7,7 @@ import { InfoAmountPage } from '../InfoAmount/InfoAmount';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { TransactionServices } from '../../services/transaction.services'; 
+import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 
 import { ViewChild } from '@angular/core';
 import { Navbar } from 'ionic-angular';
@@ -32,7 +33,7 @@ export class InfoAddressPage {
     postal_code_error: 'Postal Code is required',
   }]
  
-  constructor(public alert:AlertController, public transactionServices: TransactionServices, public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor( private nativePageTransitions: NativePageTransitions, public alert:AlertController, public transactionServices: TransactionServices, public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
     this.userRecipientAddressInformation = new FormGroup({
       recipient_streetAddress: new FormControl(''),
@@ -43,7 +44,7 @@ export class InfoAddressPage {
 
     this.userRecipientAddressInformation = this.formBuilder.group({
       recipient_streetAddress: ['', Validators.required],
-      recipient_country: ['BRB', Validators.required],
+      recipient_country: ['GBR', Validators.required],
       recipient_postal_code: ['', Validators.required],
       recipient_city: ['', Validators.required],
     });
@@ -88,7 +89,8 @@ export class InfoAddressPage {
       let tel = this.navParams.get('tel');
       let nationality = this.navParams.get('nationality');
       let dob = this.navParams.get('dob');
-      
+          
+      this.nativePageTransitions.fade(null);
       this.navCtrl.push(InfoAmountPage, {
         firstname:firstname,
         lastname: lastname,

@@ -96,7 +96,7 @@ export class AccountsactivityPage {
   ionViewDidLoad() {}
 
   public lineChartData:Array<any> = [
-    {data: this.accountslists[1]["chartSet"], datasets: [{
+    {data: this.accountslists[0]["chartSet"], datasets: [{
       radius: 0, // radius is 0 for only this dataset
   }], label: ''},
   ];

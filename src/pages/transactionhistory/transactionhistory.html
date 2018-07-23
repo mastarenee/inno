@@ -30,15 +30,45 @@
         
       </ion-row>
 
+      <ion-row >
+        <ion-col padding float-left col-10>
+          <ion-chip *ngIf = "type" #transactionType>
+            <ion-label>Transaction Type: {{type}} </ion-label>
+            <button ion-button clear color="light" (click)="delete(transactionType, 'type')">
+              <ion-icon name="close-circle"></ion-icon>
+            </button>
+          </ion-chip>
+
+          <ion-chip *ngIf = "startDate" #startDate>
+            <ion-label>Start Date {{start_date}}</ion-label>
+            <button ion-button clear color="light" (click)="delete(startDate, 'sdate')">
+              <ion-icon name="close-circle"></ion-icon>
+            </button>
+          </ion-chip>
+
+          <ion-chip *ngIf = "endDate" #endDate>
+            <ion-label>End Date {{end_date}}</ion-label>
+            <button ion-button clear color="light" (click)="delete(endDate, 'edate')">
+              <ion-icon name="close-circle"></ion-icon>
+            </button>
+          </ion-chip>
+        </ion-col>
+        
+        <ion-col right col-2>
+            <div (click)="openModal()"> Filter </div>
+            <div (click)="openModal()"> <img src = "assets/imgs/filter2.png"> </div>      
+        </ion-col>
+
+      </ion-row>
+
 
     <div class = "col12 filter_action"> 
-      <div (click)="openModal()"> Filter  </div>
-      <div (click)="openModal()"> <img src = "assets/imgs/filter2.png"> </div>
-
+      
       <ion-list>
-        <ion-item *ngFor = "let transaction of transactionLists" class = "transaction_wrap transaction_{{transaction.status}}" (click)="openTransaction($event,'232')"> 
+        <span *ngFor = "let transaction of transactionLists">
+        <ion-item  *ngIf = "checkFilter(transaction.status)" class = "transaction_wrap transaction_{{transaction.status}}" (click)="openTransaction($event,'232')"> 
 
-          <ion-row>
+          <ion-row >
 
             <ion-col col col-5>
               <div class = "transaction_number"> {{transaction.transaction_id}} </div>
@@ -51,12 +81,15 @@
           </ion-row>
 
         </ion-item>
+        </span>
 
       </ion-list>
       
      
     </div>
 
+
     <span id = "selog_transaction_history" class = "selog"></span>
   
     </ion-content>
+    <div class = "overlay_filter" *ngIf = "showOverlay"></div>

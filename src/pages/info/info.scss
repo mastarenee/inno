@@ -64,4 +64,16 @@ page-info {
         opacity:0.5;
     }
 
+    .text-input{
+        border-bottom: 1px solid transparent;
+    }
+
+    #dobcont .text-input{
+        margin-bottom:5px !important;
+    }
+
+    .radio-md .radio-icon {
+        left: 6px;
+        border-color: #ffffff;
+    }
 }
