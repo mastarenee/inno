@@ -5,12 +5,16 @@ import { AccountsPage } from '../accounts/accounts';
 import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
 import { TransactionServices } from '../../services/transaction.services';
 
+import { SenderInfoService } from '../../services/senderInfo';
+
 @IonicPage()
 @Component({
   selector: 'page-thankyou',
   templateUrl: 'thankyou.html',
 })
 export class ThankyouPage {
+
+  public sender_name;
 
   public transaction_amount = "";
   public transaction_fee;
@@ -28,6 +32,8 @@ export class ThankyouPage {
   public credited_amt_currency;
   public principal_amt; 
   public principal_amt_currency;
+  public error_status;
+  public transaction_status;
 
   public recipient_city;
   public recipient_country;
@@ -40,9 +46,11 @@ export class ThankyouPage {
   public transaction_ref;
   public proposal_id;
 
-  constructor(public alert: AlertController, public loaderCtrl: LoadingController, public transactionServices: TransactionServices, public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public alert: AlertController, public loaderCtrl: LoadingController, public transactionServices: TransactionServices, public navCtrl: NavController, public navParams: NavParams, private senderService: SenderInfoService) {}
 
   ionViewDidLoad() {
+
+    //this.sender_name = this.senderService.fetchUserData(76876876);
 
     this.recipient_name = this.navParams.get('firstname');
     this.recipient_name_last = this.navParams.get('lastname');
@@ -58,6 +66,7 @@ export class ThankyouPage {
     this.bic = this.navParams.get('bic');
     this.ban = this.navParams.get('ban');
     this.iban = this.navParams.get('iban');
+    this.account_transfer_from = this.navParams.get('account');
 
     this.transaction_ref = this.navParams.get('tref');
     this.proposal_id = this.navParams.get('pid');
@@ -79,8 +88,10 @@ export class ThankyouPage {
       .subscribe(data => {
         console.log(data);
         loader.dismiss();
+        this.error_status = false;
       }, err => {
         loader.dismiss();
+        this.error_status = true;
         this.presentError(err);
       });
 

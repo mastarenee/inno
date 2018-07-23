@@ -20,8 +20,11 @@
 <ion-content padding>
 
   <ion-row text-center class = "transactionCompleteInformation">
-    <div class = "transactionCompleteInformation_img"><img src = "assets/imgs/check-mark-button.png"></div>
-    <h4>Transaction Successful</h4>
+    <div class = "transactionCompleteInformation_img">
+      <img *ngIf = "!error_status" src = "assets/imgs/check-mark-button.png">
+      <img *ngIf = "error_status" src = "assets/imgs/error.svg">
+    </div>
+    <h4>Transaction {{transaction_status}}</h4>
     <p>${{transaction_amount}} has been successfully transferred.</p>
   </ion-row>
 
@@ -30,7 +33,7 @@
     <ion-col class = "transactionCompleteInformation_details" col col-6>
       <h5> From </h5>
       <div class = "option_title"> Harry Lewis </div>
-      <div class = "option_account_number"> ******** 7402 </div>
+      <div class = "option_account_number"> {{account_transfer_from}} </div>
     </ion-col>
     <ion-col col col-6>
         <h5> To </h5>

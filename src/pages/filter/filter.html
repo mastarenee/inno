@@ -24,35 +24,33 @@
  
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+
+    <div class = "filter_heading"> Filter By Date </div>
 
     <ion-item>
         <ion-label>Start Date</ion-label> 
         <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="StartDate">
         </ion-datetime>
       </ion-item>
-<br>
+
       <ion-item>
           <ion-label>End Date</ion-label> 
           <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="EndDate">
           </ion-datetime>
         </ion-item>
-<br>
-        <ion-list radio-group [(ngModel)]="Status">
-          <ion-item>
-            <ion-label>Complete</ion-label>
-            <ion-radio value="Complete" checked></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>Pending</ion-label>
-            <ion-radio value="Pending"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>Rejected</ion-label>
-            <ion-radio value="Rejected"></ion-radio>
-          </ion-item>
-        </ion-list>
-<br><br>
+
+        <div class = "filter_heading">Filter By Transaction Type </div>
+
+        <mbsc-form [options]="formSettings">
+            <div class="mbsc-form-group">
+                <mbsc-segmented-group [(ngModel)]="Status">
+                    <mbsc-segmented value="complete"> Complete </mbsc-segmented>
+                    <mbsc-segmented value="pending"> Pending </mbsc-segmented>
+                    <mbsc-segmented value="rejected">Rejected</mbsc-segmented>
+                </mbsc-segmented-group>
+            </div>
+          </mbsc-form>
 
 </ion-content>
 

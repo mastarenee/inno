@@ -17,6 +17,12 @@ export class FilterPage {
 
   email: string = this.navParams.get('email');
 
+    status: any = 'complete';
+    
+    formSettings = {
+        theme: 'ios'
+    };
+
   constructor(public navCtrl: NavController, public navParams: NavParams,params: NavParams,public viewCtrl: ViewController ) {
     console.log('UserId', params.get('userId'));
   }

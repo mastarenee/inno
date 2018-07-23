@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { Chart } from 'chart.js';
 
 /**
  * Generated class for the AccountsactivityPage page.
@@ -15,24 +16,30 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 })
 export class AccountsactivityPage {
 
+  @ViewChild('lineCanvas') lineCanvas;
+  lineChart: any; 
+
   public accountslists = [
     {
         alias: 'House Savings',
         amount: '98000',
         account_num: '7402',
         selected: true,
+        chartSet: [65, 59, 80, 81, 56, 55, 40],
     },
     {
         alias: 'Investment Savings',
         amount: '8000',
         account_num:'3833',
         selected: false,
+        chartSet: [65, 159, 180, 181, 180, 190, 200],
     },
     {
         alias: 'Business Savings',
         amount: '12000',
         account_num:'8763',
         selected: false,
+        chartSet: [165, 169, 180, 171, 170, 180, 170],
     }
   ]
 
@@ -86,8 +93,91 @@ export class AccountsactivityPage {
     this.account_selected = "7402";
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AccountsactivityPage');
+  ionViewDidLoad() {}
+
+  public lineChartData:Array<any> = [
+    {data: this.accountslists[1]["chartSet"], datasets: [{
+      radius: 0, // radius is 0 for only this dataset
+  }], label: ''},
+  ];
+
+  
+  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartOptions:any = {
+    responsive: true,
+    showTooltips: false,
+    legend: {
+      display: false
+    },
+    elements: {
+      point: {
+          radius: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        display: false,
+                  gridLines: {
+                      display:false
+                  }
+              }],
+      yAxes: [{
+        display: false,
+                  gridLines: {
+                      display:false
+                  }   
+              }]
+      }
+  };
+  
+  public lineChartColors:Array<any> = [
+    { // grey
+      backgroundColor: '#3c1053',
+      borderColor: '#3c1053',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
+    { // dark grey
+      backgroundColor: '#3c1053',
+      borderColor: '#3c1053',
+      pointBackgroundColor: 'rgba(77,83,96,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(77,83,96,1)'
+    },
+    { // grey
+      backgroundColor: '#3c1053',
+      borderColor: '#3c1053',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
+
+  public lineChartLegend:boolean = true;
+  public lineChartType:string = 'line';
+  
+  public randomize():void {
+    let _lineChartData:Array<any> = new Array(this.lineChartData.length);
+    for (let i = 0; i < this.lineChartData.length; i++) {
+      _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
+      for (let j = 0; j < this.lineChartData[i].data.length; j++) {
+        _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
+      }
+    }
+    this.lineChartData = _lineChartData;
+  }
+  
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+  
+  public chartHovered(e:any):void {
+    console.log(e);
   }
 
   showAccount(event){

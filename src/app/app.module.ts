@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { MbscModule } from '@mobiscroll/angular-lite';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -16,8 +18,9 @@ import { TransactionHistoryPage } from '../pages/transactionhistory/transactionh
 import { TransactionHistoryDetailPage } from '../pages/transactionhistorydetail/transactionhistorydetail';
 import { TransactionServices } from '../services/transaction.services';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+import { IntroductionPage } from '../pages/introduction/introduction';
 import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ContactPage } from '../pages/contact/contact';
@@ -31,7 +34,13 @@ import { PopoverComponent } from '../components/popover/popover';
 import { InternationalPhoneModule } from 'ng4-intl-phone';
 import { IonicStorageModule } from '@ionic/storage';
 import { NgxMaskModule } from 'ngx-mask'
+import { InputMaskModule } from 'ionic-input-mask';
+import { SenderInfoService } from '../services/senderInfo';
+import { AssistantPage } from '../pages/assistant/assistant';
+import { NativePageTransitions } from '@ionic-native/native-page-transitions';
+import { ChartsModule } from 'ng2-charts';
 
+import {TextToSpeech} from '@ionic-native/text-to-speech';
 
 @NgModule({
   declarations: [
@@ -47,19 +56,26 @@ import { NgxMaskModule } from 'ngx-mask'
     TransactionHistoryDetailPage,
     ListPage,
     ThankyouPage,
+    IntroductionPage,
     EditProfilePage,
     PopoverComponent,
     ContactPage,
     FilterPage,
-    AccountsactivityPage
+    AccountsactivityPage,
+    AssistantPage
   ], 
-  imports: [
+  imports: [ 
+    FormsModule, 
+    MbscModule,
     HttpModule,
+    ChartsModule,
+    BrowserAnimationsModule,
     BrowserModule,
     InternationalPhoneModule,
     IonicModule.forRoot(MyApp, {}, {
       links: [
         { component: LoginPage, name: 'Login', segment: 'login' },
+        { component: IntroductionPage, name: 'Introduction', segment: 'introduction' },
         { component: ListPage, name: 'List', segment: 'list' },
         { component: AccountsPage, name: 'Accounts', segment: 'accounts' },
         { component: InfoPage, name: 'RecipientInfo', segment: 'recipientinfo' },
@@ -94,21 +110,26 @@ import { NgxMaskModule } from 'ngx-mask'
     ProfilePage,
     TransactionHistoryPage,
     TransactionHistoryDetailPage,
+    IntroductionPage,
     ListPage,
     ThankyouPage,
     EditProfilePage,
     PopoverComponent, 
     ContactPage,
     FilterPage,
-    AccountsactivityPage
+    AccountsactivityPage,
+    AssistantPage
 
   ],
   providers: [
     StatusBar,
     SplashScreen,
     TransactionServices,
+    SenderInfoService,
+    NativePageTransitions,
     CallNumber,
-    Storage,
+    TextToSpeech,
+    Storage, 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

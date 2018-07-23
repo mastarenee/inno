@@ -104,6 +104,7 @@ page-accountsactivity {
 
             .amount_sec{
                 padding-left: 8%;
+                z-index:1;
             }
 
         }
@@ -147,5 +148,13 @@ page-accountsactivity {
             opacity: 0.1;
             width: 32px;
             margin-top: 12px;
+        }
+
+        .remove_outer_padding{
+            margin-left:-16px;
+            margin-bottom:-16px;
+            margin-top: -44px;
+            opacity: 0.6;
+            z-index:0;
         }
 }

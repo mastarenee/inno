@@ -17,37 +17,53 @@
 
 <ion-content class = "contentBG">
 
-  <div class = "progressBar" padding>
-    <ion-row class = "progress_step"> 
-      <ion-col col col-11><span class = "progress_step_title">Sending from </span><br/> House Investments</ion-col>
-      <ion-col col col-1><img src = "assets/imgs/checked_small.png"> </ion-col>
+  <ion-row class = "account_status_wrap" padding>
+  
+      <ion-col col col-6>
+        <ion-col col col-12 no-padding> Send Money from </ion-col>
+        <h4 (click) = "editAccount()"> {{account}} </h4> 
+      </ion-col>
+  
+      <ion-col col col-6>
+        <ion-col col col-12 no-padding> Recipient </ion-col>
+        <h4 (click) = "editContact()"> {{recipient_name}} </h4> 
+      </ion-col>
+    
     </ion-row>
-  </div>
+
 
   <form (ngSubmit)="logForm()" [formGroup]="userTransactionInformation" novalidate>
 
-  <ion-row padding class = "noTopPadding">
-    <ion-col col col-12 class = "progress_step_recip_details">
-      <div class = "progress_step_title"> Transfer & Bank Details </div>
-      <small class = "color_red"> The daily transfer limit is 5000 USD.</small>
-    </ion-col>
-  </ion-row>
+
+  <ion-row class = "no_top_bottom" padding><ion-col col col-12 class = "progress_step_recip_details">
+      <div class = "progress_step_title"> Transfer Amount <br/> <small class = "color_red"> The daily transfer limit is 5000 USD.</small> </div>
+    </ion-col></ion-row>
     
   <ion-card class = "transfer_info_wrap">
 
-    <ion-row>
-      <ion-col col col-12 padding>
-        <ion-item>
-            <ion-label stacked>  </ion-label>
-            <ion-input type = "number" formControlName = "transfer" (change) = "checkTransferFundsAvailable()" value = "0.00"></ion-input> 
+    <ion-row class = "transfer_amount_numer_wrap">
+      <ion-col col col-12 padding class = "transfer_input">
+        <ion-item class = "transfer_amount_numer" >
+            <ion-label stacked> How much would you like to transfer? </ion-label>
+            <ion-input type = "number" max = "5000" formControlName = "transfer" (change) = "checkTransferFundsAvailable($event)" value = "0.00"></ion-input> 
+
         </ion-item>
+        <ion-range class = "range_transfer" min="50" max="5000" formControlName="transfer_amount" (ionChange) = "updateTranfer($event)" color="secondary" pin="true"></ion-range>
 
         <ion-item class="error-message" *ngIf="!userTransactionInformation.controls.transfer.valid && userTransactionInformation.controls.transfer.touched"> {{recipient_errors[0].transfer_error}} </ion-item>
         <ion-item class="error-message" *ngIf="transaction_amount_error"> {{transaction_amount_error}} </ion-item>
         
         
       </ion-col>
+      </ion-row>
+  </ion-card>
+ 
+  <ion-row class = "no_top_bottom" padding><ion-col col col-12 class = "progress_step_recip_details">
+      <div class = "progress_step_title"> Bank Details</div>
+    </ion-col></ion-row>
 
+  <ion-card class = "transfer_info_wrap">
+    <ion-row>
       <ion-item col col-12 class = "noTopPadding" padding>
           <ion-label stacked> Bank Country </ion-label>
           <ion-select (ionChange)="onSelectChange($event)" (ionSelected) = "updateBankCountry($event)" formControlName = "bank_country">

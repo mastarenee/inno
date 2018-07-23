@@ -2,8 +2,10 @@ import { Component,} from '@angular/core';
 import { IonicPage, NavController, MenuController, AlertController, App, ViewController, LoadingController } from 'ionic-angular';
 import { InfoPage } from '../info/info';
 import { AccountsPage } from '../accounts/accounts';
+import { IntroductionPage } from '../introduction/introduction';
 import { Storage } from '@ionic/storage';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { SenderInfoService } from '../../services/senderInfo';
 
 @IonicPage({
   name: 'Login'
@@ -23,6 +25,18 @@ export class LoginPage {
 
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
+  class_options:string = 'contentBG';
+
+
+  updateBG(event){
+    //if( this.userLoginForm.controls["account"].value ){
+      this.class_options = "contentBG filterHeavy";
+    //}
+  }
+
+  updateBGBlur(event){
+    this.class_options = "contentBG";
+  }
 
   loginForm() {
     console.log(this.userInformation);
@@ -39,7 +53,10 @@ export class LoginPage {
       ],
     }
 
-  constructor(public loaderCtrl: LoadingController, private storage:Storage, private formBuilder: FormBuilder, public viewCtrl: ViewController, public app: App, private alert: AlertController, private menu: MenuController, public navCtrl: NavController) {
+  constructor(public loaderCtrl: LoadingController, private storage:Storage, private formBuilder: FormBuilder, public viewCtrl: ViewController, public app: App, private alert: AlertController, private menu: MenuController, public navCtrl: NavController, private senderService: SenderInfoService) {
+
+   this.senderService.addUser(1234567898,"password","John", "Doe", "BRB","BRB","Bridgetown","Welches Hill");
+   
 
     this.userLoginForm = new FormGroup({
       account: new FormControl('', Validators.required),
@@ -54,12 +71,13 @@ export class LoginPage {
         Validators.required])
       ],
       password: ['', Validators.compose([
+        Validators.minLength(8),
         Validators.required])
       ],
     });
 
   }
-
+  
   hideShowPassword() {
     this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
     this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
@@ -104,6 +122,7 @@ export class LoginPage {
 
   goToAccount(){
 
+    
     const loader = this.loaderCtrl.create({
       spinner: 'ios',
       content: "Authenticating...",
@@ -117,14 +136,27 @@ export class LoginPage {
           this.storage.set('user_last_login', Date.now() );
           console.log('User Information Saved Successful');
           
-          loader.present();
+          //loader.present();
           this.selog_data = "PASS - LOGIN SUCCESSFUL";
 
-          // Show Loading Action
-          setTimeout(() => {
-            console.log('Login Successful');
-            this.app.getRootNav().push(AccountsPage);
-          }, 3010);
+          this.storage.get('introShown').then((result) => {
+            
+            // Show Loading Action
+            setTimeout(() => {
+              console.log('Login Successful');
+              
+              if(result){
+                this.app.getRootNav().push(AccountsPage);
+              } else {
+                this.app.getRootNav().push(IntroductionPage);
+                //this.storage.set('introShown', true);
+              }
+
+              //loader.dismiss().catch(() => {});
+
+            }, 3010);
+            
+          });
 
         }else{
 

@@ -5,10 +5,6 @@ page-info {
         padding-bottom: 5px;
     }
 
-    .progress_step_recip_details{
-        padding: 0px 20px;
-    }
-
     .noTopPadding{
         padding-top:0px !important;
 
@@ -25,50 +21,47 @@ page-info {
         background:rgba(255,255,255,0.8);
     }
 
-    .account_status_wrap{
-        background: #ad5389;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    .account_selection_list_radio_group_wrap{
+        width:100%;
+
+        .item-radio-checked ion-label{
+            font-weight:bold;
+            color:#fff;
+            opacity:1;
+        }
+
+        .item-radio-checked{
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+    }
+
+    .account_selection_list_radio_group{
+        background: transparent;
+        width:100%;
+        color:#fff;
+        opacity:0.8;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+        .label{
+            margin:0px;
+        }
         
-        color:#fff;  
-        text-align: left;    
-
-        small{
+        .item-inner{
+            border-bottom:none !important;
+        }
+        .account_amount{
+            float:right;
             font-weight: bold;
-            text-transform: uppercase;
-
         }
 
-        h4{
-            margin-top:0px;
+        .account_number{
+            opacity:0.7;
         }
-
-        .amount_sec:first-child{
-            border-right:1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .amount_sec{
-            padding-left: 8%;
-        }
-
     }
 
-    .account_status_wrap:after{
-        content: '';
-        position: absolute;
-        top: 18px;
-        right: 14px;
-        opacity: 0.3;
-        background-image: url('../assets/imgs/menu_transfer.png');
-        width: 40px;
-        height: 40px;
-        background-repeat: no-repeat;
-        background-size: 28px;
-        z-index: 2;
+    .partial_hide{
+        opacity:0.5;
     }
-    
-    .no_top_bottom{
-        padding-bottom: 0px !important;
-        padding-left: 0px !important;
-    }
+
 }

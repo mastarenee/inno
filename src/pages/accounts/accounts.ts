@@ -7,6 +7,7 @@ import { Storage } from '@ionic/storage';
 import { AccountsactivityPage } from '../accountsactivity/accountsactivity';
 import { ProfilePage } from '../profile/profile';
 import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
+import { AssistantPage } from '../assistant/assistant';
 
 @IonicPage({
   name: 'Accounts'
@@ -54,11 +55,27 @@ export class AccountsPage {
 
   }
 
+
   selectAccount(event, accountsType){
 
     this.navCtrl.push(InfoPage, {
       item: accountsType 
     });
+  }
+
+  swipe(event, account){
+    console.log(event);
+
+    //Right
+    if(event.direction == 2){
+      this.navCtrl.push(AccountsactivityPage,{
+        account:account
+      });
+    }else{
+      this.navCtrl.push(InfoPage,{
+        account:account
+      });
+    }
   }
 
   showTransactionHistory(event){
@@ -82,6 +99,11 @@ export class AccountsPage {
   optionSelected(event){
     console.log(event);
     this.navCtrl.push(InfoPage);
+  }
+
+  openChatbot(){
+    //Chatbot that you can type and talk to
+    this.navCtrl.push(AssistantPage);
   }
 
 }

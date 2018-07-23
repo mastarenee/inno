@@ -14,6 +14,8 @@ import { PopoverComponent } from '../components/popover/popover';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ContactPage } from '../pages/contact/contact';
 
+declare var window;
+
 @Component({
   templateUrl: 'app.html' 
 })
@@ -66,6 +68,17 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      window["ApiAIPlugin"].init(
+        {
+            clientAccessToken: "3896185990244a4196c34ea8bd9f70ae", // insert your client access key here
+            lang: "en" // set lang tag from list of supported languages
+        }, 
+        function(result) { 
+          alert(result);
+         },
+        function(error) { alert(error);
+        }
+    );
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
