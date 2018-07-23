@@ -3,13 +3,23 @@ page-contact {
     h4{
         font-weight: bold;
         
-        color:black;
+        color:white;
         width:100%;
-    border: 3px solid rgb(0, 0, 0);
+        padding-top: 13px;
+        padding-bottom: 13px;
+        background-image:url("../assets/imgs/purple.jpg");
     }
     
     h5{
         font-weight: bold;
     }
+
+    .img_pad{
+        padding: 0px;
+    }
     
+    .no-padding {
+        padding: 0px !important;
+    }
+
 }
