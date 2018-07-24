@@ -105,6 +105,7 @@ export class InfoAmountPage {
       let country = this.navParams.get('country');
       let postalCode = this.navParams.get('postalCode');
       let city = this.navParams.get('city');
+      let accountID = this.navParams.get('accountID');
       
       this.nativePageTransitions.fade(null);
       this.navCtrl.push(ReviewPage, {
@@ -122,7 +123,8 @@ export class InfoAmountPage {
         bic:bic,
         ban:ban,
         iban:iban,
-        bank_country:bank_country
+        bank_country:bank_country,
+        accountID:accountID
       }); 
 
     }else{

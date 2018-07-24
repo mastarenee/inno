@@ -45,7 +45,7 @@ export class AccountsPage {
     });
   }
 
-  swipe(event, account){
+  swipe(event, account, account_number){
     console.log(event);
 
     //Right
@@ -55,7 +55,8 @@ export class AccountsPage {
       });
     }else{
       this.navCtrl.push(InfoPage,{
-        account:account
+        account:account,
+        accountID:account_number
       });
     }
   }

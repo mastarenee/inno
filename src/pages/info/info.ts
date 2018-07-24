@@ -46,9 +46,11 @@ export class InfoPage {
   public account_selected_error:boolean = false;
 
   public account_selected;
+  public account_id_selected;
   public account_selected_prev;
   public phone;
   public transaction = {};
+  public accountslists = [];
   public valid_account_view = true;
   private myForm: FormGroup;
   public userRecipientBasicInformation: FormGroup;
@@ -56,33 +58,6 @@ export class InfoPage {
   public myModel = '';
   public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
-  public accountslists = [
-    {
-        alias: 'House Savings',
-        amount: '98,000,000',
-        accountNumber: '...7402',
-    },
-    {
-        alias: 'Online Chequing',
-        amount: '8,000',
-        accountNumber:'...3833',
-    },
-    {
-        alias: 'Business Savings',
-        amount: '12,000',
-        accountNumber:'...8763',
-    },
-    {
-      alias: 'College Savings',
-      amount: '1,000',
-      accountNumber:'...4509',
-    },
-    {
-      alias: 'Student Chequing',
-      amount: '300',
-      accountNumber:'...7184',
-    }
-  ]
 
   private recipient_errors = [{
     firstname_error: 'First Name is required',
@@ -96,9 +71,20 @@ export class InfoPage {
 
   constructor( private nativePageTransitions: NativePageTransitions, public actionSheetCtrl: ActionSheetController, public alert: AlertController, public transactionServices: TransactionServices, public storage: Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
+    this.transactionServices.get("user_accounts_lists")
+    .then(
+      res => { // Success
+        console.log(res);
+        this.accountslists = res; 
+      }
+    );
+
     let account = this.navParams.get('account');
+    let accountID = this.navParams.get('accountID');
+
     if( account ){
       this.account_selected = account;
+      this.account_id_selected = accountID;
     }
 
     // Setup form fields
@@ -178,6 +164,7 @@ export class InfoPage {
         tel:tel,
         nationality:nationality,
         account:this.account_selected,
+        accountID: this.account_id_selected,
         dob: dob
       }); 
 

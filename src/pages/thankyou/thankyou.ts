@@ -33,6 +33,7 @@ export class ThankyouPage {
   public principal_amt_currency;
   public error_status;
   public transaction_status;
+  public accountID;
 
   public recipient_city;
   public recipient_country;
@@ -57,30 +58,23 @@ export class ThankyouPage {
     this.transactionServices.get("user_accounts_lists")
     .then(
       res => { // Success
+
         console.log(res);
-        this.accountslists = res; 
+        this.accountID = this.navParams.get('accountID');
+        this.transaction_amount = this.navParams.get('amount');
+        alert(this.accountID);
+        alert(this.transaction_amount);
+        
+        let amountLeft = res[this.accountID]["amount"] - parseInt(this.transaction_amount);
+        res[this.accountID]["amount"] = amountLeft;
+        console.log(this.accountslists);
+
+        this.transactionServices.set("user_accounts_lists",res);
+        alert("Update Complete for " + this.accountID);
+
       }
     );
     //this.sender_name = this.senderService.fetchUserData(76876876);
-
-
-    for( let i = 0; i < this.accountslists.length; i++ ){
-      
-      alert( this.accountslists[i]["alias"] );
-      console.log(this.accountslists[i]["alias"]);
-
-      if( this.accountslists[i]["alias"] == this.account_transfer_from ){
-        
-        console.log("Account Found - ", this.accountslists[i]["alias"]);
-        console.log("Before Account - ", this.accountslists[i]["amount"]);
-
-        let amountLeft = this.accountslists[i]["amount"] - parseInt(this.transaction_amount);
-        this.accountslists[i]["amount"] = amountLeft;
-        
-        console.log("After Account - ", this.accountslists[i]["amount"]);
-
-      }
-    }
     
     this.recipient_name = this.navParams.get('firstname');
     this.recipient_name_last = this.navParams.get('lastname');
@@ -101,7 +95,6 @@ export class ThankyouPage {
 
     this.transaction_ref = this.navParams.get('tref');
     this.proposal_id = this.navParams.get('pid');
-    this.transaction_amount = this.navParams.get('amount');
 
     // Begin API Get Quote
     const loader = this.loaderCtrl.create({

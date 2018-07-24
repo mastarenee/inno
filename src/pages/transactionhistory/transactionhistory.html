@@ -62,7 +62,11 @@
         </ion-col>
         
         <ion-col right col-2>
+<<<<<<< HEAD
             <div class = "filter_word" (click)="openModal()"> <b>Filter</b>  </div>    
+=======
+            <div (click)="openModal()"> Filter </div>
+>>>>>>> ac01fb2fb639af212fd8c5a597f81bd32fc28aaf
         </ion-col>
 
       </ion-row>
@@ -72,7 +76,11 @@
       
       <ion-list>
         <span *ngFor = "let transaction of transactionLists">
+<<<<<<< HEAD
         <ion-item  *ngIf = "checkFilter(transaction.status)" class = "transaction_wrap transaction_{{transaction.status | lowercase}}" (click)="openTransaction($event,'232')"> 
+=======
+        <ion-item  *ngIf = "checkFilter(transaction.status)" class = "transaction_wrap transaction_{{transaction.status}}" (click)="openTransaction($event,'232',transaction.transaction_id,transaction.date,transaction.status,transaction.amount)"> 
+>>>>>>> ac01fb2fb639af212fd8c5a597f81bd32fc28aaf
 
           <ion-row >
 
