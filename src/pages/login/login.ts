@@ -18,6 +18,7 @@ export class LoginPage {
 
   userInformation = {}
   userError: String = "";
+  errorCount = 0;
   userLoginForm: FormGroup;
 
   // For Selenium Testing
@@ -122,63 +123,68 @@ export class LoginPage {
 
   goToAccount(){
 
-    
     const loader = this.loaderCtrl.create({
       spinner: 'ios',
       content: "Authenticating...",
       duration: 3000
     });
 
-        if( this.userLoginForm.controls["account"].valid && this.userLoginForm.controls["password"].valid ){
-          
-          // set a key/value
-          this.storage.set('user_id', this.userLoginForm.controls["account"].value);
-          this.storage.set('user_last_login', Date.now() );
-          console.log('User Information Saved Successful');
-          
-          //loader.present();
-          this.selog_data = "PASS - LOGIN SUCCESSFUL";
-
-          this.storage.get('introShown').then((result) => {
-            
-            // Show Loading Action
-            setTimeout(() => {
-              console.log('Login Successful');
-              
-              if(result){
-                this.app.getRootNav().push(AccountsPage);
-              } else {
-                this.app.getRootNav().push(IntroductionPage);
-                //this.storage.set('introShown', true);
-              }
-
-              //loader.dismiss().catch(() => {});
-
-            }, 3010);
-            
-          });
-
-        }else{
-
-          this.selog_data = "FAIL - INVALID USER CREDENTIALS";
-    
-          const alert = this.alert.create({
-            title: 'Invalid Credentials!',
-            subTitle: 'Please enter you FCIB Account Credentials.',
-            buttons: [{
-              text: 'OK',
-              handler: data => {
-                console.log('Cancel clicked');
-              }
-            }]
-          });
-          alert.present();
-    
-        }
-        
+    if( this.userLoginForm.controls["account"].valid && this.userLoginForm.controls["password"].valid && this.userLoginForm.controls["account"].value == "60250" && this.userLoginForm.controls["password"].value == "secure" ){
       
+      // set a key/value
+      this.storage.set('user_id', this.userLoginForm.controls["account"].value);
+      this.storage.set('user_last_login', Date.now() );
+      console.log('User Information Saved Successful');
+      
+      loader.present();
+      this.selog_data = "PASS - LOGIN SUCCESSFUL";
 
-    
+      this.storage.get('introShown').then((result) => {
+        
+        // Show Loading Action
+        setTimeout(() => {
+          console.log('Login Successful');
+          
+          if(loader){
+            loader.dismiss();
+          }
 
+          if(result){
+            this.app.getRootNav().push(AccountsPage);
+          } else {
+            this.app.getRootNav().push(IntroductionPage);
+            this.storage.set('introShown', true);
+          }
+
+          
+
+        }, 3010);
+        
+      });
+
+    }else{
+
+      this.errorCount++;
+      this.selog_data = "FAIL - INVALID USER CREDENTIALS";
+
+      let invalidText = "Please enter you FCIB Account Credentials.";
+      if( this.errorCount >= 2 ){
+        invalidText = "Your credentials have been entered multiple times, would you like to reset your password. Please enter you FCIB Account Credentials.";
+      }
+
+      const alert = this.alert.create({
+        title: 'Invalid Credentials!',
+        subTitle: invalidText,
+        buttons: [{
+          text: 'OK',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        }]
+      });
+      alert.present();
+
+    }
   }
+
 }

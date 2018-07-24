@@ -8,6 +8,7 @@ import { AccountsactivityPage } from '../accountsactivity/accountsactivity';
 import { ProfilePage } from '../profile/profile';
 import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
 import { AssistantPage } from '../assistant/assistant';
+import { TransactionServices } from '../../services/transaction.services';
 
 @IonicPage({
   name: 'Accounts'
@@ -21,37 +22,18 @@ export class AccountsPage {
 
   account_selected;
 
-
-  public accountslists = [
-    {
-        alias: 'House Savings',
-        amount: '98,000,000',
-        account: '...7402',
-    },
-    {
-        alias: 'Online Chequing',
-        amount: '8,000',
-        account:'...3833',
-    },
-    {
-        alias: 'Business Savings',
-        amount: '12,000',
-        account:'...8763',
-    },
-    {
-      alias: 'College Savings',
-      amount: '1,000',
-      account:'...4509',
-  },
-    {
-      alias: 'Student Chequing',
-      amount: '300',
-      account:'...7184',
-  }
-  ]
+  public accountslists = [];
 
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public storage:Storage) {
+  constructor(public transactionServices: TransactionServices, public navCtrl: NavController, public modalCtrl: ModalController, public storage:Storage) {
+
+    this.transactionServices.get("user_accounts_lists")
+    .then(
+      res => { // Success
+        console.log(res);
+        this.accountslists = res; 
+      }
+    );
 
   }
 
@@ -63,7 +45,7 @@ export class AccountsPage {
     });
   }
 
-  swipe(event, account){
+  swipe(event, account, account_number){
     console.log(event);
 
     //Right
@@ -73,7 +55,8 @@ export class AccountsPage {
       });
     }else{
       this.navCtrl.push(InfoPage,{
-        account:account
+        account:account,
+        accountID:account_number
       });
     }
   }

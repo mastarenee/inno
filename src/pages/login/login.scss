@@ -5,8 +5,8 @@ page-login {
         background-repeat: no-repeat;
         background-size: 155%;
         background-position: 0px 58%;
-        -webkit-filter: blur(1px);
-        filter: blur(1px);
+        -webkit-filter: blur(5px);
+        filter: blur(5px);
         transition: all 0.5s ease-in-out;
     }
 
@@ -18,6 +18,10 @@ page-login {
 
     .input-wrapper .text-input{
         border-bottom:0px solid #fff;
+    }
+
+    #logo_watermark{
+        opacity: 0.8;
     }
 
     .userProfileWrap{

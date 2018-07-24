@@ -186,6 +186,10 @@ export class ReviewPage {
     let bic = this.navParams.get('bic');
     let ban = this.navParams.get('ban');
     let iban = this.navParams.get('iban');
+    let status = this.navParams.get('status');
+    let status_timestamp = this.navParams.get('status_timestamp');
+    let transaction_id = this.navParams.get('transaction_id');
+    let accountID = this.navParams.get('accountID');
     
     this.navCtrl.push(ThankyouPage, {
       firstname:firstname,
@@ -193,6 +197,7 @@ export class ReviewPage {
       tel:tel,
       nationality:nationality,
       account:account,
+      accountID:accountID,
       dob: dob,
       streetAddress:streetAddress,
       country:country,
@@ -204,7 +209,10 @@ export class ReviewPage {
       iban:iban,
       tref: this.tref,
       pid: this.pid,
-      bank_country: this.bank_country
+      bank_country: this.bank_country,
+      status:status,
+      status_timestamp:status_timestamp,
+      transaction_id:transaction_id,
     }); 
     
   }

@@ -100,12 +100,11 @@ export class TransactionServices {
     
   }
   
-
   public set(settingName,value){
     return this.storage.set(`transaction:${ settingName }`,value);
   }
-  public get(settingName){
-    return this.storage.get(`transaction:${ settingName }`);
+  public async get(settingName){
+    return await this.storage.get(`transaction:${ settingName }`);
   }
   public async remove(settingName){
     return await this.storage.remove(`transaction:${ settingName }`);

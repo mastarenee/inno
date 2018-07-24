@@ -31,16 +31,13 @@ import { AccountsactivityPage } from '../pages/accountsactivity/accountsactivity
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PopoverComponent } from '../components/popover/popover';
-import { InternationalPhoneModule } from 'ng4-intl-phone';
 import { IonicStorageModule } from '@ionic/storage';
-import { NgxMaskModule } from 'ngx-mask'
-import { InputMaskModule } from 'ionic-input-mask';
 import { SenderInfoService } from '../services/senderInfo';
 import { AssistantPage } from '../pages/assistant/assistant';
 import { NativePageTransitions } from '@ionic-native/native-page-transitions';
 import { ChartsModule } from 'ng2-charts';
 
-import {TextToSpeech} from '@ionic-native/text-to-speech';
+//import {TextToSpeech} from '@ionic-native/text-to-speech';
 
 @NgModule({
   declarations: [
@@ -71,7 +68,6 @@ import {TextToSpeech} from '@ionic-native/text-to-speech';
     ChartsModule,
     BrowserAnimationsModule,
     BrowserModule,
-    InternationalPhoneModule,
     IonicModule.forRoot(MyApp, {}, {
       links: [
         { component: LoginPage, name: 'Login', segment: 'login' },
@@ -92,7 +88,6 @@ import {TextToSpeech} from '@ionic-native/text-to-speech';
         { component: AccountsactivityPage, name: 'AccountActivty', segment: 'AccountActivty' },
       ]
     }),
-    NgxMaskModule.forRoot(),
     IonicStorageModule.forRoot({
       name: '__mydb',
       driverOrder: ['indexeddb', 'sqlite', 'websql']
@@ -128,7 +123,7 @@ import {TextToSpeech} from '@ionic-native/text-to-speech';
     SenderInfoService,
     NativePageTransitions,
     CallNumber,
-    TextToSpeech,
+    //TextToSpeech,
     Storage, 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

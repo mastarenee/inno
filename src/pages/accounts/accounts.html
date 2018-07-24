@@ -46,7 +46,7 @@
 
   <ion-row class = "account_selection_wrap">
 
-    <ion-card class = "accountCard" *ngFor = "let accounts of accountslists" (click)="viewAccountHistory()" (swipe)="swipe($event, accounts.alias)">
+    <ion-card class = "accountCard" *ngFor = "let accounts of accountslists; let i = index" (click)="viewAccountHistory()" (swipe)="swipe($event, accounts.alias, i)">
       
       <ion-row>
         
@@ -63,7 +63,7 @@
   </ion-row>
 
 
-  <div id = "logo_watermark" class = "logo_watermark_black"> Inno Wire </div>
+  <div id = "logo_watermark" class = "logo_watermark_black"> InnoWire </div>
 
   <!--<div id = "footerImage"> <img src = "assets/imgs/guyathome.jpg"> </div>-->
 
