@@ -46,7 +46,6 @@
             </button>
           </ion-chip>
 
-<<<<<<< HEAD
           <ion-chip *ngIf = "startDate" #startDate>
             <ion-label>Start Date {{start_date}}</ion-label>
             <button ion-button clear color="light" (click)="delete(startDate, 'sdate')">
@@ -63,8 +62,7 @@
         </ion-col>
         
         <ion-col right col-2>
-            <div (click)="openModal()"> Filter </div>
-            <div (click)="openModal()"> <img src = "assets/imgs/filter2.png"> </div>      
+            <div class = "filter_word" (click)="openModal()"> <b>Filter</b>  </div>    
         </ion-col>
 
       </ion-row>
@@ -72,25 +70,19 @@
 
     <div class = "col12 filter_action"> 
       
-=======
-    <div class = "col12 filter_action"> 
-      <div class = " filter_word" (click)="openModal()"> <b>Filter</b>  </div>
-      <!-- <div (click)="openModal()"> <img src = "assets/imgs/filter2.png"> </div> -->
-<br>
->>>>>>> 056ed4c72668970d3425d154b65d99e65f47c267
       <ion-list>
         <span *ngFor = "let transaction of transactionLists">
-        <ion-item  *ngIf = "checkFilter(transaction.status)" class = "transaction_wrap transaction_{{transaction.status}}" (click)="openTransaction($event,'232')"> 
+        <ion-item  *ngIf = "checkFilter(transaction.status)" class = "transaction_wrap transaction_{{transaction.status | lowercase}}" (click)="openTransaction($event,'232')"> 
 
           <ion-row >
 
             <ion-col col col-5>
-              <div class = "transaction_number"> {{transaction.transaction_id}} </div>
-              <div class = "transaction_date" > {{transaction.date}} </div>
+              <div class = "transaction_number"> {{transaction.firstname}} {{transaction.lastname}} </div>
+              <div class = "transaction_date" > {{transaction.date | date: 'fullDate' }} </div>
             </ion-col>
 
             <ion-col col col-3> <span class = "tag tag_{{transaction.status}}">{{transaction.status}}</span> </ion-col>
-            <ion-col col col-3 class = "transaction_amount boldme"> {{transaction.amount}} </ion-col>
+            <ion-col col col-3 class = "transaction_amount"> <span class = "boldme">${{transaction.amount}}</span> <br/> <small>${{getBalance(transaction.amount)}}</small> </ion-col>
 
           </ion-row>
 

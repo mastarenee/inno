@@ -13,6 +13,7 @@ import { TransactionHistoryPage } from '../pages/transactionhistory/transactionh
 import { PopoverComponent } from '../components/popover/popover';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ContactPage } from '../pages/contact/contact';
+import { TransactionServices } from '../services/transaction.services';
 
 declare var window;
 
@@ -28,7 +29,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any, icon: string}>;
 
-  constructor(public storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public popoverCtrl: PopoverController) {
+  constructor(public transactionServices:TransactionServices, public storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public popoverCtrl: PopoverController) {
     
     this.initializeApp(); 
 
@@ -46,6 +47,125 @@ export class MyApp {
   }
 
   ngOnInit() {
+
+    let userTransactionLists = [
+      {
+        account: 'House Savings',
+        firstname: 'John',
+        lastname: 'Doe',
+        streetaddress: '#13 Warrens House',
+        city: 'Texas',
+        country: 'USA',
+        date: '2018-07-21T13:14:40-05:00',
+        amount: '50.00',
+        bank_country: 'GBR',
+        iban: '0123653935',
+        ban: '',
+        bic: '',
+        status: 'pending',
+        process_id: '1290723678623',
+        transaction_ref: '435ubsd79a9das877',
+      },
+      {
+        account: 'Online Chequing',
+        firstname: 'Fredrick',
+        lastname: 'Smith',
+        streetaddress: '#15 Warrens House',
+        city: 'Texas',
+        country: 'USA',
+        date: '2018-07-22T13:14:40-05:00',
+        amount: '30.00',
+        bank_country: 'GBR',
+        iban: '000400012',
+        ban: '',
+        bic: '',
+        status: 'pending',
+        process_id: '1290723678623',
+        transaction_ref: '435ubsd79a9das877',
+      },
+      {
+        name: 'Business Savings',
+        firstname: 'Fredrick',
+        lastname: 'Smith',
+        streetaddress: '#15 Warrens House',
+        city: 'Texas',
+        country: 'USA',
+        date: '2018-07-23T13:12:10-05:00',
+        amount: '30.00',
+        bank_country: 'GBR',
+        iban: '000400012',
+        ban: '',
+        bic: '',
+        status: 'pending',
+        process_id: '1290723678623',
+        transaction_ref: '435ubsd79a9das877',
+      },
+      {
+        name: 'Business Savings',
+        firstname: 'Fredrick',
+        lastname: 'Smith',
+        streetaddress: '#15 Warrens House',
+        city: 'Texas',
+        country: 'USA',
+        date: '2018-07-22T13:14:40-05:00',
+        amount: '30.00',
+        bank_country: 'GBR',
+        iban: '000400012',
+        ban: '',
+        bic: '',
+        status: 'pending',
+        process_id: '1290723678623',
+        transaction_ref: '435ubsd79a9das877',
+      },
+      {
+        name: "Online Chequing",
+        firstname: 'Fredrick',
+        lastname: 'Smith',
+        streetaddress: '#15 Warrens House',
+        city: 'Texas',
+        country: 'USA',
+        date: '2018-07-24T11:14:40-05:00',
+        amount: '30.00',
+        bank_country: 'GBR',
+        iban: '000400012',
+        ban: '',
+        bic: '',
+        status: 'pending',
+        process_id: '1290723678623',
+        transaction_ref: '435ubsd79a9das877',
+      }
+    ]
+
+    let accountslists = [
+      {
+          alias: 'House Savings',
+          amount: '98,000,000',
+          accountNumber: '...7402',
+      },
+      {
+          alias: 'Online Chequing',
+          amount: '8,000',
+          accountNumber:'...3833',
+      },
+      {
+          alias: 'Business Savings',
+          amount: '12,000',
+          accountNumber:'...8763',
+      },
+      {
+        alias: 'College Savings',
+        amount: '1,000',
+        accountNumber:'...4509',
+      },
+      {
+        alias: 'Student Chequing',
+        amount: '300',
+        accountNumber:'...7184',
+      }
+    ]
+
+    this.transactionServices.set("transaction_list",userTransactionLists);
+    this.transactionServices.set("user_accounts_lists",accountslists);
     
     this.storage.get('user_id').then((result) => {
       if( result ){

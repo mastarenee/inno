@@ -32,8 +32,9 @@ page-intro {
   #voiceGiphy{
     position: absolute;
     opacity: 0.5;
-    margin: 38px 67px;
+    margin: 39px 64px;
     height: 64vh;
+    max-width: 272px;
   }
 
   #voiceGiphy img{

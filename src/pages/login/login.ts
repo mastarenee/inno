@@ -18,6 +18,7 @@ export class LoginPage {
 
   userInformation = {}
   userError: String = "";
+  errorCount = 0;
   userLoginForm: FormGroup;
 
   // For Selenium Testing
@@ -128,7 +129,7 @@ export class LoginPage {
       duration: 3000
     });
 
-    if( this.userLoginForm.controls["account"].valid && this.userLoginForm.controls["password"].valid ){
+    if( this.userLoginForm.controls["account"].valid && this.userLoginForm.controls["password"].valid && this.userLoginForm.controls["account"].value == "60250" && this.userLoginForm.controls["password"].value == "secure" ){
       
       // set a key/value
       this.storage.set('user_id', this.userLoginForm.controls["account"].value);
@@ -163,11 +164,17 @@ export class LoginPage {
 
     }else{
 
+      this.errorCount++;
       this.selog_data = "FAIL - INVALID USER CREDENTIALS";
+
+      let invalidText = "Please enter you FCIB Account Credentials.";
+      if( this.errorCount >= 2 ){
+        invalidText = "Your credentials have been entered multiple times, would you like to reset your password. Please enter you FCIB Account Credentials.";
+      }
 
       const alert = this.alert.create({
         title: 'Invalid Credentials!',
-        subTitle: 'Please enter you FCIB Account Credentials.',
+        subTitle: invalidText,
         buttons: [{
           text: 'OK',
           handler: data => {
@@ -179,5 +186,5 @@ export class LoginPage {
 
     }
   }
-  
+
 }

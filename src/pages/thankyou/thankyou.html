@@ -21,7 +21,7 @@
 
   <ion-row text-center class = "transactionCompleteInformation">
     <div class = "transactionCompleteInformation_img">
-      <img *ngIf = "!error_status" src = "assets/imgs/check-mark-button.png">
+      <img *ngIf = "!error_status" src = "assets/imgs/check.gif" style = "width: 70px">
       <img *ngIf = "error_status" src = "assets/imgs/error.svg">
     </div>
     <h4>Transaction {{transaction_status}}</h4>
