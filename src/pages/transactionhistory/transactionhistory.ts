@@ -19,63 +19,8 @@ export class TransactionHistoryPage {
   //modalCtrl: any;
   //viewCtrl: any;
   
-<<<<<<< HEAD
   public transactionLists = [];
   public user_account_information = [];
-=======
-  public transactionLists = [
-    {
-      name: 'POS Withdrawal',
-      date: 'July 6th 2018',
-      amount: '$50.00',
-      amount_left: '$7,102.00',
-      icon: 'left-down-arrow-curve.png',
-      type: '3833',
-      transaction_id: '1290723678623',
-      status: 'Pending',
-    },
-    {
-      name: 'Massy Supermarkets',
-      date: 'July 6th 2018',
-      amount: '$300.00',
-      amount_left: '$7,402.00',
-      icon: 'arrow-curve-pointing-to-right.png',
-      type: '7402',
-      transaction_id: '1290723678623',
-      status: 'Completed',
-    },
-    {
-      name: 'Wire Transfer',
-      date: 'July 5th 2018',
-      amount: '$300.00',
-      amount_left: '$7,402.00',
-      icon: 'icon_transfer.png',
-      type: '7402',
-      transaction_id: '1290723678623',
-      status: 'Completed',
-    },
-    {
-      name: 'Rubis Wildey Gas Station',
-      date: 'July 3rd 2018',
-      amount: '$150.00',
-      amount_left: '$7,402.00',
-      icon: 'arrow-curve-pointing-to-right.png',
-      type: '8763',
-      transaction_id: '1290723678623',
-      status: 'Completed',
-    },
-    {
-      name: "Amazon AWS Credit Card Purchase",
-      date: 'July 2nd 2018',
-      amount: '$300.00',
-      amount_left: '$7,402.00',
-      icon: 'credit-card.png',
-      type: '8763',
-      transaction_id: '1290723678623',
-      status: 'Rejected',
-    }
-  ]
->>>>>>> ac01fb2fb639af212fd8c5a597f81bd32fc28aaf
 
   public start_date;
   public end_date;
@@ -83,7 +28,7 @@ export class TransactionHistoryPage {
   public showOverlay = false;
   public totalAmount = 5000;
 
-  constructor(public transactionServices:TransactionServices, public loaderCtrl: LoadingController, public navCtrl: NavController, public modalCtrl: ModalController) {
+  constructor(public navParams: NavParams, public transactionServices:TransactionServices, public loaderCtrl: LoadingController, public navCtrl: NavController, public modalCtrl: ModalController) {
     
     this.transactionServices.get("transaction_list").then(function(result){
       console.log("result for transaction list");
@@ -104,14 +49,7 @@ export class TransactionHistoryPage {
     return this.totalAmount - amount;
   }
 
-  ionViewDidLoad() {
-
-<<<<<<< HEAD
-
-=======
-  constructor(public navParams: NavParams, public loaderCtrl: LoadingController, public navCtrl: NavController, public modalCtrl: ModalController) {
->>>>>>> ac01fb2fb639af212fd8c5a597f81bd32fc28aaf
-  }
+  ionViewDidLoad() {}
 
   openTransaction(event, accountNumber, ref_id, date, status, amount) {
     
