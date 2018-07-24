@@ -43,7 +43,7 @@
       <!-- <div (click)="openModal()"> <img src = "assets/imgs/filter2.png"> </div> -->
 <br>
       <ion-list>
-        <ion-item *ngFor = "let transaction of transactionLists" class = "transaction_wrap transaction_{{transaction.status}}" (click)="openTransaction($event,'232')"> 
+        <ion-item *ngFor = "let transaction of transactionLists" class = "transaction_wrap transaction_{{transaction.status}}" (click)="openTransaction($event,'232',transaction.transaction_id,transaction.date,transaction.status,transaction.amount)"> 
 
           <ion-row>
 

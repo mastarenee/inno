@@ -14,8 +14,19 @@ export class TransactionHistoryDetailPage {
   public recipient_name = "John Doe";
   public recipient_address = "#13 Warrens Great House";
 
+  public refernce_id;
+  public transaction_date;
+  public transaction_status;
+  public transaction_amount;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.transactionNumber = navParams.get('item');
+    // come back to this this.transactionNumber = navParams.get('item');
+    this.refernce_id = navParams.get('ref_id');
+    this.transaction_date = navParams.get('date');
+    this.transaction_status = navParams.get('status');
+    this.transaction_amount = navParams.get('amount');
+
+
   }
 
 }

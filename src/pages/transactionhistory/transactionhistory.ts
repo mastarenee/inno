@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, ViewController } from 'ionic-angular';
+import { NavController, ModalController, ViewController, NavParams } from 'ionic-angular';
 import { InfoPage } from '../info/info';
 import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
 import { FilterPage } from '../filter/filter';
@@ -9,6 +9,13 @@ import { FilterPage } from '../filter/filter';
   templateUrl: 'transactionhistory.html'
 })
 export class TransactionHistoryPage {
+
+  public refernce_id;
+  public transaction_date;
+  public transaction_status;
+  public transaction_amount;
+
+
   //modalCtrl: any;
   //viewCtrl: any;
   
@@ -21,7 +28,7 @@ export class TransactionHistoryPage {
       icon: 'left-down-arrow-curve.png',
       type: '3833',
       transaction_id: '1290723678623',
-      status: 'pending',
+      status: 'Pending',
     },
     {
       name: 'Massy Supermarkets',
@@ -31,7 +38,7 @@ export class TransactionHistoryPage {
       icon: 'arrow-curve-pointing-to-right.png',
       type: '7402',
       transaction_id: '1290723678623',
-      status: 'completed',
+      status: 'Completed',
     },
     {
       name: 'Wire Transfer',
@@ -41,7 +48,7 @@ export class TransactionHistoryPage {
       icon: 'icon_transfer.png',
       type: '7402',
       transaction_id: '1290723678623',
-      status: 'completed',
+      status: 'Completed',
     },
     {
       name: 'Rubis Wildey Gas Station',
@@ -51,7 +58,7 @@ export class TransactionHistoryPage {
       icon: 'arrow-curve-pointing-to-right.png',
       type: '8763',
       transaction_id: '1290723678623',
-      status: 'completed',
+      status: 'Completed',
     },
     {
       name: "Amazon AWS Credit Card Purchase",
@@ -61,19 +68,25 @@ export class TransactionHistoryPage {
       icon: 'credit-card.png',
       type: '8763',
       transaction_id: '1290723678623',
-      status: 'rejected',
+      status: 'Rejected',
     }
   ]
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams) {
+
 
   }
 
-  openTransaction(event, accountNumber) {
+  openTransaction(event, accountNumber, ref_id, date, status, amount) {
     
+
     // Open the Transaction Detail Page
     this.navCtrl.push(TransactionHistoryDetailPage, {
-      item: accountNumber 
+      item: accountNumber,
+      ref_id:ref_id,
+      date:date, 
+      status:status,
+      amount:amount
     });
   }
 
