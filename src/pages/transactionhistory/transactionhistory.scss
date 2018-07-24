@@ -1,108 +1,117 @@
 page-transactionhistory {
 
+    .tag{
+        padding:6px 10px;
+        font-size:10px;
+        width:100%;
+        text-align: center;
+        float:left;
+        text-transform: capitalize;
+    }
 
-.tag{
-    padding:6px 10px;
-    font-size:10px;
-    width:100%;
-    text-align: center;
-    float:left;
-    text-transform: capitalize;
-}
+    .tag.tag_completed{
+        color: rgb(0, 158, 21);
+    }
 
-.tag.tag_completed{
-    color: rgb(0, 158, 21);
-}
+    .tag.tag_pending{
+        color: rgb(0, 140, 255);
+    }
 
-.tag.tag_pending{
-    color: rgb(0, 140, 255);
-}
+    .tag.tag_rejected{
+        color: red;
+    }
 
-.tag.tag_rejected{
-    color: red;
-}
+    .transaction_number{
+        font-weight: bold;
+        font-size: 14px;
+    }
 
-.transaction_number{
-    font-weight: bold;
-    font-size: 14px;
-}
+    .transaction_date{
+        font-size: 14px;
+        color:rgb(94, 94, 94);
+    }
 
-.transaction_date{
-    font-size: 14px;
-    color:rgb(94, 94, 94);
-}
+    .transaction_currency{
+        font-size:14px;
+        padding: 3px;
+        font-weight: bold;
+        color:grey;
+    }
 
-.transaction_currency{
-    font-size:14px;
-    padding: 3px;
-    font-weight: bold;
-    color:grey;
-}
+    .transaction_amount{
+        font-size: 16px;
+        padding:6px;
+        text-align: right;
+        padding: 6px 3px;
+    }
 
-.transaction_amount{
-    font-size: 16px;
-    padding:6px;
-    text-align: right;
-    padding: 6px 3px;
-}
+    .transaction_wrap{
+        border-bottom:1px solid #eee;
+        margin-bottom:5px;
+        background: #fff;
+        float: left;
+        width: 100%;
+    }
 
-.transaction_wrap{
-    border-bottom:1px solid #eee;
-    margin-bottom:5px;
-    background: #fff;
-    float: left;
-    width: 100%;
-}
+    .transaction_completed{
+        border-left:2px solid rgb(0, 158, 21);
+    }
 
-.transaction_completed{
-    border-left:2px solid rgb(0, 158, 21);
-}
+    .transaction_pending{
+        border-left:2px solid rgb(0, 140, 255);
+    }
 
-.transaction_pending{
-    border-left:2px solid rgb(0, 140, 255);
-}
+    .transaction_rejected{
+        border-left:2px solid red;
+    }
 
-.transaction_rejected{
-    border-left:2px solid red;
-}
+    .transaction_wrap .container{
+        padding:10px 0px;
+    }
 
-.transaction_wrap .container{
-    padding:10px 0px;
-}
+    .filter_action{
+        text-align: right;
+        padding:10px;
+    }
 
-.filter_action{
-    text-align: right;
-    padding:10px;
-}
+    .backgroundBanner{
+        font-size: 26px;
+        background-color:#ffffff;
+        padding: 10px 0px;
+        margin: 0px !important;
+        /* color: #fff; */
+    }
 
-.backgroundBanner{
-    font-size: 26px;
-    background-color:#ffffff;
-    padding: 10px 0px;
-    margin: 0px !important;
-    /* color: #fff; */
-}
+    .transaction_amount_wrap_label{
+        font-size:11px;
+    }
 
-.transaction_amount_wrap_label{
-    font-size:11px;
-}
-
-.transaction_amount_wrap_amount{
-    font-weight: bold;
-}
+    .transaction_amount_wrap_amount{
+        font-weight: bold;
+    }
 
 
-[overlay-portal] {
-    display: inline;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: #00000045;
-    top: 44px;
-}
+    [overlay-portal] {
+        display: inline;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: #00000045;
+        top: 44px;
+    }
 
-.filter_word{
-    font-size:20px;
+    .account_status_wrap:after {
+        display:none;
+    }
+
+    .overlay_filter{
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 10;
+    }
 
 }
 }

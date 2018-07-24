@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, ViewController, NavParams } from 'ionic-angular';
+import { NavController, ModalController, ViewController, LoadingController, NavParams } from 'ionic-angular';
 import { InfoPage } from '../info/info';
 import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
 import { FilterPage } from '../filter/filter';
@@ -72,9 +72,12 @@ export class TransactionHistoryPage {
     }
   ]
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams) {
+  public start_date;
+  public end_date;
+  public type;
+  public showOverlay = false;
 
-
+  constructor(public navParams: NavParams, public loaderCtrl: LoadingController, public navCtrl: NavController, public modalCtrl: ModalController) {
   }
 
   openTransaction(event, accountNumber, ref_id, date, status, amount) {
@@ -88,11 +91,54 @@ export class TransactionHistoryPage {
       status:status,
       amount:amount
     });
+
+  }
+
+  delete(chip: Element, option) {
+    chip.remove();
+    if( option == 'type'){
+      this.type = '';
+    }
   }
 
   openModal() {
     let profileModal = this.modalCtrl.create(FilterPage);
     profileModal.present();
+    this.showOverlay = true;
+
+    profileModal.onDidDismiss(data => {
+      
+      this.showOverlay = false;
+
+      const loader = this.loaderCtrl.create({
+        spinner: 'ios',
+        content: "Apply Filters ...",
+        duration: 1000
+      });
+
+      loader.present();
+      
+      this.type = data.type;
+      this.start_date = data.start_date;
+      this.end_date = data.end_date;
+
+      console.log(data);
+    });
+    
+  }
+
+  checkFilter(status){
+
+    if(this.type){
+      if(this.type == status){
+        return true;
+      }else{
+        return false;
+      }
+    }else{
+      return true;
+    }
+    
   }
   
 }
