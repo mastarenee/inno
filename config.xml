@@ -86,7 +86,8 @@
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-sqlite-storage" spec="^2.3.3" />
     <plugin name="cordova-plugin-apiai" spec="^1.7.4" />
-    <plugin name="cordova-plugin-tts" spec="^0.2.3" />
     <plugin name="com.telerik.plugins.nativepagetransitions" spec="^0.6.5" />
     <engine name="android" spec="7.0.0" />
+    <plugin name="cordova-plugin-shake" spec="^0.6.0" />
+    <plugin name="cordova-plugin-tts" spec="^0.2.3" />
 </widget>
