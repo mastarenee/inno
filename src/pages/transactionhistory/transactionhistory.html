@@ -46,7 +46,6 @@
             </button>
           </ion-chip>
 
-<<<<<<< HEAD
           <ion-chip *ngIf = "startDate" #startDate>
             <ion-label>Start Date {{start_date}}</ion-label>
             <button ion-button clear color="light" (click)="delete(startDate, 'sdate')">
@@ -64,7 +63,6 @@
         
         <ion-col right col-2>
             <div (click)="openModal()"> Filter </div>
-            <div (click)="openModal()"> <img src = "assets/imgs/filter2.png"> </div>      
         </ion-col>
 
       </ion-row>
@@ -72,15 +70,9 @@
 
     <div class = "col12 filter_action"> 
       
-=======
-    <div class = "col12 filter_action"> 
-      <div class = " filter_word" (click)="openModal()"> <b>Filter</b>  </div>
-      <!-- <div (click)="openModal()"> <img src = "assets/imgs/filter2.png"> </div> -->
-<br>
->>>>>>> 056ed4c72668970d3425d154b65d99e65f47c267
       <ion-list>
         <span *ngFor = "let transaction of transactionLists">
-        <ion-item  *ngIf = "checkFilter(transaction.status)" class = "transaction_wrap transaction_{{transaction.status}}" (click)="openTransaction($event,'232')"> 
+        <ion-item  *ngIf = "checkFilter(transaction.status)" class = "transaction_wrap transaction_{{transaction.status}}" (click)="openTransaction($event,'232',transaction.transaction_id,transaction.date,transaction.status,transaction.amount)"> 
 
           <ion-row >
 
