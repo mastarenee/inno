@@ -64,19 +64,19 @@ export class InfoAmountPage {
         if(res == true){
           
           this.transactionServices.get('transfer_amount').then(res => {
-            this.userRecipientBasicInformation.controls["transfer_amount"].setValue(res);
+            this.userTransactionInformation.controls["transfer_amount"].setValue(res);
           });
 
           this.transactionServices.get('bic').then(res => {
-            this.userRecipientBasicInformation.controls["bic"].setValue(res);
+            this.userTransactionInformation.controls["bic"].setValue(res);
           });
 
           this.transactionServices.get('ban').then(res => {
-            this.userRecipientBasicInformation.controls["ban"].setValue(res);
+            this.userTransactionInformation.controls["ban"].setValue(res);
           });
 
           this.transactionServices.get('iban').then(res => {
-            this.userRecipientBasicInformation.controls["iban"].setValue(res);
+            this.userTransactionInformation.controls["iban"].setValue(res);
           });
         }
 

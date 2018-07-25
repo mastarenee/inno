@@ -3,7 +3,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { ReviewPage } from '../review/review';
 import { AccountsPage } from '../accounts/accounts';
-import { InfoAmountPage } from '../InfoAmount/InfoAmount';
+import { InfoAmountPage } from '../infoAmount/infoAmount';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { TransactionServices } from '../../services/transaction.services'; 
@@ -60,21 +60,21 @@ export class InfoAddressPage {
         if(res == true){
           
           this.transactionServices.get('streetAddress').then(res => {
-            this.userRecipientBasicInformation.controls["recipient_streetAddress"].setValue(res);
+            this.userRecipientAddressInformation.controls["recipient_streetAddress"].setValue(res);
           });
 
           this.transactionServices.get('country').then(res => {
-            this.userRecipientBasicInformation.controls["recipient_country"].setValue(res);
+            this.userRecipientAddressInformation.controls["recipient_country"].setValue(res);
           });
 
           this.transactionServices.get('postal_code').then(res => {
-            this.userRecipientBasicInformation.controls["recipient_postal_code"].setValue(res);
+            this.userRecipientAddressInformation.controls["recipient_postal_code"].setValue(res);
           });
 
           this.transactionServices.get('city').then(res => {
-            this.userRecipientBasicInformation.controls["recipient_city"].setValue(res);
+            this.userRecipientAddressInformation.controls["recipient_city"].setValue(res);
           });
-          
+
         }
     });
 

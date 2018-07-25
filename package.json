@@ -82,10 +82,11 @@
       "cordova-plugin-shake": {},
       "cordova-plugin-tts": {},
       "call-number": {},
-      "cordova-plugin-printer": {},
-      "com.telerik.plugins.nativepagetransitions": {}
+      "cordova-plugin-printer": {}
     },
-    "platforms": []
+    "platforms": [
+      "android"
+    ]
   },
   "config": {
     "ionic_copy": "./scripts/copy-mobiscroll-css.js"

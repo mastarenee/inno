@@ -3,7 +3,7 @@ import { IonicPage,NavController, NavParams, AlertController } from 'ionic-angul
 import { LoginPage } from '../login/login';
 import { ReviewPage } from '../review/review';
 import { AccountsPage } from '../accounts/accounts';
-import { InfoAddressPage } from '../InfoAddress/InfoAddress';
+import { InfoAddressPage } from '../infoAddress/infoAddress';
 import { PhoneValidator } from '../../services/phone.validator';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Storage } from '@ionic/storage';
