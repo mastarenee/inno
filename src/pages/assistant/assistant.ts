@@ -1,6 +1,10 @@
 import { Component, NgZone, ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { TextToSpeech } from '@ionic-native/text-to-speech';
+import { InfoPage } from '../info/info';
+import { TransactionHistoryPage } from '../transactionhistory/transactionhistory';
+import { ProfilePage } from '../profile/profile';
+import { ContactPage } from '../contact/contact';
 
 
 //used to access api.ai
@@ -35,6 +39,7 @@ export class AssistantPage {
 
    //clear input field
    this.text="";
+   let pageName;
 
     window["ApiAIPlugin"].requestText({
       query:message
@@ -46,13 +51,54 @@ export class AssistantPage {
           sender:"api"
         });
         this.content.scrollToBottom(200);
+        pageName = res.result.fulfillment.speech;
+
+        this.pushPage(pageName);
+        
       })
     },(err)=>{
       alert(JSON.stringify(err))
     })
+   
+   
+      
+
+  }
+
+  pushPage(pageName){
+
+    switch(pageName){
+      case "InfoPage":{
+      this.navCtrl.push(InfoPage);
+      break;
+      }
+
+      case "TransactionHistoryPage":{
+      this.navCtrl.push(TransactionHistoryPage);
+      break;
+      }
+
+      case "ProfilePage":{
+      this.navCtrl.push(ProfilePage);
+      break;
+      }
+
+
+      case "ContactPage":{
+      this.navCtrl.push(ContactPage);
+      break;
+      }
+
+      default:
+      alert("Default Response");
+      break;
+      
+    }
   }
 
   sendVoiceMessage(){
+    let pageName;
+
     window["ApiAIPlugin"].requestVoice({},
     (res)=>{
       this.ngZone.run(()=>{
@@ -65,18 +111,27 @@ export class AssistantPage {
           text:res.result.fulfillment.speech,
           sender:"api"
         });
+
+        pageName = res.result.fulfillment.speech;
+        
+
         this.content.scrollToBottom(200);
       this.tts.speak({
         text: res.result.fulfillment.speech,
         locale: "en_US",
         rate:1
       })
+
+      this.pushPage(pageName);
     })
+
       },
       (err)=>{
         alert(err);
       }
       )
+
+     
     }
 
 }

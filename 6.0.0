@@ -1,0 +1,6 @@
+InnoWire@0.0.1 C:\SummerICEApp
++-- UNMET PEER DEPENDENCY @angular/common@6.0.9 invalid
++-- UNMET PEER DEPENDENCY @angular/core@5.2.11
++-- UNMET PEER DEPENDENCY @angular/forms@5.2.11
+`-- UNMET PEER DEPENDENCY rxjs@5.5.11
+
