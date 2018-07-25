@@ -92,7 +92,7 @@ export class InfoPage {
       recipient_first_name: new FormControl(''),
       recipient_last_name: new FormControl(''),
       recipient_tel: new FormControl(''),
-      recipient_nationality: new FormControl('CAN'),
+      recipient_nationality: new FormControl('GBR'),
       recipient_dob: new FormControl(''),
     });
 
@@ -101,7 +101,7 @@ export class InfoPage {
       recipient_first_name: ['', Validators.required],
       recipient_last_name: ['', Validators.required],
       recipient_tel: ['', Validators.required],
-      recipient_nationality: ['CAN', Validators.required],
+      recipient_nationality: ['GBR', Validators.required],
       recipient_dob: ['', Validators.required],
     });
   }
@@ -146,7 +146,8 @@ export class InfoPage {
     if( this.userRecipientBasicInformation.controls["recipient_first_name"].valid && 
     this.userRecipientBasicInformation.controls["recipient_last_name"].valid &&
     this.userRecipientBasicInformation.controls["recipient_tel"].valid &&
-    this.userRecipientBasicInformation.controls["recipient_dob"].valid){
+    this.userRecipientBasicInformation.controls["recipient_dob"].valid &&
+    this.account_selected != ""){
           
       // Validate Information
       let firstname = this.userRecipientBasicInformation.controls["recipient_first_name"].value;
@@ -161,6 +162,7 @@ export class InfoPage {
       this.transactionServices.set('nationality', nationality);
       this.transactionServices.set('account_name', this.account);
       this.transactionServices.set('dob', dob);
+      this.transactionServices.set('transaction_in_progress', true);
 
       //alert(this.account_id_selected);
 
@@ -207,6 +209,41 @@ export class InfoPage {
   }
 
   ionViewDidLoad() {
+
+    this.transactionServices.get("transaction_in_progress")
+    .then(
+      res => { // Success
+        if(res == true){
+          
+          this.transactionServices.get('firstname').then(res => {
+            this.userRecipientBasicInformation.controls["recipient_first_name"].setValue(res);
+          });
+
+          this.transactionServices.get('lastname').then(res => {
+            this.userRecipientBasicInformation.controls["recipient_last_name"].setValue(res);
+          });
+
+          this.transactionServices.get('tel').then(res => {
+            this.userRecipientBasicInformation.controls["recipient_tel"].setValue(res);
+          });
+
+          this.transactionServices.get('nationality').then(res => {
+            this.userRecipientBasicInformation.controls["recipient_nationality"].setValue(res);
+          });
+
+          this.transactionServices.get('account_name').then(res => {
+            this.account_selected = res;
+          });
+
+          this.transactionServices.get('dob').then(res => {
+            this.userRecipientBasicInformation.controls["recipient_dob"].setValue(res);
+          });
+         
+        }
+
+    });
+    
+
     this.navBar.backButtonClick = (e:UIEvent)=>{
      // todo something
      this.cancelPage();

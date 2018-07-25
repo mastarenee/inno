@@ -5,6 +5,8 @@ import { ThankyouPage } from '../thankyou/thankyou';
 import { AccountsPage } from '../accounts/accounts';
 import { Storage } from '@ionic/storage';
 import { TransactionServices } from '../../services/transaction.services';
+import { InfoAddressPage } from '../infoAddress/infoAddress';
+import { InfoAmountPage } from '../infoAmount/infoAmount';
 
 import { ViewChild } from '@angular/core';
 import { Navbar } from 'ionic-angular';
@@ -70,19 +72,15 @@ export class ReviewPage {
   }
 
   editAmount(){
-
+    this.navCtrl.push(InfoAmountPage);
   }
 
   editAccount(){
-
-  }
-
-  editContact(){
-
+    this.navCtrl.push(InfoPage);
   }
 
   editAddress(){
-
+    this.navCtrl.push(InfoAddressPage);
   }
 
   tryAgain(){

@@ -8,6 +8,7 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { Storage } from '@ionic/storage';
 import { TransactionServices } from '../../services/transaction.services'; 
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
+import { InfoPage } from '../info/info';
 
 import { ViewChild } from '@angular/core';
 import { Navbar } from 'ionic-angular';
@@ -52,6 +53,30 @@ export class InfoAddressPage {
   }
 
   ionViewDidLoad() {
+
+    this.transactionServices.get("transaction_in_progress")
+    .then(
+      res => { // Success
+        if(res == true){
+          
+          this.transactionServices.get('streetAddress').then(res => {
+            this.userRecipientBasicInformation.controls["recipient_streetAddress"].setValue(res);
+          });
+
+          this.transactionServices.get('country').then(res => {
+            this.userRecipientBasicInformation.controls["recipient_country"].setValue(res);
+          });
+
+          this.transactionServices.get('postal_code').then(res => {
+            this.userRecipientBasicInformation.controls["recipient_postal_code"].setValue(res);
+          });
+
+          this.transactionServices.get('city').then(res => {
+            this.userRecipientBasicInformation.controls["recipient_city"].setValue(res);
+          });
+          
+        }
+    });
 
     this.recipient_name = this.navParams.get('firstname') + ' ' + this.navParams.get('lastname');
 
@@ -147,6 +172,10 @@ export class InfoAddressPage {
     });
     alert.present();
     
+  }
+
+  editAccount(){
+    this.navCtrl.push(InfoPage);
   }
 
 

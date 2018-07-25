@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, AlertController
 import { AccountsPage } from '../accounts/accounts';
 import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
 import { TransactionServices } from '../../services/transaction.services';
+import { InfoPage } from '../info/info';
 
 import { SenderInfoService } from '../../services/senderInfo';
 
@@ -149,6 +150,7 @@ export class ThankyouPage {
             });
 
             this.transactionServices.set("transaction_list",res);
+            this.transactionServices.set("transaction_in_progress",false);
             //loader.dismiss();
           }
         );
@@ -183,6 +185,9 @@ export class ThankyouPage {
     alert.present();
   }
 
+  makeAnotherTransaction(){
+    this.navCtrl.push(InfoPage);
+  }
 
   goToHome(){
     this.navCtrl.push(AccountsPage);

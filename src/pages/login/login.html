@@ -5,13 +5,6 @@
 
   <form (ngSubmit)="loginForm()" id = "loginForm" [formGroup]="userLoginForm">
   
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.username" >
-        <div class="error-message" *ngIf="userInformation.get('account').hasError(validation.type) && (userInformation.get('account').dirty || userInformation.get('account').touched)">
-        {{ validation.message }}
-        </div>
-      </ng-container>
-    </div>
       
     <ion-item class = "login_item">
       <ion-label color="primary" stacked>User ID:</ion-label>
@@ -37,7 +30,7 @@
     </ion-row>
   </form>
 
-  <div id = "logo_watermark"> InnoWire </div>
+  <div id = "logo_watermark">  </div>
 
   <span id = "selog_login" class = "selog">{{selog_data}}</span>
 
