@@ -190,7 +190,7 @@ export class ReviewPage {
     let status_timestamp = this.navParams.get('status_timestamp');
     let transaction_id = this.navParams.get('transaction_id');
     let accountID = this.navParams.get('accountID');
-    
+
     this.navCtrl.push(ThankyouPage, {
       firstname:firstname,
       lastname: lastname,
@@ -213,6 +213,7 @@ export class ReviewPage {
       status:status,
       status_timestamp:status_timestamp,
       transaction_id:transaction_id,
+      charged_amt: this.charged_amt,
     }); 
     
   }

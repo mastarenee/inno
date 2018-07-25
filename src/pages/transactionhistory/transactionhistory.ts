@@ -53,7 +53,6 @@ export class TransactionHistoryPage {
 
   openTransaction(event, accountNumber, ref_id, date, status, amount) {
     
-
     // Open the Transaction Detail Page
     this.navCtrl.push(TransactionHistoryDetailPage, {
       item: accountNumber,
@@ -62,7 +61,7 @@ export class TransactionHistoryPage {
       status:status,
       amount:amount
     });
-
+    
   }
 
   delete(chip: Element, option) {

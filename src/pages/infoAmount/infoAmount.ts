@@ -25,6 +25,8 @@ export class InfoAmountPage {
   public phoneNumber;
   public recipient_name;
   public transaction_amount_error: string = "";
+  public amountLeft;
+  public over_amount_error;
 
   public recipient_errors = [{
     transfer_error: 'Transfer Amount Required. <br/> Max Allowed 5000 USD ',
@@ -56,6 +58,18 @@ export class InfoAmountPage {
 
   ionViewDidLoad() {
 
+    this.transactionServices.get("user_accounts_lists")
+    .then(
+      res => { // Success
+
+        console.log(res);
+
+        let accountID = this.navParams.get('accountID');
+        this.amountLeft = res[accountID]["amount"];
+
+      }
+    );
+
     this.recipient_name = this.navParams.get('firstname') + ' ' + this.navParams.get('lastname');
 
     this.account = this.navParams.get('account');
@@ -70,6 +84,11 @@ export class InfoAmountPage {
   updateTranfer(event){
     this.userTransactionInformation.controls["transfer"].setValue( this.userTransactionInformation.controls["transfer_amount"].value );
     console.log(event);
+    if( this.amountLeft < this.userTransactionInformation.controls["transfer_amount"].value ){
+      this.over_amount_error = "Insufficient Balance Available";
+    }else{
+      this.over_amount_error = "";
+    }
   }
 
   checkTransferFundsAvailable(event){
@@ -78,7 +97,12 @@ export class InfoAmountPage {
   }
 
   nextPage(event, accountsType) {
-    
+
+    //alert( this.amountLeft);
+    //alert( this.userTransactionInformation.controls["transfer"].value );
+
+    if( this.amountLeft > this.amountLeftuserTransactionInformation.controls["transfer"].value){
+      
     if( this.userTransactionInformation.controls["transfer"].valid && 
     this.userTransactionInformation.controls["bic"].valid ){
 
@@ -106,7 +130,7 @@ export class InfoAmountPage {
       let postalCode = this.navParams.get('postalCode');
       let city = this.navParams.get('city');
       let accountID = this.navParams.get('accountID');
-      
+
       this.nativePageTransitions.fade(null);
       this.navCtrl.push(ReviewPage, {
         firstname:firstname,
@@ -137,7 +161,12 @@ export class InfoAmountPage {
         this.userTransactionInformation.controls.bic.markAsTouched();
       }
 
+      if(this.amountLeft > this.userTransactionInformation.controls["transfer"].value){
+        this.over_amount_error = "Insufficient Balance Available. Balance: $" + this.amountLeft;
+      }
+
     }
+  }
 
   }
 

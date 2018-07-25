@@ -51,7 +51,10 @@ export class ThankyouPage {
   public status_timestamp;
   public accountslists = [];
 
-  constructor(public alert: AlertController, public loaderCtrl: LoadingController, public transactionServices: TransactionServices, public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public alert: AlertController, public loaderCtrl: LoadingController, public transactionServices: TransactionServices, public navCtrl: NavController, public navParams: NavParams) {
+
+    
+  }
 
   ionViewDidLoad() {
 
@@ -60,20 +63,25 @@ export class ThankyouPage {
       res => { // Success
 
         console.log(res);
-        this.accountID = this.navParams.get('accountID');
-        this.transaction_amount = this.navParams.get('amount');
-        alert(this.accountID);
-        alert(this.transaction_amount);
+
+        let accountID = this.navParams.get('accountID');
+        this.transaction_amount = this.navParams.get('charged_amt');
+        let amount_total_cost = this.navParams.get('charged_amt');
+
+        console.log(accountID);
+        console.log(this.transaction_amount);
         
-        let amountLeft = res[this.accountID]["amount"] - parseInt(this.transaction_amount);
+        let amountLeft = res[this.accountID]["amount"] - amount_total_cost;
         res[this.accountID]["amount"] = amountLeft;
-        console.log(this.accountslists);
+        console.log(res);
 
         this.transactionServices.set("user_accounts_lists",res);
-        alert("Update Complete for " + this.accountID);
+        console.log("Update Complete for " + this.accountID);
 
       }
     );
+    
+
     //this.sender_name = this.senderService.fetchUserData(76876876);
     
     this.recipient_name = this.navParams.get('firstname');
@@ -92,6 +100,7 @@ export class ThankyouPage {
     this.iban = this.navParams.get('iban');
     this.account_transfer_from = this.navParams.get('account');
     this.bank_country = this.navParams.get("bank_country");
+    this.accountID = this.navParams.get('accountID');
 
     this.transaction_ref = this.navParams.get('tref');
     this.proposal_id = this.navParams.get('pid');

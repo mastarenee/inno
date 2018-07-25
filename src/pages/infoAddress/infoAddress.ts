@@ -90,7 +90,7 @@ export class InfoAddressPage {
       let nationality = this.navParams.get('nationality');
       let dob = this.navParams.get('dob');
       let accountID = this.navParams.get('accountID');
-          
+    
       this.nativePageTransitions.fade(null);
       this.navCtrl.push(InfoAmountPage, {
         firstname:firstname,

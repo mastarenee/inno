@@ -139,22 +139,22 @@ export class MyApp {
     let accountslists = [
       {
           alias: 'House Savings',
-          amount: '98,000,000',
+          amount: '98000000',
           accountNumber: '...7402',
       },
       {
           alias: 'Online Chequing',
-          amount: '8,000',
+          amount: '8000',
           accountNumber:'...3833',
       },
       {
           alias: 'Business Savings',
-          amount: '12,000',
+          amount: '12000',
           accountNumber:'...8763',
       },
       {
         alias: 'College Savings',
-        amount: '1,000',
+        amount: '1000',
         accountNumber:'...4509',
       },
       {

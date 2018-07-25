@@ -136,6 +136,11 @@ export class InfoPage {
 
   }
 
+  radioChecked(index){
+    //alert(index);
+    this.account_id_selected = index;
+  }
+
   nextPage(event, accountsType) {
 
     if( this.userRecipientBasicInformation.controls["recipient_first_name"].valid && 
@@ -157,6 +162,8 @@ export class InfoPage {
       this.transactionServices.set('account_name', this.account);
       this.transactionServices.set('dob', dob);
 
+      //alert(this.account_id_selected);
+
       this.nativePageTransitions.fade(null);
       this.navCtrl.push(InfoAddressPage, {
         firstname:firstname,
@@ -165,7 +172,8 @@ export class InfoPage {
         nationality:nationality,
         account:this.account_selected,
         accountID: this.account_id_selected,
-        dob: dob
+        dob: dob,
+        accountList: this.accountslists,
       }); 
 
     }else{
