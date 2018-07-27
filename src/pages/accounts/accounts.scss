@@ -46,8 +46,12 @@ page-accounts {
     .account_status_wrap{
 
         color:#fff;  
-        text-align: left;    
-        background:none;
+        text-align: left;   
+
+        background: #3c1053;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #ad5389, #3c1053);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #ad5389, #3c1053); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        transition: all 0.9s ease-out;
 
         small{
             font-weight: bold;

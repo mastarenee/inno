@@ -43,7 +43,7 @@
       <ion-col col col-12>
         <ion-item>
           <ion-label stacked>Street Address</ion-label>
-          <ion-textarea formControlName = "recipient_streetAddress" placeholder = "1646  Galts Ave"> </ion-textarea>
+          <ion-textarea formControlName = "recipient_streetAddress" placeholder = "1646 Galts Ave"> </ion-textarea>
           
         </ion-item>
         <ion-item class="error-message" *ngIf="!userRecipientAddressInformation.controls.recipient_streetAddress.valid && userRecipientAddressInformation.controls.recipient_streetAddress.touched"> {{recipient_errors[0].streetAddress_error}} </ion-item>

@@ -83,20 +83,20 @@ export class InfoPage {
 
     // Setup form fields
     this.userRecipientBasicInformation = new FormGroup({
-      recipient_first_name: new FormControl(''),
-      recipient_last_name: new FormControl(''),
-      recipient_tel: new FormControl(''),
+      recipient_first_name: new FormControl('Jason'),
+      recipient_last_name: new FormControl('Payne'),
+      recipient_tel: new FormControl('403-348-8533'),
       recipient_nationality: new FormControl('GBR'),
-      recipient_dob: new FormControl(''),
+      recipient_dob: new FormControl('2001/12/31'),
     });
 
     // Setup Validation for the fields
     this.userRecipientBasicInformation = this.formBuilder.group({
-      recipient_first_name: ['', Validators.required],
-      recipient_last_name: ['', Validators.required],
-      recipient_tel: ['', Validators.required],
+      recipient_first_name: ['Jason', Validators.required],
+      recipient_last_name: ['Payne', Validators.required],
+      recipient_tel: ['403-348-8533', Validators.required],
       recipient_nationality: ['GBR', Validators.required],
-      recipient_dob: ['', Validators.required],
+      recipient_dob: ['1998-06-25', Validators.required],
     });
   }
 

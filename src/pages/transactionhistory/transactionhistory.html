@@ -73,7 +73,6 @@
       <ion-list>
         <span *ngFor = "let transaction of transactionLists">
         <ion-item  *ngIf = "checkFilter(transaction.status)" class = "transaction_wrap transaction_{{transaction.status | lowercase}}" (click)="openTransactionT($event, transaction.account, transaction.firstname, transaction.lastname, transaction.streetaddress, transaction.city, transaction.country, transaction.date, transaction.amount, transaction.bank_country, transaction.iban, transaction.ban, transaction.bic, transaction.status, transaction.process_id, transaction.currency, transaction.transaction_ref)"> 
-
           <ion-row>
 
             <ion-col col col-5>

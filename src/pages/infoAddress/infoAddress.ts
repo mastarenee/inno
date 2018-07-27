@@ -36,17 +36,17 @@ export class InfoAddressPage {
   constructor( public alert:AlertController, public transactionServices: TransactionServices, public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
     this.userRecipientAddressInformation = new FormGroup({
-      recipient_streetAddress: new FormControl(''),
+      recipient_streetAddress: new FormControl('1646 Galts Ave'),
       recipient_country: new FormControl('GBR'),
-      recipient_postal_code: new FormControl(''),
-      recipient_city: new FormControl(''),
+      recipient_postal_code: new FormControl('T4N 2A6'),
+      recipient_city: new FormControl('Red Deer'),
     });
 
     this.userRecipientAddressInformation = this.formBuilder.group({
-      recipient_streetAddress: ['', Validators.required],
+      recipient_streetAddress: ['1646 Galts Ave', Validators.required],
       recipient_country: ['GBR', Validators.required],
-      recipient_postal_code: ['', Validators.required],
-      recipient_city: ['', Validators.required],
+      recipient_postal_code: ['T4N 2A6', Validators.required],
+      recipient_city: ['Red Deer', Validators.required],
     });
 
   }
