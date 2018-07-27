@@ -53,7 +53,7 @@ export class InfoAddressPage {
 
   ionViewDidLoad() {
 
-    this.transactionServices.get("transaction_in_progress")
+    /*this.transactionServices.get("transaction_in_progress")
     .then(
       res => { // Success
         if(res == true){
@@ -62,9 +62,9 @@ export class InfoAddressPage {
             this.userRecipientAddressInformation.controls["recipient_streetAddress"].setValue(res);
           });
 
-          /*this.transactionServices.get('country').then(res => {
+          this.transactionServices.get('country').then(res => {
             this.userRecipientAddressInformation.controls["recipient_country"].setValue(res);
-          });*/
+          });
 
           this.transactionServices.get('postal_code').then(res => {
             this.userRecipientAddressInformation.controls["recipient_postal_code"].setValue(res);
@@ -75,7 +75,7 @@ export class InfoAddressPage {
           });
 
         }
-    });
+    });*/
 
     this.recipient_name = this.navParams.get('firstname') + ' ' + this.navParams.get('lastname');
 
