@@ -4,6 +4,8 @@ import { InfoPage } from '../info/info';
 import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
 import { FilterPage } from '../filter/filter';
 import { TransactionServices } from '../../services/transaction.services';
+import { AccountService } from '../../services/accountServices';
+
 @Component({
   selector: 'page-transactionhistory',
   templateUrl: 'transactionhistory.html'
@@ -14,7 +16,6 @@ export class TransactionHistoryPage {
   public transaction_date;
   public transaction_status;
   public transaction_amount;
-
 
   //modalCtrl: any;
   //viewCtrl: any;
@@ -28,7 +29,7 @@ export class TransactionHistoryPage {
   public showOverlay = false;
   public totalAmount = 5000;
 
-  constructor(public navParams: NavParams, public transactionServices:TransactionServices, public loaderCtrl: LoadingController, public navCtrl: NavController, public modalCtrl: ModalController) {
+  constructor(public accountService:AccountService, public navParams: NavParams, public transactionServices:TransactionServices, public loaderCtrl: LoadingController, public navCtrl: NavController, public modalCtrl: ModalController) {
     
     this.transactionServices.get("transaction_list").then(function(result){
       console.log("result for transaction list");
@@ -36,13 +37,7 @@ export class TransactionHistoryPage {
       //this.transactionLists = result; 
     });
 
-    this.transactionServices.get("transaction_list")
-    .then(
-      res => { // Success
-        console.log(res);
-        this.transactionLists = res; 
-      }
-    );
+    this.transactionLists = this.accountService.getAccounts();
   }
 
   getBalance(amount){

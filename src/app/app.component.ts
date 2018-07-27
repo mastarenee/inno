@@ -3,33 +3,29 @@ import { Nav, Platform, PopoverController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
+import { TransactionServices } from '../services/transaction.services';
 
 import { LoginPage } from '../pages/login/login';
 import { AccountsPage } from '../pages/accounts/accounts';
 import { InfoPage } from '../pages/info/info';
-import { ListPage } from '../pages/list/list';
 import { ProfilePage } from '../pages/profile/profile';
 import { TransactionHistoryPage } from '../pages/transactionhistory/transactionhistory';
-import { PopoverComponent } from '../components/popover/popover';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ContactPage } from '../pages/contact/contact';
-import { TransactionServices } from '../services/transaction.services';
 
-declare var window;
-
+//import { HomePage } from '../pages/home/home';
 @Component({
-  templateUrl: 'app.html' 
+  templateUrl: 'app.html'
 })
-
 export class MyApp {
-  [x: string]: any;
+
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;  
+  rootPage: any = LoginPage;    
 
   pages: Array<{title: string, component: any, icon: string}>;
 
-  constructor(public transactionServices:TransactionServices, public storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public popoverCtrl: PopoverController) {
+  constructor(public transactionServices:TransactionServices, public storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     
     this.initializeApp(); 
 
@@ -40,10 +36,9 @@ export class MyApp {
       { title: 'Transaction History', component: TransactionHistoryPage, icon: 'menu_history.png' },
       { title: 'Profile Page', component: ProfilePage, icon: 'menu_user.png'},
       { title: 'Contact Us', component: ContactPage, icon: 'contact.png'}
-
-
     ];
   
+
   }
 
   ngOnInit() {
@@ -174,13 +169,10 @@ export class MyApp {
           // Once the user is logged in for less than 10 mins
           // Show the Accounts Page
           //if( last_login_result <= 60*2*10 ){
-            this.rootPage = AccountsPage;
-          }else{
-            this.rootPage = LoginPage;
-          //}
-       // });
-
-      }
+          this.rootPage = AccountsPage;
+        }else{
+          this.rootPage = LoginPage;
+        }
     });
 
   }
@@ -189,19 +181,26 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      window["ApiAIPlugin"].init(
-        {
-            clientAccessToken: "3896185990244a4196c34ea8bd9f70ae", // insert your client access key here
-            lang: "en" // set lang tag from list of supported languages
-        }, 
-        function(result) { 
-          alert(result);
-         },
-        function(error) { alert(error);
-        }
-    );
+      
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      try{
+        window["ApiAIPlugin"].init(
+          {
+              clientAccessToken: "3896185990244a4196c34ea8bd9f70ae", // insert your client access key here
+              lang: "en" // set lang tag from list of supported languages
+          }, 
+          function(result) { 
+            //alert(result);
+          },
+          function(error) { //alert(error);
+          }
+      );
+    }catch (error) {
+      console.log(error);
+    }
+      
     });
   }
 
@@ -216,4 +215,6 @@ export class MyApp {
   goToLogin(){
     this.nav.push(LoginPage);
   }
+
 }
+

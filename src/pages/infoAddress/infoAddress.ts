@@ -7,7 +7,6 @@ import { InfoAmountPage } from '../infoAmount/infoAmount';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { TransactionServices } from '../../services/transaction.services'; 
-import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 import { InfoPage } from '../info/info';
 
 import { ViewChild } from '@angular/core';
@@ -34,11 +33,11 @@ export class InfoAddressPage {
     postal_code_error: 'Postal Code is required',
   }]
  
-  constructor( private nativePageTransitions: NativePageTransitions, public alert:AlertController, public transactionServices: TransactionServices, public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor( public alert:AlertController, public transactionServices: TransactionServices, public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
     this.userRecipientAddressInformation = new FormGroup({
       recipient_streetAddress: new FormControl(''),
-      recipient_country: new FormControl(''),
+      recipient_country: new FormControl('GBR'),
       recipient_postal_code: new FormControl(''),
       recipient_city: new FormControl(''),
     });
@@ -63,9 +62,9 @@ export class InfoAddressPage {
             this.userRecipientAddressInformation.controls["recipient_streetAddress"].setValue(res);
           });
 
-          this.transactionServices.get('country').then(res => {
+          /*this.transactionServices.get('country').then(res => {
             this.userRecipientAddressInformation.controls["recipient_country"].setValue(res);
-          });
+          });*/
 
           this.transactionServices.get('postal_code').then(res => {
             this.userRecipientAddressInformation.controls["recipient_postal_code"].setValue(res);
@@ -116,7 +115,7 @@ export class InfoAddressPage {
       let dob = this.navParams.get('dob');
       let accountID = this.navParams.get('accountID');
     
-      this.nativePageTransitions.fade(null);
+      //this.nativePageTransitions.fade(null);
       this.navCtrl.push(InfoAmountPage, {
         firstname:firstname,
         lastname: lastname,

@@ -4,7 +4,6 @@ import { LoginPage } from '../login/login';
 import { ReviewPage } from '../review/review';
 import { AccountsPage } from '../accounts/accounts';
 import { InfoAddressPage } from '../infoAddress/infoAddress';
-import { PhoneValidator } from '../../services/phone.validator';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { TransactionServices } from '../../services/transaction.services'; 
@@ -12,7 +11,8 @@ import { ActionSheetController } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Navbar } from 'ionic-angular';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
+import { AccountService } from '../../services/accountServices';
+//import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 
 @IonicPage({
   name: 'RecipientInformation'
@@ -69,15 +69,9 @@ export class InfoPage {
   }]
 
 
-  constructor( private nativePageTransitions: NativePageTransitions, public actionSheetCtrl: ActionSheetController, public alert: AlertController, public transactionServices: TransactionServices, public storage: Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor( public accountService: AccountService, public actionSheetCtrl: ActionSheetController, public alert: AlertController, public transactionServices: TransactionServices, public storage: Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
-    this.transactionServices.get("user_accounts_lists")
-    .then(
-      res => { // Success
-        console.log(res);
-        this.accountslists = res; 
-      }
-    );
+    this.accountslists = this.accountService.getAccounts();
 
     let account = this.navParams.get('account');
     let accountID = this.navParams.get('accountID');
@@ -166,7 +160,7 @@ export class InfoPage {
 
       //alert(this.account_id_selected);
 
-      this.nativePageTransitions.fade(null);
+      //this.nativePageTransitions.fade(null);
       this.navCtrl.push(InfoAddressPage, {
         firstname:firstname,
         lastname: lastname,

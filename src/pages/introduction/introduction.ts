@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, MenuController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 import { AccountsPage } from '../accounts/accounts';
-import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 
-@IonicPage()
 @Component({
-  selector: 'page-intro',
+  selector: 'page-introduction',
   templateUrl: 'introduction.html'
 })
-export class IntroductionPage {
- 
-  constructor(private nativePageTransitions: NativePageTransitions, public navCtrl: NavController, private menu: MenuController) {
- 
+export class IntroductionPage { 
+
+  constructor(public navCtrl: NavController, private menu: MenuController) {
+
   }
 
   ionViewDidEnter() {
@@ -32,8 +30,9 @@ export class IntroductionPage {
   }
  
   goToHome(){
-    this.nativePageTransitions.fade(null);
+    //this.nativePageTransitions.fade(null);
     this.navCtrl.setRoot(AccountsPage);
   }
- 
+
 }
+   

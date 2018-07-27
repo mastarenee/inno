@@ -1,31 +1,31 @@
 <ion-menu [content]="content" side="right" type = "push" persistent="true">
   
 
-  <ion-content id = "menuBar" padding>
-
-    <button id = "closeMenuIcon" menuClose>
-        CLOSE  <img src = "assets/imgs/delete-button.png">
-      </button>
-    
-        
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}} <span class = "menu_icon"> <img src = "assets/imgs/{{p.icon}}"> </span>
-      </button>
-    </ion-list>
-
-    <ion-list id = "notificationsWrap">
-      <h2> Notifications <ion-badge id = "menu_notification_badge" item-end>0</ion-badge> </h2>
-      <p> There are currently no notifications </p>
-    </ion-list>
-
-  </ion-content>
-
-  <button id = "logoff" menuClose ion-item (click)="goToLogin()">
-    LOG OFF
-  </button>
-
-</ion-menu>
-
-<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false" side="right"></ion-nav>
+    <ion-content id = "menuBar" padding>
+  
+      <button id = "closeMenuIcon" menuClose>
+          CLOSE  <img src = "assets/imgs/delete-button.png">
+        </button>
+      
+          
+      <ion-list>
+        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          {{p.title}} <span class = "menu_icon"> <img src = "assets/imgs/{{p.icon}}"> </span>
+        </button>
+      </ion-list>
+  
+      <ion-list id = "notificationsWrap">
+        <h2> Notifications <ion-badge id = "menu_notification_badge" item-end>0</ion-badge> </h2>
+        <p> There are currently no notifications </p>
+      </ion-list>
+  
+    </ion-content>
+  
+    <button id = "logoff" menuClose ion-item (click)="goToLogin()">
+      LOG OFF
+    </button>
+  
+  </ion-menu>
+  
+  <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false" side="right"></ion-nav>

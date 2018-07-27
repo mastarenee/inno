@@ -1,11 +1,10 @@
 import { Component, NgZone, ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
-import { TextToSpeech } from '@ionic-native/text-to-speech';
+//import { TextToSpeech } from '@ionic-native/text-to-speech';
 import { InfoPage } from '../info/info';
 import { TransactionHistoryPage } from '../transactionhistory/transactionhistory';
 import { ProfilePage } from '../profile/profile';
 import { ContactPage } from '../contact/contact';
-
 
 //used to access api.ai
 declare var window;
@@ -21,7 +20,7 @@ export class AssistantPage {
   text: string ="";
   @ViewChild(Content) content: Content;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public ngZone:NgZone, public tts:TextToSpeech) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public ngZone:NgZone) {
     this.messages.push({
       text: "Hey Harry, how can I help you?",
       sender:"api"
@@ -58,18 +57,14 @@ export class AssistantPage {
       })
     },(err)=>{
       alert(JSON.stringify(err))
-    })
-   
-   
-      
-
+    });
   }
 
   pushPage(pageName){
 
     switch(pageName){
       case "InfoPage":{
-      this.navCtrl.push(InfoPage);
+      this.navCtrl.push(InfoPage); 
       break;
       }
 
@@ -116,12 +111,7 @@ export class AssistantPage {
         
 
         this.content.scrollToBottom(200);
-      this.tts.speak({
-        text: res.result.fulfillment.speech,
-        locale: "en_US",
-        rate:1
-      })
-
+      
       this.pushPage(pageName);
     })
 

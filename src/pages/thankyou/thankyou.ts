@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { AccountsPage } from '../accounts/accounts';
-import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
+//import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
 import { TransactionServices } from '../../services/transaction.services';
 import { InfoPage } from '../info/info';
 
-import { SenderInfoService } from '../../services/senderInfo';
+//import { SenderInfoService } from '../../services/senderInfo';
 
 @IonicPage()
 @Component({
@@ -51,6 +51,8 @@ export class ThankyouPage {
   public status;
   public status_timestamp;
   public accountslists = [];
+  public transfer_amount;
+  public currency_for_transfer;
 
   constructor(public alert: AlertController, public loaderCtrl: LoadingController, public transactionServices: TransactionServices, public navCtrl: NavController, public navParams: NavParams) {
 
@@ -68,6 +70,8 @@ export class ThankyouPage {
         let accountID = this.navParams.get('accountID');
         this.transaction_amount = this.navParams.get('charged_amt');
         let amount_total_cost = this.navParams.get('charged_amt');
+        this.transfer_amount = this.navParams.get('amount');
+        this.currency_for_transfer = this.navParams.get('currency');
 
         console.log(accountID);
         console.log(this.transaction_amount);
@@ -121,6 +125,7 @@ export class ThankyouPage {
         
         this.status_timestamp = data.status_timestamp;
         this.status = data.status;
+        this.transaction_status = data.status;
         this.transaction_id = data.transaction_id;
 
         // Update to Storage
@@ -151,6 +156,30 @@ export class ThankyouPage {
 
             this.transactionServices.set("transaction_list",res);
             this.transactionServices.set("transaction_in_progress",false);
+
+            // Clear History
+            // Info Page
+            this.transactionServices.set('firstname', null);
+            this.transactionServices.set('lastname', null);
+            this.transactionServices.set('tel', null);
+            this.transactionServices.set('nationality', null);
+            this.transactionServices.set('account_name', null);
+            this.transactionServices.set('dob', null);
+            
+            // Address Information
+            this.transactionServices.set('streetAddress', null);
+            this.transactionServices.set('country', null);
+            this.transactionServices.set('postal_code', null);
+            this.transactionServices.set('city', null);
+
+            // Amount Information
+            this.transactionServices.set('transfer_amount', null);
+            //this.transactionServices.set('bic', null);
+            //this.transactionServices.set('ban', null);
+            //this.transactionServices.set('iban', null);
+
+            // amount
+            
             //loader.dismiss();
           }
         );
@@ -194,7 +223,7 @@ export class ThankyouPage {
   }
 
   viewTransactionDetails(){
-    this.navCtrl.push(TransactionHistoryDetailPage);
+    //this.navCtrl.push(TransactionHistoryDetailPage);
   }
 
 }

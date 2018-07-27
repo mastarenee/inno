@@ -28,7 +28,7 @@
       <ion-list *ngIf = "!account_selected" [@enterAnimation] class = "account_selection_list_radio_group_wrap" [(ngModel)]="account_selected" radio-group>
       
         <ion-item class = "account_selection_list_radio_group" *ngFor = "let accounts of accountslists; let i = index"> 
-          <ion-label>{{accounts.alias}} <span class = "account_number">({{accounts.accountNumber}})</span> <span class = "account_amount"> ${{accounts.amount}} </span> </ion-label>
+          <ion-label>{{accounts.alias}} <span class = "account_amount"> ${{accounts.amount}} </span> </ion-label>
           <ion-radio (ionSelect)="radioChecked(i)" value="{{accounts.alias}}"></ion-radio>
         </ion-item>
       
@@ -75,7 +75,7 @@
         </ion-item>-->
           <ion-item>
               <ion-label stacked>Telephone Number</ion-label>
-              <ion-input type="tel" (keypress)="formatTelephoneNumber($event)" formControlName="recipient_tel" name="phone"></ion-input>
+              <ion-input type="tel" (keypress)="formatTelephoneNumber($event)" placeholder = "(246) 246-1111" formControlName="recipient_tel" name="phone"></ion-input>
               {{userRecipientBasicInformation.controls.recipient_tel.value}}
           </ion-item>
 

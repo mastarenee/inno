@@ -42,15 +42,18 @@ page-infoAmount {
         top: 38%;
     }
 
-    .transfer_amount_numer_wrap:before{
-        content: 'USD';
+    .country_currency{
         position: absolute;
         right: 11%;
         font-weight: bold;
         font-size: 21px;
         color: #ddd;
-        top: 42%;
+        top: 33%;
         z-index: 99;
+    }
+    
+    .transaction_currency_conversion{
+        
     }
 
 

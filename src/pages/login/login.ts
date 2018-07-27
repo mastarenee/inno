@@ -1,11 +1,9 @@
-import { Component,} from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, MenuController, AlertController, App, ViewController, LoadingController } from 'ionic-angular';
-import { InfoPage } from '../info/info';
 import { AccountsPage } from '../accounts/accounts';
 import { IntroductionPage } from '../introduction/introduction';
 import { Storage } from '@ionic/storage';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { SenderInfoService } from '../../services/senderInfo';
 
 @IonicPage({
   name: 'Login'
@@ -15,6 +13,7 @@ import { SenderInfoService } from '../../services/senderInfo';
   templateUrl: 'login.html'
 })
 export class LoginPage {
+
 
   userInformation = {}
   userError: String = "";
@@ -54,9 +53,9 @@ export class LoginPage {
       ],
     }
 
-  constructor(public loaderCtrl: LoadingController, private storage:Storage, private formBuilder: FormBuilder, public viewCtrl: ViewController, public app: App, private alert: AlertController, private menu: MenuController, public navCtrl: NavController, private senderService: SenderInfoService) {
+  constructor(public loaderCtrl: LoadingController, private storage:Storage, private formBuilder: FormBuilder, public viewCtrl: ViewController, public app: App, private alert: AlertController, private menu: MenuController, public navCtrl: NavController) {
 
-   this.senderService.addUser(1234567898,"password","John", "Doe", "BRB","BRB","Bridgetown","Welches Hill");
+   //this.senderService.addUser(1234567898,"password","John", "Doe", "BRB","BRB","Bridgetown","Welches Hill");
    
 
     this.userLoginForm = new FormGroup({
@@ -100,7 +99,7 @@ export class LoginPage {
     // this.menu.swipeEnable(true, 'menu1');
   }
 
-  openForgotPassword(){
+  openForgotPassword(){ 
     
     const alert = this.alert.create({
       title: 'Forgot Password!',
@@ -126,24 +125,25 @@ export class LoginPage {
     const loader = this.loaderCtrl.create({
       spinner: 'ios',
       content: "Authenticating...",
-      duration: 3000
     });
 
-    if( this.userLoginForm.controls["account"].valid && this.userLoginForm.controls["password"].valid && this.userLoginForm.controls["account"].value == "60250" && this.userLoginForm.controls["password"].value == "secure" ){
+    loader.present();
+
+    if( this.userLoginForm.controls["account"].valid && this.userLoginForm.controls["password"].valid && this.userLoginForm.controls["account"].value == "6025011111111111" && this.userLoginForm.controls["password"].value == "secure1234" ){
       
       // set a key/value
       this.storage.set('user_id', this.userLoginForm.controls["account"].value);
       this.storage.set('user_last_login', Date.now() );
       console.log('User Information Saved Successful');
       
-      loader.present();
+      
       this.selog_data = "PASS - LOGIN SUCCESSFUL";
 
       this.storage.get('introShown').then((result) => {
         
         // Show Loading Action
-        setTimeout(() => {
-          console.log('Login Successful');
+        //setTimeout(() => {
+          //console.log('Login Successful');
           
           if(loader){
             loader.dismiss();
@@ -158,7 +158,7 @@ export class LoginPage {
 
           
 
-        }, 3010);
+        //}, 3010);
         
       });
 
@@ -172,7 +172,7 @@ export class LoginPage {
         invalidText = "Your credentials have been entered multiple times, would you like to reset your password. Please enter you FCIB Account Credentials.";
       }
 
-      const alert = this.alert.create({
+      const alert = this.alert.create({ 
         title: 'Invalid Credentials!',
         subTitle: invalidText,
         buttons: [{
@@ -187,4 +187,10 @@ export class LoginPage {
     }
   }
 
+  skip(){
+    this.app.getRootNav().push(AccountsPage);
+  }
+
+
 }
+   

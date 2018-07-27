@@ -1,6 +1,6 @@
 {
-  "name": "FCIBSend",
-  "app_id": "272fc6eb",
+  "name": "innowire",
+  "app_id": "",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

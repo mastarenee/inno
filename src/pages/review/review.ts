@@ -7,6 +7,7 @@ import { Storage } from '@ionic/storage';
 import { TransactionServices } from '../../services/transaction.services';
 import { InfoAddressPage } from '../infoAddress/infoAddress';
 import { InfoAmountPage } from '../infoAmount/infoAmount';
+import { AccountService } from '../../services/accountServices';
 
 import { ViewChild } from '@angular/core';
 import { Navbar } from 'ionic-angular';
@@ -35,6 +36,8 @@ export class ReviewPage {
   public credited_amt_currency;
   public principal_amt;
   public principal_amt_currency;
+  public expiration;
+  public bic;
 
   public recipient_city;
   public recipient_country;
@@ -50,9 +53,13 @@ export class ReviewPage {
 
   public amount;
   public fx_expiration;
+  public sender_country_currency;
+  public conversion_rate;
+  public usd_conversion_rate = 2.02;
+  public usd_conversion_rate_sell = 1.98;
 
-  constructor(public navParams: NavParams, public alert:AlertController, public transactionServices:TransactionServices, public loaderCtrl: LoadingController, public storage:Storage, public navCtrl: NavController) {
-
+  constructor(public navParams: NavParams, public alert:AlertController, public transactionServices:TransactionServices, public loaderCtrl: LoadingController, public storage:Storage, public navCtrl: NavController, public accountService:AccountService) {
+    
   }
 
   ionViewDidLoad() {
@@ -69,6 +76,16 @@ export class ReviewPage {
      // todo something
      this.cancelPage();
     }
+  }
+
+  convertToUserCurrencySelected(charged_amt){
+    // Convert USD to BBD and then convert to GBP or CAD
+    return (charged_amt * this.usd_conversion_rate_sell) / this.conversion_rate;
+  }
+
+  convertToUserCurrencySelectedThenBBD(charged_amt){
+    // Convert USD to BBD and then convert to GBP or CAD
+    return ((charged_amt * this.usd_conversion_rate_sell) / this.conversion_rate) * this.conversion_rate;
   }
 
   editAmount(){
@@ -97,6 +114,8 @@ export class ReviewPage {
       content: "Calculating Your Transaction Fee...",
     });
 
+    //alert("Calculating Your Transaction Fee...");
+
     loader.present();
 
     let firstname = this.navParams.get('firstname');
@@ -114,6 +133,8 @@ export class ReviewPage {
     let ban = this.navParams.get('ban');
     let iban = this.navParams.get('iban');
 
+    this.bic = bic;
+
     let bank_code="0123653935";
     let receiverUri = "iban:"+iban;
 
@@ -121,17 +142,22 @@ export class ReviewPage {
     if(nationality =="GBR")
     {
       cur = "GBP";
-    }
-
-    if (cur == "CAD")
-    {
+      this.sender_country_currency = "GBP";
+      this.conversion_rate = 2.66;
+    }else if(cur == "CAD"){
       bank_code = "000400012";
       receiverUri = "ban:"+ban+";bic="+bic;
+      this.sender_country_currency = "CAD";
+      this.conversion_rate = 1.54;
     } 
-   
+
+    //alert("Start Processing Payments");
     
     this.transactionServices.getTransactionQuote(cur, amount, receiverUri, country, bic,bank_code)
     .subscribe(data => {
+
+      //alert("Data Returned");
+      //alert( JSON.stringify(data) );
 
       console.log(data);
         
@@ -141,16 +167,32 @@ export class ReviewPage {
       this.credited_amt_currency = data.credited_cur;
       this.principal_amt = data.principal_amt; // Amount to send to sender
       this.principal_amt_currency = data.principal_cur;
+      this.expiration = data.id_expiration;
 
       this.tref = data.transaction_ref;
       this.pid = data.prop_id;
       this.transactionID = data.transaction_id;
       //this.fx_expiration;
+
+      let tempAccounts = this.accountService.getAccounts();
+      for(let i=0; i<tempAccounts.length; i++)
+      {
+        console.log(tempAccounts[i].alias);
+        if(tempAccounts[i].alias == this.account_transfer_from)
+        {
+          tempAccounts[i].amount = tempAccounts[i].amount -  this.charged_amt;
+          this.accountService.updateAccount(i,tempAccounts[i].alias, tempAccounts[i].amount, tempAccounts[i].account);
+        }
+      }
         
       loader.dismiss();
       this.error_occured = false;
   
     }, err => {
+
+      //alert("Error Occurred");
+      //alert( JSON.stringify(err) );
+
       loader.dismiss();
       this.error_occured = true;
       this.presentError(err);
@@ -209,6 +251,7 @@ export class ReviewPage {
       pid: this.pid,
       bank_country: this.bank_country,
       status:status,
+      currency:this.sender_country_currency,
       status_timestamp:status_timestamp,
       transaction_id:transaction_id,
       charged_amt: this.charged_amt,

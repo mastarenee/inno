@@ -39,11 +39,11 @@ export class TransactionServices {
     {
       additionalCountry = "GBR";
     }
-    else
-    if(currency=="CAD")
+    else if(currency=="CAD")
     {
       additionalCountry = "CAN";
     }
+    
     var data = {
         "sender_uri":"iban:" + receiverUri, //"78876876",
         "currency":currency, //"GBP",

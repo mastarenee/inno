@@ -22,10 +22,14 @@
   <ion-row text-center class = "transactionCompleteInformation">
     <div class = "transactionCompleteInformation_img">
       <img *ngIf = "!error_status" src = "assets/imgs/check.gif" style = "width: 70px">
-      <img *ngIf = "error_status" src = "assets/imgs/error.svg">
+      <img *ngIf = "error_status" src = "assets/imgs/error.svg"  style = "width: 70px">
     </div>
-    <h4>Transaction {{transaction_status}}</h4>
-    <p>${{transaction_amount}} has been successfully transferred.</p>
+    <h4 *ngIf = "!error_status"> Transaction successfully submitted for processing.</h4>
+    <p *ngIf = "!error_status"> The transfer of {{transfer_amount | currency: '$'}} {{currency_for_transfer}} to {{recipient_name}} {{recipient_name_last}} has been initiated. You can check the status on your transfer to find out if it was successful or unsuccessful.</p>
+
+    <h4 *ngIf = "error_status"> Transaction was not successfully submitted for processing.</h4>
+    <p *ngIf = "error_status"> The transfer of {{transfer_amount | currency: '$'}} {{currency_for_transfer}} to {{recipient_name}} {{recipient_name_last}} was not successfull. You can try to send the transaction again or visit your closest First Caribbean Branch.</p>
+  
   </ion-row>
 
   <ion-row class = "transactionCompleteInformation_details_Wrap">
@@ -45,14 +49,9 @@
 
   </ion-row>
 
-  <ion-row id = "transactionCompleteInformation_button" text-center> 
-    <button ion-button color = "primary" (click)="goToHome()"> Home </button>
-  </ion-row>
-
-
 <ion-row id = "transactionCompleteInformation_button" text-center>
-    <ion-col col col-6><button col-12 color = "dark" ion-button class = "button_grey" (click)="viewTransactionDetails()" clear>View Details</button></ion-col>
-    <ion-col col col-6><button col-12 ion-button class = "button_red" (click)="makeAnotherTransaction()"> Make Another Transaction </button></ion-col>
+    <ion-col col col-4><button col-12 ion-button class = "button_red" (click)="viewTransactionDetails()">View Details</button></ion-col>
+    <ion-col col col-8><button col-12 ion-button class = "button_red" (click)="makeAnotherTransaction()"> Make Another Transaction </button></ion-col>
   </ion-row>
 
   <span id = "selog_confirm" class = "selog"></span>

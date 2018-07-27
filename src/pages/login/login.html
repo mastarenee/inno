@@ -1,7 +1,7 @@
 
 <ion-content class = "{{class_options}}" padding>
 
-  <div id = "headerLogoLogin"></div> 
+  <div id = "headerLogoLogin" (click)="skip()"></div> 
 
   <form (ngSubmit)="loginForm()" id = "loginForm" [formGroup]="userLoginForm">
   
@@ -30,7 +30,7 @@
     </ion-row>
   </form>
 
-  <div id = "logo_watermark">  </div>
+  <div id = "logo_watermark" (click)="skip()"> INNOWIRE </div>
 
   <span id = "selog_login" class = "selog">{{selog_data}}</span>
 

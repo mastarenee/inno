@@ -1,42 +1,44 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { InfoPage } from '../info/info';
-import { TransactionHistoryPage } from '../transactionhistory/transactionhistory';
 import { ModalController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { AccountsactivityPage } from '../accountsactivity/accountsactivity';
-import { ProfilePage } from '../profile/profile';
-import { TransactionHistoryDetailPage } from '../transactionhistorydetail/transactionhistorydetail';
-import { AssistantPage } from '../assistant/assistant';
 import { TransactionServices } from '../../services/transaction.services';
+import { TransactionHistoryPage } from '../transactionhistory/transactionhistory';
+import { AccountsactivityPage } from '../accountsactivity/accountsactivity';
+import { InfoPage } from '../info/info';
+import { AccountService } from '../../services/accountServices';
+import { AssistantPage } from '../assistant/assistant';
 
 @IonicPage({
   name: 'Accounts'
-})
+}) 
 
 @Component({
   selector: 'page-accounts',
   templateUrl: 'accounts.html'
 })
-export class AccountsPage {
+export class AccountsPage { 
 
   account_selected;
 
-  public accountslists = [];
+  public accountslists=null;
 
-
-  constructor(public transactionServices: TransactionServices, public navCtrl: NavController, public modalCtrl: ModalController, public storage:Storage) {
-
-    this.transactionServices.get("user_accounts_lists")
-    .then(
-      res => { // Success
-        console.log(res);
-        this.accountslists = res; 
-      }
-    );
+  constructor(public accountService:AccountService, public transactionServices: TransactionServices, public navCtrl: NavController, public modalCtrl: ModalController, public storage:Storage) {
 
   }
 
+  ionViewDidLoad(){
+    
+    if(this.accountService.getAccounts().length == 0)
+    {
+      this.accountService.addNewAccount("House Savings",98000000,"...7402");
+      this.accountService.addNewAccount("Online Chequing",8000,"...3833");
+      this.accountService.addNewAccount("Business Savings",12000,"...8763");
+      this.accountService.addNewAccount("College Savings",1000,"...4509");
+      this.accountService.addNewAccount("Student Chequing",300,"...7184");
+    }
+    this.accountslists = this.accountService.getAccounts();
+  }
 
   selectAccount(event, accountsType){
 
@@ -50,9 +52,9 @@ export class AccountsPage {
 
     //Right
     if(event.direction == 2){
-      this.navCtrl.push(AccountsactivityPage,{
+      /*this.navCtrl.push(AccountsactivityPage,{
         account:account
-      });
+      });*/
     }else{
       this.navCtrl.push(InfoPage,{
         account:account,
@@ -70,7 +72,7 @@ export class AccountsPage {
   }
 
   openProfile(){
-    this.navCtrl.push(ProfilePage);
+    //this.navCtrl.push(ProfilePage);
   }
 
   // Go to the step 1 - Select Recipient Page

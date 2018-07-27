@@ -82,7 +82,7 @@
             </ion-col>
 
             <ion-col col col-3> <span class = "tag tag_{{transaction.status}}">{{transaction.status}}</span> </ion-col>
-            <ion-col col col-3 class = "transaction_amount"> <span class = "boldme">${{transaction.amount}}</span> <br/> <small>${{getBalance(transaction.amount)}}</small> </ion-col>
+            <ion-col col col-3 class = "transaction_amount"> <span class = "boldme">${{transaction.amount | number : '1.2-2'}}</span> <br/> <small>${{getBalance(transaction.amount) | number : '1.2-2' }}</small> </ion-col>
 
           </ion-row>
 

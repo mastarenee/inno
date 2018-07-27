@@ -1,53 +1,53 @@
-page-intro {
+page-introduction {
 
-  ion-slide {
-    background: #ad5389;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  }
-
-  ion-slide img {
-    height: 70vh !important;
-    width: auto !important;
-  }
-
-  #swiperHand{
-    position: absolute;
-    width: 100px;
-    height: 70px;
-    bottom: 29%;
-    left: 37%;
-  }
-
-  h2{
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 15px;
-    margin-bottom: 40px;
-    margin: 50px 20%;
-    letter-spacing: 1px;
-  }
-
-  #voiceGiphy{
-    position: absolute;
-    opacity: 0.5;
-    margin: 39px 64px;
-    height: 64vh;
-    max-width: 272px;
-  }
-
-  #voiceGiphy img{
-    width:1242px;
-    height:1996px;
-  }
-
-  .startButton{
-    color: #af0b1c;
-    background-color: #ffffff;
-    font-weight: bold;
-    margin-bottom: 20px;
-    margin-top:20px;
-  }
-
+    ion-slide {
+      background: #ad5389;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+  
+    ion-slide img {
+      height: 70vh !important;
+      width: auto !important;
+    }
+  
+    #swiperHand{
+      position: absolute;
+      width: 100px;
+      height: 70px;
+      bottom: 29%;
+      left: 37%;
+    }
+  
+    h2{
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 15px;
+      margin-bottom: 40px;
+      margin: 50px 20%;
+      letter-spacing: 1px;
+    }
+  
+    #voiceGiphy{
+      position: absolute;
+      opacity: 0.5;
+      margin: 39px 64px;
+      height: 64vh;
+      max-width: 272px;
+    }
+  
+    #voiceGiphy img{
+      width:1242px;
+      height:1996px;
+    }
+  
+    .startButton{
+      color: #af0b1c;
+      background-color: #ffffff;
+      font-weight: bold;
+      margin-bottom: 20px;
+      margin-top:20px;
+    }
+  
 }

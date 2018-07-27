@@ -7,7 +7,6 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { Storage } from '@ionic/storage';
 import { TransactionServices } from '../../services/transaction.services';
 import { Navbar } from 'ionic-angular';
-import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 
 @Component({
   selector: 'page-infoAmount',
@@ -27,19 +26,21 @@ export class InfoAmountPage {
   public transaction_amount_error: string = "";
   public amountLeft;
   public over_amount_error;
+  public sender_country_currency;
+  public conversion_rate;
 
   public recipient_errors = [{
     transfer_error: 'Transfer Amount Required. <br/> Max Allowed 5000 USD ',
     bic_error: 'Bank Identifier Code is required',
   }]
 
-  constructor( private nativePageTransitions: NativePageTransitions, public alert:AlertController, public transactionServices: TransactionServices, public loaderCtrl: LoadingController, public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor( public alert:AlertController, public transactionServices: TransactionServices, public loaderCtrl: LoadingController, public storage:Storage, public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
     
     this.account = navParams.get('account');
 
     this.userTransactionInformation = new FormGroup({
-      transfer: new FormControl(''),
-      transfer_amount: new FormControl(''),
+      transfer: new FormControl('500'),
+      transfer_amount: new FormControl('500'),
       bic: new FormControl('TDOMCATTTOR'), 
       iban: new FormControl('GB98MIDL07009312345678'), 
       ban: new FormControl('6539354'), 
@@ -47,8 +48,8 @@ export class InfoAmountPage {
     });
 
     this.userTransactionInformation = this.formBuilder.group({
-      transfer: ['0.00', Validators.required],
-      transfer_amount: ['0', Validators.required],
+      transfer: ['500.00', Validators.required],
+      transfer_amount: ['500', Validators.required],
       iban: ['GB98MIDL07009312345678'],
       ban: ['6539354'],
       bic: ['TDOMCATTTOR'],
@@ -58,6 +59,19 @@ export class InfoAmountPage {
 
   ionViewDidLoad() {
 
+    let country_currency = this.navParams.get('country');
+    
+    if(country_currency=="GBR")
+    {
+      this.sender_country_currency = "GBP";
+      this.conversion_rate = 2.66;
+    }
+    else if(country_currency=="CAN")
+    {
+      this.sender_country_currency = "CAD";
+      this.conversion_rate = 1.54;
+    }
+    
     this.transactionServices.get("transaction_in_progress")
     .then(
       res => { // Success
@@ -67,7 +81,7 @@ export class InfoAmountPage {
             this.userTransactionInformation.controls["transfer_amount"].setValue(res);
           });
 
-          this.transactionServices.get('bic').then(res => {
+          /*this.transactionServices.get('bic').then(res => {
             this.userTransactionInformation.controls["bic"].setValue(res);
           });
 
@@ -77,7 +91,7 @@ export class InfoAmountPage {
 
           this.transactionServices.get('iban').then(res => {
             this.userTransactionInformation.controls["iban"].setValue(res);
-          });
+          });*/
         }
 
     });
@@ -89,11 +103,15 @@ export class InfoAmountPage {
         console.log(res);
 
         let accountID = this.navParams.get('accountID');
-        this.amountLeft = res[accountID]["amount"];
+        console.log(accountID);
+        
+        if(accountID){
+          this.amountLeft = res[accountID]["amount"];
+        }
 
       }
     );
-
+ 
     this.recipient_name = this.navParams.get('firstname') + ' ' + this.navParams.get('lastname');
 
     this.account = this.navParams.get('account');
@@ -107,8 +125,9 @@ export class InfoAmountPage {
 
   updateTranfer(event){
     this.userTransactionInformation.controls["transfer"].setValue( this.userTransactionInformation.controls["transfer_amount"].value );
-    console.log(event);
-    if( this.amountLeft < this.userTransactionInformation.controls["transfer_amount"].value ){
+    //console.log(event);
+    let bbdRate = this.userTransactionInformation.controls["transfer"].value * this.conversion_rate;
+    if( this.amountLeft < bbdRate ){
       this.over_amount_error = "Insufficient Balance Available";
     }else{
       this.over_amount_error = "";
@@ -116,22 +135,70 @@ export class InfoAmountPage {
   }
 
   checkTransferFundsAvailable(event){
+    console.log("checkTransferFundsAvailable is ");
     console.log(event);
-    this.userTransactionInformation.controls["transfer_amount"].setValue( event );
+    //console.log(event.target.valueAsNumber);
+    this.userTransactionInformation.controls["transfer_amount"].setValue( event.target.valueAsNumber );
+  }
+
+  nextPageTest(){
+
+      // Validate Information
+      let transfer = this.userTransactionInformation.controls["transfer"].value;
+      let bic = this.userTransactionInformation.controls["bic"].value;
+      let ban = this.userTransactionInformation.controls["ban"].value;
+      let iban = this.userTransactionInformation.controls["iban"].value;
+      let bank_country = this.userTransactionInformation.controls["bank_country"].value;
+
+      // Show Loading Action
+
+      let firstname = this.navParams.get('firstname');
+      let lastname = this.navParams.get('lastname');
+      let tel = this.navParams.get('tel');
+      let nationality = this.navParams.get('nationality');
+      let dob = this.navParams.get('dob');
+      let streetAddress = this.navParams.get('streetAddress');
+      let country = this.navParams.get('country');
+      let postalCode = this.navParams.get('postalCode');
+      let city = this.navParams.get('city');
+      let accountID = this.navParams.get('accountID');
+
+      //alert("push to review page");
+
+      //this.nativePageTransitions.fade(null);
+      this.navCtrl.push(ReviewPage, {
+        firstname:firstname,
+        lastname: lastname,
+        tel:tel,
+        nationality:nationality,
+        account:this.account,
+        dob: dob,
+        streetAddress:streetAddress,
+        country:country,
+        postalCode:postalCode,
+        city:city,
+        amount:transfer,
+        bic:bic,
+        ban:ban,
+        iban:iban,
+        bank_country:bank_country,
+        accountID:accountID
+      }); 
   }
 
   nextPage(event, accountsType) {
 
-    //alert( this.amountLeft);
-    //alert( this.userTransactionInformation.controls["transfer"].value );
-
-    if( this.amountLeft > this.userTransactionInformation.controls["transfer_amount"].value){
+    let bbdRate = this.userTransactionInformation.controls["transfer"].value * this.conversion_rate;
+    if( this.amountLeft > bbdRate){
+      alert("this.amountLeft > bbdRate");
       
-    if( this.userTransactionInformation.controls["transfer_amount"].valid && 
+    if( this.userTransactionInformation.controls["transfer"].valid && 
     this.userTransactionInformation.controls["bic"].valid ){
+      
+      alert("valid");
 
       // Validate Information
-      let transfer = this.userTransactionInformation.controls["transfer_amount"].value;
+      let transfer = this.userTransactionInformation.controls["transfer"].value;
       let bic = this.userTransactionInformation.controls["bic"].value;
       let ban = this.userTransactionInformation.controls["ban"].value;
       let iban = this.userTransactionInformation.controls["iban"].value;
@@ -155,7 +222,9 @@ export class InfoAmountPage {
       let city = this.navParams.get('city');
       let accountID = this.navParams.get('accountID');
 
-      this.nativePageTransitions.fade(null);
+      alert("push to review page");
+
+      //this.nativePageTransitions.fade(null);
       this.navCtrl.push(ReviewPage, {
         firstname:firstname,
         lastname: lastname,
@@ -177,16 +246,21 @@ export class InfoAmountPage {
 
     }else{
 
-      if(this.userTransactionInformation.controls["transfer_amount"].value == ''){
+      alert("else");
+
+      if(this.userTransactionInformation.controls["transfer"].value == ''){
         this.userTransactionInformation.controls.transfer.markAsTouched();
+        alert("Transfer Issue");
       }
 
       if(this.userTransactionInformation.controls["bic"].value == ''){
         this.userTransactionInformation.controls.bic.markAsTouched();
+        alert("Bic Issue");
       }
 
-      if(this.amountLeft > this.userTransactionInformation.controls["transfer_amount"].value){
+      if(this.amountLeft > this.userTransactionInformation.controls["transfer"].value){
         this.over_amount_error = "Insufficient Balance Available. Balance: $" + this.amountLeft;
+        alert("Insufficient");
       }
 
     }
