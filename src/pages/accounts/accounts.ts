@@ -31,11 +31,9 @@ export class AccountsPage {
     
     if(this.accountService.getAccounts().length == 0)
     {
-      this.accountService.addNewAccount("House Savings",98000000,"...7402");
+      this.accountService.addNewAccount("House Savings",9800000,"...7402");
       this.accountService.addNewAccount("Online Chequing",8000,"...3833");
       this.accountService.addNewAccount("Business Savings",12000,"...8763");
-      this.accountService.addNewAccount("College Savings",1000,"...4509");
-      this.accountService.addNewAccount("Student Chequing",300,"...7184");
     }
     this.accountslists = this.accountService.getAccounts();
 
@@ -50,10 +48,10 @@ export class AccountsPage {
       this.accountService.addNewAccountTransaction('Business Savings','Fredrick','Smith', '#13 Warrens House', 'Texas', 'Canada', '2018-07-21T13:14:40-05:00',
       '50.00', 'CAD', '0123653935',  '', '', 'pending', 1290723678623, '345lnmnjao40fdgdfg','CAD');
 
-      this.accountService.addNewAccountTransaction('House Savings','John','Doe', '#13 Warrens House', 'Texas', 'Canada', '2018-07-21T13:14:40-05:00',
+      this.accountService.addNewAccountTransaction('Business Savings','John','Doe', '#13 Warrens House', 'Texas', 'Canada', '2018-07-21T13:14:40-05:00',
       '350.00', 'CAD', '0123653935',  '', '', 'pending', 1290723678623, '435ubsd79a9das877','CAD');
 
-      this.accountService.addNewAccountTransaction('College Savings','John','Doe', '#13 Warrens House', 'London', 'United Kingdom', '2018-07-21T13:14:40-05:00',
+      this.accountService.addNewAccountTransaction('Online Chequing','John','Doe', '#13 Warrens House', 'London', 'United Kingdom', '2018-07-21T13:14:40-05:00',
       '50.00', 'GBR', '0123653935',  '', '', 'rejected', 1290723678623, '4dfdsfdgfdfdgdf377','GBP');
     }
   }

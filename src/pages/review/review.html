@@ -20,18 +20,18 @@
     <ion-row class = "account_status_wrap" padding>
 
       <ion-col col col-6>
-          <ion-col col col-12 no-padding> <ion-icon (click) = "editAccount()" name="create"></ion-icon> From </ion-col>
-          <h4 (click) = "editAccount()"> {{account_transfer_from}} </h4> 
-        <ion-col col col-12 no-padding> <ion-icon (click) = "editAmount()" name="create"></ion-icon> Sending Amount </ion-col>
-        <h4 (click) = "editAmount()"> <span class = "boldme">$</span>{{amount}} <small>{{credited_amt_currency}}</small> </h4> 
+        <ion-col col col-12 no-padding> From </ion-col>
+        <h4> {{account_transfer_from}} </h4> 
+      <ion-col col col-12 no-padding> Sending Amount </ion-col>
+      <h4> <span class = "boldme">$</span>{{amount}} <small>{{credited_amt_currency}}</small> </h4> 
         
       </ion-col>
   
       <ion-col col col-6>
-        <ion-col col col-12 no-padding> <ion-icon (click) = "editAccount()" name="create"></ion-icon> Recipient </ion-col>
-        <h4 (click) = "editAccount()"> {{recipient_name}} </h4> 
-        <ion-col col col-12 no-padding> <ion-icon (click) = "editAddress()" name="create"></ion-icon> Address </ion-col>
-        <h6 (click) = "editAddress()"> {{recipient_address}} </h6> 
+        <ion-col col col-12 no-padding> Recipient </ion-col>
+        <h4> {{recipient_name}} </h4> 
+        <ion-col col col-12 no-padding> Address </ion-col>
+        <h6> {{recipient_address}} </h6> 
       </ion-col>
     
     </ion-row>

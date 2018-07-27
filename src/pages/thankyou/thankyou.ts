@@ -57,6 +57,9 @@ export class ThankyouPage {
   public currency_for_transfer;
   public currency;
 
+  public amount_sent;
+  public amount_sent_bbd;
+
   constructor(public accountService:AccountService, public alert: AlertController, public loaderCtrl: LoadingController, public transactionServices: TransactionServices, public navCtrl: NavController, public navParams: NavParams) {
 
     
@@ -90,6 +93,9 @@ export class ThankyouPage {
     this.proposal_id = this.navParams.get('pid');
     this.transfer_amount = this.navParams.get('amount');
 
+    this.amount_sent = this.navParams.get('amount_sent');
+    this.amount_sent_bbd = this.navParams.get('amount_sent_bbd');
+
     // Begin API Get Quote
     const loader = this.loaderCtrl.create({
       spinner: 'ios',
@@ -119,10 +125,10 @@ export class ThankyouPage {
           console.log(tempAccounts[i].alias);
           if(tempAccounts[i].alias == this.account_transfer_from)
           {
-            tempAccounts[i].amount = tempAccounts[i].amount -  this.charged_amt;
+            tempAccounts[i].amount = tempAccounts[i].amount -  this.amount_sent_bbd;
             this.accountService.updateAccount(i,tempAccounts[i].alias, tempAccounts[i].amount, tempAccounts[i].account);
 
-            this.accountService.addNewAccountTransaction('House Savings',this.recipient_name,this.recipient_name_last, this.recipient_address, this.recipient_city, this.recipient_country, this.status_timestamp, this.charged_amt, this.bank_country, this.iban,  this.ban, this.bic, this.status, this.proposal_id, this.transaction_ref, this.currency);
+            this.accountService.addNewAccountTransaction(tempAccounts[i].alias,this.recipient_name,this.recipient_name_last, this.recipient_address, this.recipient_city, this.recipient_country, this.status_timestamp, this.amount_sent_bbd, this.bank_country, this.iban, this.ban, this.bic, this.status, process_id, transaction_ref, this.currency);
             
           }
         }

@@ -23,7 +23,7 @@ export class AccountsactivityPage {
   public accountslists = [
     {
         alias: 'House Savings',
-        amount: '98000',
+        amount: '9800000',
         account_num: '7402',
         selected: true,
         chartSet: [65, 59, 80, 81, 56, 55, 40],

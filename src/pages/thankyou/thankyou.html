@@ -25,10 +25,10 @@
       <img *ngIf = "error_status" src = "assets/imgs/error.svg"  style = "width: 70px">
     </div>
     <h4 *ngIf = "!error_status"> Transaction successfully submitted for processing.</h4>
-    <p *ngIf = "!error_status"> The transfer of {{transfer_amount | currency: '$'}} {{currency_for_transfer}} to {{recipient_name}} {{recipient_name_last}} has been initiated. You can check the status on your transfer to find out if it was successful or unsuccessful.</p>
+    <p *ngIf = "!error_status"> The transfer of {{amount_sent | currency: '$'}} {{currency_for_transfer}} to {{recipient_name}} {{recipient_name_last}} has been initiated. You can check the status on your transfer to find out if it was successful or unsuccessful.</p>
 
     <h4 *ngIf = "error_status"> Transaction was not successfully submitted for processing.</h4>
-    <p *ngIf = "error_status"> The transfer of {{transfer_amount | currency: '$'}} {{currency_for_transfer}} to {{recipient_name}} {{recipient_name_last}} was not successfull. You can try to send the transaction again or visit your closest First Caribbean Branch.</p>
+    <p *ngIf = "error_status"> The transfer of {{amount_sent | currency: '$'}} {{currency_for_transfer}} to {{recipient_name}} {{recipient_name_last}} was not successfull. You can try to send the transaction again or visit your closest First Caribbean Branch.</p>
   
   </ion-row>
 

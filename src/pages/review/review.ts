@@ -79,14 +79,19 @@ export class ReviewPage {
     }
   }
 
+  public currency_user_sending;
+  public currency_user_sending_bbd;
+
   convertToUserCurrencySelected(charged_amt){
     // Convert USD to BBD and then convert to GBP or CAD
-    return (charged_amt * this.usd_conversion_rate_sell) / this.conversion_rate;
+    this.currency_user_sending = (charged_amt * this.usd_conversion_rate_sell) / this.conversion_rate;
+    return this.currency_user_sending;
   }
 
   convertToUserCurrencySelectedThenBBD(charged_amt){
     // Convert USD to BBD and then convert to GBP or CAD
-    return ((charged_amt * this.usd_conversion_rate_sell) / this.conversion_rate) * this.conversion_rate;
+    this.currency_user_sending_bbd = ((charged_amt * this.usd_conversion_rate_sell) / this.conversion_rate) * this.conversion_rate;
+    return this.currency_user_sending_bbd;
   }
 
   editAmount(){
@@ -181,7 +186,6 @@ export class ReviewPage {
         this.bank_country_name = "United Kingdom";
       }
       
-
       loader.dismiss();
       this.error_occured = false;
   
@@ -220,6 +224,7 @@ export class ReviewPage {
     let city = this.navParams.get('city');
     let amount = this.navParams.get('amount');
     let account = this.navParams.get('account');
+
     let bic = this.navParams.get('bic');
     let ban = this.navParams.get('ban');
     let iban = this.navParams.get('iban');
@@ -241,6 +246,8 @@ export class ReviewPage {
       postalCode:postalCode,
       city:city,
       amount:amount,
+      amount_sent:this.credited_amt,
+      amount_sent_bbd:this.credited_amt * this.conversion_rate,
       bic:bic,
       ban:ban,
       iban:iban,

@@ -113,7 +113,7 @@ export class MyApp {
         transaction_ref: '435ubsd79a9das877',
       },
       {
-        name: "Online Chequing",
+        name: "Business Savings",
         firstname: 'Fredrick',
         lastname: 'Smith',
         streetaddress: '#15 Warrens House',
@@ -134,7 +134,7 @@ export class MyApp {
     let accountslists = [
       {
           alias: 'House Savings',
-          amount: '98000000',
+          amount: '9800000',
           accountNumber: '...7402',
       },
       {
@@ -146,16 +146,6 @@ export class MyApp {
           alias: 'Business Savings',
           amount: '12000',
           accountNumber:'...8763',
-      },
-      {
-        alias: 'College Savings',
-        amount: '1000',
-        accountNumber:'...4509',
-      },
-      {
-        alias: 'Student Chequing',
-        amount: '300',
-        accountNumber:'...7184',
       }
     ]
 

@@ -16,14 +16,35 @@ import { ProfilePage } from '../profile/profile';
 })
 export class EditProfilePage {
 
+public profaddress;
+public profcity;
+public profcountry;
+public proftelephone;
+public profemailaddress;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.profaddress = navParams.get('profaddress');
+    this.profcity = navParams.get('profcity');
+    this.profcountry = navParams.get('profcountry');
+    this.proftelephone = navParams.get('proftelephone');
+    this.profemailaddress = navParams.get('profemailaddress');
+
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditProfilePage');
   }
-  selectProfile(event, accountsType) {
+  selectProfile(event, profaddress,profcity,profcountry,proftelephone,profemailaddress) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ProfilePage);
+    this.navCtrl.push(ProfilePage, {
+      profaddress:profaddress,
+      profcity:profcity,
+      profcountry:profcountry,
+      proftelephone:proftelephone,
+      profemailaddress:profemailaddress
+      
+    });
   }
 }

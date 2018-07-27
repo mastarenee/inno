@@ -17,31 +17,31 @@
   <ion-content padding>
       <ion-item>
           <ion-label stacked>Address</ion-label>
-          <ion-input value="#32 Long Island, Christ Church" type="tel"></ion-input>
+          <ion-input  [(ngModel)]="profaddress" type="tel"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label stacked>City</ion-label>
-            <ion-input value="Bridgetown" type="tel"></ion-input>
+            <ion-input [(ngModel)]="profcity" type="tel"></ion-input>
           </ion-item>
 
           <ion-item>
               <ion-label stacked>Country</ion-label>
-              <ion-input value="Barbados" type="tel"></ion-input>
+              <ion-input [(ngModel)]="profcountry" type="tel"></ion-input>
             </ion-item>
 
             <ion-item>
                 <ion-label stacked>Telephone</ion-label>
-                <ion-input value="1-246-286-7891" type="tel"></ion-input>
+                <ion-input [(ngModel)]="proftelephone" type="tel"></ion-input>
               </ion-item>
 
               <ion-item>
                   <ion-label stacked>Email Address</ion-label>
-                  <ion-input value="john.doe@gmail.com" type="tel"></ion-input>
+                  <ion-input [(ngModel)]="profemailaddress" type="tel"></ion-input>
                 </ion-item>
   
         <ion-row>
-            <ion-col><button col-12 ion-button class = "button_red" (click)="selectProfile()"> Save</button></ion-col>
+            <ion-col><button col-12 ion-button class = "button_red" (click)="selectProfile($event,profaddress,profcity,profcountry,proftelephone,profemailaddress)"> Save</button></ion-col>
           </ion-row>
 
   </ion-content>

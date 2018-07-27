@@ -34,7 +34,7 @@
    <!-- <img src = "/assets/imgs/propic.png" class="centerimg" width="200" height="200"> -->
 
       <h5>Account Details <!-- <button ion-button small color="dark" >  </button> -->
-        <ion-icon name="create" (click)="selectEditprofile()">
+        <ion-icon name="create" (click)="selectEditprofile($event,profaddress,profcity,profcountry,proftelephone,profemailaddress)">
       </ion-icon>
    </h5>
       <ion-card> 
@@ -42,24 +42,24 @@
         <ion-card-content>
 
 
-<b>Account Number:</b> ******3617    
+<b>Account Number:</b> ************3617    
 <br>
-<b>Name:</b> John Doe 
+<b>Name:</b> Harry Lewis  
 
 <br>
-<b>Address:</b> #32 Long Island, Christ Church  
+<b>Address:</b> {{profaddress}}    
 <br>
-<b>City:</b> Bridgetown    
+<b>City:</b> {{profcity}}    
 <br>
-<b>Country:</b> Barbados   
+<b>Country:</b> {{profcountry}}   
 <br>
 <b>Nationality:</b> Barbadian    
 <br>
-<b>Telephone Number:</b> 1-246-286-7891    
+<b>Telephone Number:</b> {{proftelephone}}    
 <br>
-<b>Date-of-Birth:</b> 04-16-1996  
+<b>Date-of-Birth:</b> 04-16-1992  
 <br>
-<b>Email Address:</b> john.doe@gmail.com  
+<b>Email Address:</b> {{profemailaddress}}  
 <br>
 
         </ion-card-content>
@@ -86,6 +86,7 @@
                   <ion-label>Alerts</ion-label>
                   <ion-checkbox [(ngModel)]="sausage"></ion-checkbox>
                 </ion-item>
+                <p> Alerts will keep you aware of money entering and exiting your accounts through emails. </p>
               </ion-list>
 
           </ion-card-content>

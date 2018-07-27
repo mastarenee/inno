@@ -42,11 +42,11 @@
         </ion-col>
 
         <ion-col col col-6 class = "amount_sec">
-          <small> Current Amount </small>
+          <small> Current Balance </small>
           <h4> {{account_current | currency: '$'}} </h4>
         </ion-col>
         <ion-col col col-6 class = "amount_sec">
-          <small> Available Amount </small>
+          <small> Available Balance </small>
           <h4> {{account_available | currency: '$'}} </h4>
         </ion-col>
 
@@ -75,7 +75,6 @@
               
               <ion-col col col-6>
                 <div col col-12 class = "transaction_amount">  {{transaction.amount}} </div>
-                <div col col-12 class = "transaction_amount_left">  {{transaction.amount_left}}  </div>
               </ion-col>
 
               <span class = "icon_about_transaction"><img src = "assets/imgs/{{transaction.icon}}"></span>
