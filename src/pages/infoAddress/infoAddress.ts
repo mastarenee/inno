@@ -156,7 +156,7 @@ export class InfoAddressPage {
 
     const alert = this.alert.create({
       title: 'Cancel Transaction!',
-      subTitle: 'Are you sure you want to cancel this transaction?.',
+      subTitle: 'Are you sure you want to cancel this transaction?',
       buttons: [{
         text: 'Yes',
         handler: data => {

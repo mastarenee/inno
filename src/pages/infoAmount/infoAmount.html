@@ -42,10 +42,10 @@
   <ion-card class = "transfer_info_wrap">
 
     <ion-row class = "transfer_amount_numer_wrap">
-      <ion-col col col-111 padding class = "transfer_input">
+      <ion-col col col-12 padding class = "transfer_input">
         <ion-item class = "transfer_amount_numer" >
             <ion-label stacked> How much would you like to transfer? </ion-label>
-            <ion-input type = "number" max = "5000" formControlName = "transfer" (change) = "checkTransferFundsAvailable($event)" value = "500.00"></ion-input> 
+            <ion-input type = "number" max = "5000" formControlName = "transfer" (change) = "checkTransferFundsAvailable($event)" value = "100.00"></ion-input> 
 
         </ion-item>
         <ion-range class = "range_transfer" min="50" max="5000" formControlName="transfer_amount" (ionChange) = "updateTranfer($event)" color="secondary" pin="true"></ion-range>

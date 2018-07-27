@@ -33,7 +33,7 @@
     
       <ion-row class = "account_status_wrap" padding>
 
-          <ion-col col-12 text-center padding> <h2>Transfer History</h2> </ion-col>
+          <ion-col col-12 text-center padding> <h2>Transaction History</h2> </ion-col>
         
       </ion-row>
 
@@ -72,17 +72,17 @@
       
       <ion-list>
         <span *ngFor = "let transaction of transactionLists">
-        <ion-item  *ngIf = "checkFilter(transaction.status)" class = "transaction_wrap transaction_{{transaction.status | lowercase}}" (click)="openTransaction($event,'232',transaction.transaction_id,transaction.date,transaction.status,transaction.amount)"> 
+        <ion-item  *ngIf = "checkFilter(transaction.status)" class = "transaction_wrap transaction_{{transaction.status | lowercase}}" (click)="openTransactionT($event, transaction.account, transaction.firstname, transaction.lastname, transaction.streetaddress, transaction.city, transaction.country, transaction.date, transaction.amount, transaction.bank_country, transaction.iban, transaction.ban, transaction.bic, transaction.status, transaction.process_id, transaction.currency, transaction.transaction_ref)"> 
 
-          <ion-row >
+          <ion-row>
 
             <ion-col col col-5>
               <div class = "transaction_number"> {{transaction.firstname}} {{transaction.lastname}} </div>
-              <div class = "transaction_date" > {{transaction.date | date: 'fullDate' }} </div>
+              <div class = "transaction_date" > <small>{{transaction.date | date: 'fullDate' }} </small></div> 
             </ion-col>
 
             <ion-col col col-3> <span class = "tag tag_{{transaction.status}}">{{transaction.status}}</span> </ion-col>
-            <ion-col col col-3 class = "transaction_amount"> <span class = "boldme">${{transaction.amount | number : '1.2-2'}}</span> <br/> <small>${{getBalance(transaction.amount) | number : '1.2-2' }}</small> </ion-col>
+            <ion-col col col-3 class = "transaction_amount"> <span class = "boldme">${{transaction.amount | number : '1.2-2'}}</span> </ion-col>
 
           </ion-row>
 

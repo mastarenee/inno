@@ -17,6 +17,10 @@ page-introduction {
       height: 70px;
       bottom: 29%;
       left: 37%;
+
+      img{
+        height: 50px !important;
+      }
     }
   
     h2{
@@ -31,10 +35,14 @@ page-introduction {
   
     #voiceGiphy{
       position: absolute;
-      opacity: 0.5;
-      margin: 39px 64px;
-      height: 64vh;
-      max-width: 272px;
+      opacity: 0.1;
+      z-index: -1;
+      top: 0px;
+      height: 100%;
+
+      img{
+        height: 100% !important;
+      }
     }
   
     #voiceGiphy img{

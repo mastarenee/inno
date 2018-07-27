@@ -38,6 +38,24 @@ export class AccountsPage {
       this.accountService.addNewAccount("Student Chequing",300,"...7184");
     }
     this.accountslists = this.accountService.getAccounts();
+
+    if(this.accountService.getAccountsTransaction().length == 0)
+    {
+      this.accountService.addNewAccountTransaction('House Savings','John','Doe', '#13 Warrens House', 'London', 'United Kingdom', '2018-07-21T13:14:40-05:00',
+      '50.00', 'GBR', '0123653935',  '', '', 'completed', 1290723678623, '435ubsd79a9das877','GBP');
+
+      this.accountService.addNewAccountTransaction('Online Chequing','Fredrick','Smith', '#15 Warrens House', 'Texas', 'Canada', '2018-07-22T13:14:40-05:00',
+      '30.00', 'CAD', '1290723678623',  '', '', 'completed', 1290723678623, '32497sdfj2b7987','CAD');
+
+      this.accountService.addNewAccountTransaction('Business Savings','Fredrick','Smith', '#13 Warrens House', 'Texas', 'Canada', '2018-07-21T13:14:40-05:00',
+      '50.00', 'CAD', '0123653935',  '', '', 'pending', 1290723678623, '345lnmnjao40fdgdfg','CAD');
+
+      this.accountService.addNewAccountTransaction('House Savings','John','Doe', '#13 Warrens House', 'Texas', 'Canada', '2018-07-21T13:14:40-05:00',
+      '350.00', 'CAD', '0123653935',  '', '', 'pending', 1290723678623, '435ubsd79a9das877','CAD');
+
+      this.accountService.addNewAccountTransaction('College Savings','John','Doe', '#13 Warrens House', 'London', 'United Kingdom', '2018-07-21T13:14:40-05:00',
+      '50.00', 'GBR', '0123653935',  '', '', 'rejected', 1290723678623, '4dfdsfdgfdfdgdf377','GBP');
+    }
   }
 
   selectAccount(event, accountsType){
@@ -52,9 +70,9 @@ export class AccountsPage {
 
     //Right
     if(event.direction == 2){
-      /*this.navCtrl.push(AccountsactivityPage,{
+      this.navCtrl.push(AccountsactivityPage,{
         account:account
-      });*/
+      });
     }else{
       this.navCtrl.push(InfoPage,{
         account:account,

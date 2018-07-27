@@ -142,7 +142,7 @@ export class LoginPage {
       this.storage.get('introShown').then((result) => {
         
         // Show Loading Action
-        //setTimeout(() => {
+        setTimeout(() => {
           //console.log('Login Successful');
           
           if(loader){
@@ -158,7 +158,7 @@ export class LoginPage {
 
           
 
-        //}, 3010);
+        }, 3010);
         
       });
 

@@ -141,7 +141,7 @@ export class InfoPage {
     this.userRecipientBasicInformation.controls["recipient_last_name"].valid &&
     this.userRecipientBasicInformation.controls["recipient_tel"].valid &&
     this.userRecipientBasicInformation.controls["recipient_dob"].valid &&
-    this.account_selected != ""){
+    this.account_selected != null){
           
       // Validate Information
       let firstname = this.userRecipientBasicInformation.controls["recipient_first_name"].value;
@@ -248,7 +248,7 @@ export class InfoPage {
 
     const alert = this.alert.create({
       title: 'Cancel Transaction!',
-      subTitle: 'Are you sure you want to cancel this transaction?.',
+      subTitle: 'Are you sure you want to cancel this transaction?',
       buttons: [{
         text: 'Yes',
         handler: data => {

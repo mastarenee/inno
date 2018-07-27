@@ -57,6 +57,7 @@ export class ReviewPage {
   public conversion_rate;
   public usd_conversion_rate = 2.02;
   public usd_conversion_rate_sell = 1.98;
+  public bank_country_name;
 
   constructor(public navParams: NavParams, public alert:AlertController, public transactionServices:TransactionServices, public loaderCtrl: LoadingController, public storage:Storage, public navCtrl: NavController, public accountService:AccountService) {
     
@@ -174,17 +175,13 @@ export class ReviewPage {
       this.transactionID = data.transaction_id;
       //this.fx_expiration;
 
-      let tempAccounts = this.accountService.getAccounts();
-      for(let i=0; i<tempAccounts.length; i++)
-      {
-        console.log(tempAccounts[i].alias);
-        if(tempAccounts[i].alias == this.account_transfer_from)
-        {
-          tempAccounts[i].amount = tempAccounts[i].amount -  this.charged_amt;
-          this.accountService.updateAccount(i,tempAccounts[i].alias, tempAccounts[i].amount, tempAccounts[i].account);
-        }
+      if( this.bank_country == "CAN"){
+        this.bank_country_name = "Canada";
+      }else{
+        this.bank_country_name = "United Kingdom";
       }
-        
+      
+
       loader.dismiss();
       this.error_occured = false;
   
@@ -256,7 +253,7 @@ export class ReviewPage {
       transaction_id:transaction_id,
       charged_amt: this.charged_amt,
     }); 
-    
+
   }
 
   presentError(err){

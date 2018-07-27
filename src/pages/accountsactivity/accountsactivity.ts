@@ -140,24 +140,24 @@ export class AccountsactivityPage {
   
   public lineChartColors:Array<any> = [
     { // grey
-      backgroundColor: '#3c1053',
-      borderColor: '#3c1053',
+      backgroundColor: '#440026',
+      borderColor: '#440026',
       pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     },
     { // dark grey
-      backgroundColor: '#3c1053',
-      borderColor: '#3c1053',
+      backgroundColor: '#440026',
+      borderColor: '#440026',
       pointBackgroundColor: 'rgba(77,83,96,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(77,83,96,1)'
     },
     { // grey
-      backgroundColor: '#3c1053',
-      borderColor: '#3c1053',
+      backgroundColor: '#440026',
+      borderColor: '#440026',
       pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',

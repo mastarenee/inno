@@ -73,6 +73,13 @@ import { AccountsactivityPage } from '../pages/accountsactivity/accountsactivity
         { component: InfoAmountPage, name: 'RecipientAmount', segment: 'recipientamount' },
         { component: ReviewPage, name: 'ReviewTransaction', segment: 'recipienttransaction' },
         { component: ThankyouPage, name: 'Confirm', segment: 'confirm' },
+        { component: TransactionHistoryPage, name: 'TransactionHistory', segment: 'transactionhistory' },
+        { component: TransactionHistoryDetailPage, name: 'TransactionHistoryDetails', segment: 'transactiondetails' },
+        { component: ThankyouPage, name: 'Confirm', segment: 'confirm' },
+        { component: EditProfilePage, name: 'EditProfile', segment: 'editprofile' },
+        { component: ContactPage, name: 'contact', segment: 'contact' },
+        { component: FilterPage, name: 'Filter', segment: 'filter' },
+        { component: AccountsactivityPage, name: 'AccountActivty', segment: 'AccountActivty' },
       ]
     }),
   ],

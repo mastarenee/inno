@@ -30,14 +30,8 @@ export class TransactionHistoryPage {
   public totalAmount = 5000;
 
   constructor(public accountService:AccountService, public navParams: NavParams, public transactionServices:TransactionServices, public loaderCtrl: LoadingController, public navCtrl: NavController, public modalCtrl: ModalController) {
-    
-    this.transactionServices.get("transaction_list").then(function(result){
-      console.log("result for transaction list");
-      console.log(result);
-      //this.transactionLists = result; 
-    });
-
     this.transactionLists = this.accountService.getAccounts();
+    this.transactionLists = this.accountService.getAccountsTransaction();
   }
 
   getBalance(amount){
@@ -46,15 +40,50 @@ export class TransactionHistoryPage {
 
   ionViewDidLoad() {}
 
-  openTransaction(event, accountNumber, ref_id, date, status, amount) {
-    
+  openTransactionT(event, account, firstname, lastname, streetaddress, city, country, date, amount, bank_country, iban, ban, bic, status, process_id, currency, transaction_ref){
+
     // Open the Transaction Detail Page
     this.navCtrl.push(TransactionHistoryDetailPage, {
-      item: accountNumber,
-      ref_id:ref_id,
-      date:date, 
-      status:status,
-      amount:amount
+      account: account,
+      firstname: firstname,
+      lastname: lastname,
+      streetaddress: streetaddress,
+      city: city,
+      country: country,
+      date: date,
+      amount: amount,
+      bank_country: bank_country,
+      iban: iban,
+      ban: ban,
+      bic: bic,
+      status: status,
+      process_id: process_id,
+      currency: currency,
+      transaction_ref: transaction_ref
+    });
+
+  }
+
+  openTransaction(event, account, firstname, lastname, streetaddress, city, country, date, amount, bank_country, iban, ban, bic, status,transaction_ref, process_id, currency) {
+  
+    // Open the Transaction Detail Page
+    this.navCtrl.push(TransactionHistoryDetailPage, {
+      account: account,
+      firstname: firstname,
+      lastname: lastname,
+      streetaddress: streetaddress,
+      city: city,
+      country: country,
+      date: date,
+      amount: amount,
+      bank_country: bank_country,
+      iban: iban,
+      ban: ban,
+      bic: bic,
+      status: status,
+      process_id: process_id,
+      currency: currency,
+      transaction_ref: transaction_ref
     });
     
   }

@@ -1,3 +1,31 @@
 page-transactionhistorydetail {
 
+    .tag{
+        text-transform: capitalize;
+    }
+
+    .tag.tag_completed{
+        color: rgb(0, 158, 21);
+        text-decoration: Capitalize;
+    }
+
+    .tag.tag_pending{
+        color: rgb(0, 140, 255);
+        text-decoration: Capitalize;
+    }
+
+    .tag_PENDING{
+        color: rgb(0, 140, 255);
+        text-decoration: Capitalize;
+    }
+
+    .tag.tag_rejected{
+        color: red;
+    }
+    
+    .account_status_wrap:after {
+        top: 28px;
+        right: 48%;
+    }
+    
 }

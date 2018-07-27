@@ -39,8 +39,8 @@ export class InfoAmountPage {
     this.account = navParams.get('account');
 
     this.userTransactionInformation = new FormGroup({
-      transfer: new FormControl('500'),
-      transfer_amount: new FormControl('500'),
+      transfer: new FormControl('100'),
+      transfer_amount: new FormControl('100'),
       bic: new FormControl('TDOMCATTTOR'), 
       iban: new FormControl('GB98MIDL07009312345678'), 
       ban: new FormControl('6539354'), 
@@ -48,8 +48,8 @@ export class InfoAmountPage {
     });
 
     this.userTransactionInformation = this.formBuilder.group({
-      transfer: ['500.00', Validators.required],
-      transfer_amount: ['500', Validators.required],
+      transfer: ['100.00', Validators.required],
+      transfer_amount: ['100', Validators.required],
       iban: ['GB98MIDL07009312345678'],
       ban: ['6539354'],
       bic: ['TDOMCATTTOR'],
@@ -293,7 +293,7 @@ export class InfoAmountPage {
 
     const alert = this.alert.create({
       title: 'Cancel Transaction!',
-      subTitle: 'Are you sure you want to cancel this transaction?.',
+      subTitle: 'Are you sure you want to cancel this transaction?',
       buttons: [{
         text: 'Yes',
         handler: data => {

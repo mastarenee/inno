@@ -34,132 +34,77 @@
       
       <ion-row class = "account_status_wrap" padding>
 
-          <ion-col col col-6>
+          <ion-col col col-7>
           
               <ion-col col col-12 no-padding> From </ion-col>
               <h4 (click) = "editAccount()"> {{account_transfer_from}} </h4> 
             <ion-col col col-12 no-padding> Amount Sent </ion-col>
-            <h4 (click) = "editAmount()"> <span class = "boldme"></span>{{transaction_amount}} <small>USD</small> </h4> 
+            <h4 (click) = "editAmount()"> <span class = "boldme"></span>{{transaction_amount}} <small>{{transaction_currency}}</small> </h4> 
           </ion-col>
       
-          <ion-col col col-6>
+          <ion-col col col-5>
             <ion-col col col-12 no-padding> Recipient </ion-col>
-            <h4 (click) = "editContact()"> {{recipient_name}} </h4> 
+            <h4 (click) = "editContact()"> {{firstname}} {{lastname}} </h4> 
             <ion-col col col-12 no-padding> Address </ion-col>
-            <h6 (click) = "editAddress()"> {{recipient_address}} </h6> 
+            <h6 (click) = "editAddress()"> {{streetaddress}} </h6> 
           </ion-col>
         
       </ion-row>
-       
-      <h1 class = "header_title"> Transaction Details <br/> for #{{refernce_id}} </h1>
-      <p class = "text-center"> {{ transaction_status }}</p>
-      Date here:  {{transaction_date}}
+
       <ion-card padding>
-              
-          <ion-item class = "form_wrap">
-            <ion-row>
-              <div class = "field_name labelTitle"> First Name </div><br/>
-              <p>James</p>
-            </ion-row>
-          </ion-item>
+        <h4 class = "boldme color_blue"> Transaction Details </h4><br/>
+        <span class = "boldme">Reference ID:</span> {{transaction_ref}} <br/>
+        <span class = "boldme">Status:</span> <span class = "tag tag_{{transaction_status}}">{{ transaction_status }} </span><br/>
+        <span class = "boldme">Transaction Date:</span>  {{transaction_date | date: 'full'}} <br/>
+      </ion-card>
+      
+      <ion-card padding>
+        <h4 class = "boldme color_blue"> Recipient Details </h4><br/>
+        <span class = "boldme">City:</span> {{city}} <br/>
+        <span class = "boldme">Country:</span> {{country}} <br/>
+      </ion-card>
 
-          <ion-item class = "form_wrap">
-            <ion-row>
-              <div class = "field_name labelTitle"> Last Name </div><br/>
-              <p> Bond</p>
-            </ion-row>
-          </ion-item>
+      <ion-card padding>
 
-          <ion-item class = "form_wrap">
-            <ion-row>
-              <div class = "field_name labelTitle"> Telephone </div><br/>
-              <p> 1246-234-1234 </p>
-            </ion-row>
-          </ion-item>
+        <h4 class = "boldme color_blue"> Transfer Details </h4><br/>
 
-          <ion-item class = "form_wrap">
-            <ion-row>
-              <div class = "field_name labelTitle"> Street Address </div><br/>
-              <p> 3410 Taft Boulevard </p>
-            </ion-row>
-          </ion-item>
-
-          <ion-item class = "form_wrap">
-            <ion-row>
-              <div class = "field_name labelTitle"> City </div><br/>
-              <p> Wichita Falls  </p>
-            </ion-row>
-          </ion-item>
-
-          <ion-item class = "form_wrap">
-            <ion-row>
-              <div class = "field_name labelTitle"> Postal Code </div><br/>
-              <p> 76308 </p>
-            </ion-row>
-          </ion-item>
-
-          <ion-item class = "form_wrap">
-            <ion-row>
-              <div class = "field_name labelTitle"> Country </div><br/>
-              <p> Texas (TX) </p>
-            </ion-row>
-          </ion-item>
-        
-        </ion-card>
-
-        <h5 class = "boldme" padding> Transfer Information </h5>
-
-        <ion-card padding>
-
-          <ion-row class = "container">
+        <ion-row class = "container">
           
-            <ion-col class = "col6">
-              <p class = "field_name"> Transfer Amount </p>
-            </ion-col>
-            
-            <ion-col class = "col6">
-              <p> $80.00 </p>
-            </ion-col>
-
-          </ion-row>
-
-          <ion-row class = "container">
+          <ion-col class = "col6">
+            <p class = "field_name"> Transfer Amount </p>
+          </ion-col>
           
-            <ion-col class = "col6">
-              <p class = "field_name"> Transfer Rate </p>
-            </ion-col>
-            
-            <ion-col class = "col6">
-              <p> $10.00 </p>
-            </ion-col>
+          <ion-col class = "col6">
+            <p> {{amount | currency: '$'}} </p>
+          </ion-col>
 
-          </ion-row>
+        </ion-row>
 
-          <ion-row class = "container">
+        <ion-row class = "container">
           
           <ion-col class = "col6">
             <p class = "field_name"> Currency </p>
           </ion-col>
           
           <ion-col class = "col6">
-            <p> USD </p>
+            <p> {{transaction_currency}} </p>
           </ion-col>
 
         </ion-row>
 
 
-          <ion-row class = "container">
+        <ion-row class = "container">
           
-            <ion-col class = "col6">
-              <p class = "field_name"> Total Amount </p>
-            </ion-col>
-            
-            <ion-col class = "col6">
-              <p> $90.00 </p>
-            </ion-col>
+          <ion-col class = "col6">
+            <p class = "field_name"> Total Amount </p>
+          </ion-col>
+          
+          <ion-col class = "col6">
+            <p> {{amount | currency: '$'}} </p>
+          </ion-col>
 
-          </ion-row>
-          
+        </ion-row>
+        
         </ion-card>
 
         <span id = "selog_transaction_history_detail" class = "selog"></span>

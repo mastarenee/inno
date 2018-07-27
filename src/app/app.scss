@@ -28,7 +28,11 @@ $fcib_dgreen:#95a800;
 .color_red{
     color:$fcib_red !important;
 }
- 
+
+.color_blue{
+    color:$fcib_blue !important;
+}
+
 .button_blue{
     background:$fcib_blue !important;
 }
@@ -104,6 +108,7 @@ $fcib_dgreen:#95a800;
 
 #logo_watermark.logo_watermark_black{
     color: #292929;
+    z-index: -10;
 }
 
 .labelTitle{

@@ -3,6 +3,9 @@
 
   <div id = "headerLogoLogin" (click)="skip()"></div> 
 
+
+  <div id = "logo_watermark" (click)="skip()"> INNO<span class = "wire">WIRE</span> </div>
+
   <form (ngSubmit)="loginForm()" id = "loginForm" [formGroup]="userLoginForm">
   
       
@@ -29,8 +32,6 @@
       <ion-col class = "text-white" (click) = "openForgotPassword()" text-center> Having trouble signing in? </ion-col>
     </ion-row>
   </form>
-
-  <div id = "logo_watermark" (click)="skip()"> INNOWIRE </div>
 
   <span id = "selog_login" class = "selog">{{selog_data}}</span>
 

@@ -21,7 +21,18 @@ page-login {
     }
 
     #logo_watermark{
-        opacity: 0.8;
+        opacity: 1;
+        position: relative;
+        width: 100%;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        color: #fff;
+        float: left;
+
+        span.wire{
+            //color:$fcib_blue;
+        }
     }
 
     .userProfileWrap{
@@ -45,12 +56,12 @@ page-login {
         background-size: 170px 42px;
         background-repeat: no-repeat;
         background-position: 2px;
-        margin: 20px 25% 20%;
+        margin: 17px 22% 20%;
     }
 
     #loginForm{
 
-        margin-top:94%;
+        margin-top:90%;
 
         .label{
             color:#000 !important;
