@@ -85,7 +85,7 @@ export class AssistantPage {
       }
 
       default:
-      alert("Default Response");
+    
       break;
       
     }
