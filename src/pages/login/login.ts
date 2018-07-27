@@ -164,6 +164,10 @@ export class LoginPage {
 
     }else{
 
+      if(loader){
+        loader.dismiss();
+      }
+
       this.errorCount++;
       this.selog_data = "FAIL - INVALID USER CREDENTIALS";
 

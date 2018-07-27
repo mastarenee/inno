@@ -76,9 +76,11 @@ export class AccountsPage {
   }
 
   // Go to the step 1 - Select Recipient Page
-  viewAccountHistory() {
+  viewAccountHistory(i) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(AccountsactivityPage);
+    this.navCtrl.push(AccountsactivityPage,{
+      index:i
+    });
   }
 
   optionSelected(event){

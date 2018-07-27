@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Chart } from 'chart.js';
+//npm install chart.js
 
 /**
  * Generated class for the AccountsactivityPage page.
@@ -91,6 +92,11 @@ export class AccountsactivityPage {
 
   constructor(public loaderCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams) {
     this.account_selected = "7402";
+    let account_index_temp = this.navParams.get("index");
+    if(account_index_temp != null){
+      this.account_available = this.accountslists[account_index_temp]['amount'];
+      this.account_current = this.account_available - 50;
+    }
   }
 
   ionViewDidLoad() {}
