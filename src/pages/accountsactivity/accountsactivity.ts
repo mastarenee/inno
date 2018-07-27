@@ -88,6 +88,8 @@ export class AccountsactivityPage {
   ]
 
   account_selected;
+  public account_available;
+  public account_current;
   showAccounts = true;
 
   constructor(public loaderCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams) {
